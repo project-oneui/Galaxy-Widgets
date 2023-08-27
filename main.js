@@ -1,6 +1,35 @@
 const { app, BrowserWindow } = require('electron');
 const express = require('express');
 const server = require('./src/js/battery-listener');
+const os = require('os')
+const fs = require('fs')
+const path = require('path');
+const { json } = require('body-parser');
+
+const folderPath = path.join(os.homedir(), 'AppData', 'Local', 'OneUI-Widgets');
+
+const positionData = {
+    musicWidget: {
+        y: "75",
+        x: "75"
+    },
+    batteryWidget: {
+        y: "225",
+        x: "75"
+    },
+    deviceCareWidget: {
+        y: "375",
+        x: "75"
+    },
+    weatherWidget: {
+        y: "525",
+        x: "75"
+    }
+};
+
+const positionJSON = JSON.stringify(positionData, null, 4);  // null and 4 for pretty formatting
+
+if (!fs.existsSync(folderPath + "\\widgetPositions.json")) fs.writeFileSync(folderPath + "\\widgetPositions.json", positionJSON)
 
 app.on('ready', () => {
     musicWidget = new BrowserWindow({
@@ -18,8 +47,6 @@ app.on('ready', () => {
 
     musicWidget.loadFile('./src/music.html');
 
-    // Position the window in the top left corner with a margin
-    musicWidget.setPosition(75, 75);
     musicWidget.setIgnoreMouseEvents(true)
 
     batteryWidget = new BrowserWindow({
@@ -37,8 +64,6 @@ app.on('ready', () => {
 
     batteryWidget.loadFile('./src/battery.html');
 
-    // Position the window in the top left corner with a margin
-    batteryWidget.setPosition(75, 225);
     batteryWidget.setIgnoreMouseEvents(true)
 
     deviceCareWidget = new BrowserWindow({
@@ -56,9 +81,38 @@ app.on('ready', () => {
 
     deviceCareWidget.loadFile('./src/deviceCare.html');
 
-    // Position the window in the top left corner with a margin
-    deviceCareWidget.setPosition(75, 375);
     deviceCareWidget.setIgnoreMouseEvents(true)
+
+    weatherWidget = new BrowserWindow({
+        width: 390,
+        height: 125,
+        frame: false,
+        transparent: true,
+        resizable: false,
+        skipTaskbar: true,
+        webPreferences: {
+            contextIsolation: false,
+            nodeIntegration: true,
+        }
+    });
+
+    weatherWidget.loadFile('./src/weather.html');
+
+    weatherWidget.setIgnoreMouseEvents(true)
+
+    weatherWidget.webContents.openDevTools()
+
+    function setPositions() {
+        const jsonData = JSON.parse(fs.readFileSync(folderPath + "\\widgetPositions.json", 'utf8'));
+        musicWidget.setPosition(parseInt(jsonData.musicWidget.x), parseInt(jsonData.musicWidget.y));
+        console.log(parseInt(jsonData.batteryWidget.x), parseInt(jsonData.batteryWidget.y))
+        batteryWidget.setPosition(parseInt(jsonData.batteryWidget.x), parseInt(jsonData.batteryWidget.y));
+        deviceCareWidget.setPosition(parseInt(jsonData.deviceCareWidget.x), parseInt(jsonData.deviceCareWidget.y));
+        weatherWidget.setPosition(parseInt(jsonData.weatherWidget.x), parseInt(jsonData.weatherWidget.y));
+    }
+
+    setPositions()
+    setInterval(setPositions, 3000)
 });
 
 try {

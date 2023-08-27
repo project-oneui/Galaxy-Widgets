@@ -1,0 +1,242 @@
+[
+	{
+		"code" : 1000,
+		"day" : "sunny_day.webp",
+		"night" : "clear_night.webp"
+	},
+	{
+		"code" : 1003,
+		"day" : "partly_cloudy_day.webp",
+		"night" : "partly_cloudy_night.webp"
+	},
+	{
+		"code" : 1006,
+		"day" : "cloudy.webp",
+		"night" : "cloudy.webp"
+	},
+	{
+		"code" : 1009,
+		"day" : "cloudy.webp",
+		"night" : "cloudy.webp"
+	},
+	{
+		"code" : 1030,
+		"day" : "mist_day.webp",
+		"night" : "mist_night.webp"
+	},
+	{
+		"code" : 1063,
+		"day" : "patchy_rain_day.webp",
+		"night" : "patchy_rain_night.webp"
+	},
+	{
+		"code" : 1066,
+		"day" : "patchy_snow_day.webp",
+		"night" : "patchy_snow_night.webp"
+	},
+	{
+		"code" : 1069,
+		"day" : "sleet_day.webp",
+		"night" : "sleet_night.webp"
+	},
+	{
+		"code" : 1072,
+		"day" : "patchy_rain_day.webp",
+		"night" : "patchy_rain_night.webp"
+	},
+	{
+		"code" : 1087,
+		"day" : "thunder_day.webp",
+		"night" : "thunder_night.webp"
+	},
+	{
+		"code" : 1114,
+		"day" : "blowing_snow_day.webp",
+		"night" : "blowing_snow_night.webp"
+	},
+	{
+		"code" : 1117,
+		"day" : "blizzard_day.webp",
+		"night" : "blizzard_night.webp"
+	},
+	{
+		"code" : 1135,
+		"day" : "mist_day.webp",
+		"night" : "mist_night.webp"
+	},
+	{
+		"code" : 1147,
+		"day": "mist_day.webp",
+		"night": "mist_night.webp"
+	},
+	{
+		"code" : 1150,
+		"day": "patchy_rain_day.webp",
+		"night": "patchy_rain_night.webp"
+	},
+	{
+		"code" : 1153,
+		"day" : "Light drizzle",
+		"night" : "Light drizzle"
+	},
+	{
+		"code" : 1168,
+		"day" : "light_drizzle_day.webp",
+		"night" : "light_drizzle_night.webp"
+	},
+	{
+		"code" : 1171,
+		"day" : "sleet_day.webp",
+		"night" : "sleet_night.webp"
+	},
+	{
+		"code" : 1180,
+		"day" : "Patchy light rain",
+		"night" : "Patchy light rain"
+	},
+	{
+		"code" : 1183,
+		"day" : "patchy_rain_day.webp",
+		"night" : "patchy_rain_night.webp"
+	},
+	{
+		"code" : 1186,
+		"day": "light_drizzle_day.webp",
+		"night": "light_drizzle_night.webp"
+	},
+	{
+		"code" : 1189,
+		"day": "light_drizzle_day.webp",
+		"night": "light_drizzle_night.webp"
+	},
+	{
+		"code" : 1192,
+		"day" : "heavy_rain_day.webp",
+		"night" : "heavy_rain_day.night"
+	},
+	{
+		"code" : 1195,
+		"day": "heavy_rain_day.webp",
+		"night": "heavy_rain_day.night"
+	},
+	{
+		"code" : 1198,
+		"day" : "sleet_day.webp",
+		"night" : "sleet_night.webp"
+	},
+	{
+		"code" : 1201,
+		"day": "sleet_day.webp",
+		"night": "sleet_night.webp"
+	},
+	{
+		"code" : 1204,
+		"day": "sleet_day.webp",
+		"night": "sleet_night.webp"
+	},
+	{
+		"code" : 1207,
+		"day": "sleet_day.webp",
+		"night": "sleet_night.webp"
+	},
+	{
+		"code" : 1210,
+		"day" : "patchy_snow_day.webp",
+		"night" : "patchy_snow_night.webp"
+	},
+	{
+		"code" : 1213,
+		"day" : "light_snow_day.webp",
+		"night" : "light_snow_night.webp"
+	},
+	{
+		"code" : 1216,
+		"day": "light_snow_day.webp",
+		"night": "light_snow_night.webp"
+	},
+	{
+		"code" : 1219,
+		"day": "light_snow_day.webp",
+		"night": "light_snow_night.webp"
+	},
+	{
+		"code" : 1222,
+		"day": "light_snow_day.webp",
+		"night": "light_snow_night.webp"
+	},
+	{
+		"code" : 1225,
+		"day": "blizzard_day.webp",
+		"night": "blizzard_night.webp"
+	},
+	{
+		"code" : 1237,
+		"day" : "patchy_snow_day.webp",
+		"night" : "patchy_snow_night.webp"
+	},
+	{
+		"code" : 1240,
+		"day" : "light_drizzle_day.webp",
+		"night" : "light_drizzle_night.webp"
+	},
+	{
+		"code" : 1243,
+		"day": "heavy_rain_day.webp",
+		"night": "heavy_rain_day.night"
+	},
+	{
+		"code" : 1246,
+		"day": "heavy_rain_day.webp",
+		"night": "heavy_rain_day.night"
+	},
+	{
+		"code" : 1249,
+		"day": "sleet_day.webp",
+		"night": "sleet_night.webp"
+	},
+	{
+		"code" : 1252,
+		"day": "sleet_day.webp",
+		"night": "sleet_night.webp"
+	},
+	{
+		"code" : 1255,
+		"day": "light_snow_day.webp",
+		"night": "light_snow_night.webp"
+	},
+	{
+		"code" : 1258,
+		"day" : "blizzard_day.webp",
+		"night" : "blizzard_night.webp"
+	},
+	{
+		"code" : 1261,
+		"day": "sleet_day.webp",
+		"night": "sleet_night.webp"
+	},
+	{
+		"code" : 1264,
+		"day": "sleet_day.webp",
+		"night": "sleet_night.webp"
+	},
+	{
+		"code" : 1273,
+		"day" : "thunder_rain_day.webp",
+		"night" : "thunder_rain_night.webp"
+	},
+	{
+		"code" : 1276,
+		"day": "thunder_rain_day.webp",
+		"night": "thunder_rain_night.webp"
+	},
+	{
+		"code" : 1279,
+		"day": "light_snow_day.webp",
+		"night": "light_snow_night.webp"
+	},
+	{
+		"code" : 1282,
+		"day": "blizzard_day.webp",
+		"night": "blizzard_night.webp"
+	}
+]
