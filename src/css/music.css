@@ -1,0 +1,88 @@
+body {
+    background-color: transparent;
+    height: 100vh;
+    top: 0;
+    margin: 0;
+}
+
+:root {
+    --text: #fafafa;
+    --secondary: #bcbcbc;
+}
+
+#container-main {
+    width: 100%;
+    height: 100%;
+    background: rgb(73, 112, 155);
+    background: linear-gradient(135deg, rgba(27, 27, 27, 0.9) 0%, rgba(12, 12, 12, 0.6) 100%);
+    border-radius: 33px;
+    z-index: 1;
+    display: flex;
+    color: var(--text);
+    justify-content: center;
+    align-items: center;
+    font-family: 'Samsung', sans-serif;
+    gap: 10px;
+}
+
+#music-cover {
+    height: 90px;
+    border-radius: 15px;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+}
+
+#container-right {
+    display: flex;
+    flex-direction: column;
+    height: 90px;
+    width: auto;
+    justify-content: space-around;
+}
+
+#music-title {
+    font-weight: medium;
+}
+
+#music-artists {
+    color: var(--secondary);
+    font-weight: normal;
+    font-size: 14px;
+}
+
+#music-title,
+#music-artists {
+    display: block;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 265px;
+}
+
+progressbar {
+    width: 260px;
+    height: 8px;
+    border-radius: 3px;
+    background-color: var(--secondary);
+}
+
+#music-progress {
+    width: 56%;
+    height: 8px;
+    border-radius: 3px;
+    background-color: var(--text);
+}
+
+container-text {
+    display: flex;
+    width: auto;
+}
+
+#container-progress-text {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 260px;
+    color: var(--secondary);
+    font-size: small;
+}

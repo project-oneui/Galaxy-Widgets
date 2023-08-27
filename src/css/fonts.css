@@ -1,0 +1,20 @@
+@font-face {
+    font-family: 'Samsung';
+    src: url('../fonts/Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Samsung';
+    src: url('../fonts/Medium.ttf') format('truetype');
+    font-weight: medium;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Samsung';
+    src: url('../fonts/Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
