@@ -24,6 +24,7 @@ async function changeWeatherInfo() {
     const weatherImageData = weatherConditions.find(codeObj => codeObj.code === dataWeather.current.condition.code);
 
     if (isDay == "1") {
+        
         document.getElementById("weather-icon").src = `./res/weather/${weatherImageData.day}`
         document.getElementById("container-main").style.background = `linear-gradient(180deg, rgba(73, 112, 155, 1) 0%, rgba(43, 82, 125, 1) 100%)`
     } else {

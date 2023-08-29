@@ -76,8 +76,8 @@
 	},
 	{
 		"code" : 1153,
-		"day" : "Light drizzle",
-		"night" : "Light drizzle"
+		"day": "light_drizzle_day.webp",
+		"night": "light_drizzle_night.webp"
 	},
 	{
 		"code" : 1168,
@@ -91,8 +91,8 @@
 	},
 	{
 		"code" : 1180,
-		"day" : "Patchy light rain",
-		"night" : "Patchy light rain"
+		"day": "patchy_rain_day.webp",
+		"night": "patchy_rain_night.webp"
 	},
 	{
 		"code" : 1183,

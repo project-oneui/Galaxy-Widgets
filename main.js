@@ -1,10 +1,15 @@
-const { app, BrowserWindow } = require('electron');
+const { app, BrowserWindow, Menu, Tray } = require('electron');
 const express = require('express');
 const server = require('./src/js/battery-listener');
 const os = require('os')
 const fs = require('fs')
 const path = require('path');
 const { json } = require('body-parser');
+const { exit } = require('process');
+let settingsWindow = null;
+const icon = __dirname + '/src/res/Icon.png'
+const iconTray = __dirname + '/src/res/IconTray.png'
+
 
 const folderPath = path.join(os.homedir(), 'AppData', 'Local', 'OneUI-Widgets');
 
@@ -32,6 +37,14 @@ const positionJSON = JSON.stringify(positionData, null, 4);  // null and 4 for p
 if (!fs.existsSync(folderPath + "\\widgetPositions.json")) fs.writeFileSync(folderPath + "\\widgetPositions.json", positionJSON)
 
 app.on('ready', () => {
+    tray = new Tray(iconTray)
+    const contextMenu = Menu.buildFromTemplate([
+        { role: 'quit' },
+    ])
+    tray.setToolTip('OneUI Windows')
+    tray.setContextMenu(contextMenu)
+
+
     musicWidget = new BrowserWindow({
         width: 390,
         height: 125,
@@ -100,12 +113,9 @@ app.on('ready', () => {
 
     weatherWidget.setIgnoreMouseEvents(true)
 
-    weatherWidget.webContents.openDevTools()
-
     function setPositions() {
         const jsonData = JSON.parse(fs.readFileSync(folderPath + "\\widgetPositions.json", 'utf8'));
         musicWidget.setPosition(parseInt(jsonData.musicWidget.x), parseInt(jsonData.musicWidget.y));
-        console.log(parseInt(jsonData.batteryWidget.x), parseInt(jsonData.batteryWidget.y))
         batteryWidget.setPosition(parseInt(jsonData.batteryWidget.x), parseInt(jsonData.batteryWidget.y));
         deviceCareWidget.setPosition(parseInt(jsonData.deviceCareWidget.x), parseInt(jsonData.deviceCareWidget.y));
         weatherWidget.setPosition(parseInt(jsonData.weatherWidget.x), parseInt(jsonData.weatherWidget.y));
