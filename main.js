@@ -142,8 +142,6 @@ app.on('ready', () => {
                     }
                 });
 
-                widgetWindow.webContents.openDevTools()
-
                 eval(`${widget.name} = widgetWindow`)
 
                 if (eval(widget.name) != null) {
