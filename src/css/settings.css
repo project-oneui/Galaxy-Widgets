@@ -1,0 +1,52 @@
+:root {
+    --text: #fafafa;
+    --secondary: #bcbcbc;
+    --background: #010101;
+    --background-secondary: #171719;
+    --separator-horizontal: rgba(62, 62, 62, 0.5);
+    --separator-vertical: rgba(45, 45, 45, 0.3);
+}
+
+body {
+    background-color: var(--background);
+    color: var(--text);
+    font-family: 'Samsung', sans-serif;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+bubble {
+    background-color: var(--background-secondary);
+    padding: 20px 20px 20px 20px;
+    border-radius: 33px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.bubble-info {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+seperatorhorizontal {
+    border-bottom: 3px solid var(--separator-horizontal);
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+seperatorvertical {
+    border-left: 2px solid var(--separator-vertical);
+    margin-right: 5px;
+    height: 20px;
+    width: 3px;
+    box-sizing: border-box;
+    display: flex;
+}
