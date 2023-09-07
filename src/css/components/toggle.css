@@ -1,9 +1,3 @@
-:root {
-    --on-background: #FAFAFA;
-    --on-primary: white;
-    --app-accent: #4f4ae1;
-}
-
 /* The switch - the box around the toggle-slider */
 .oui-container-toggle {
     position: relative;
@@ -35,22 +29,22 @@
     width: 18px;
     border-radius: 50%;
     border: 1px solid #646368;
-    background-color: var(--on-primary);
+    background-color: var(--text);
     transition: .2s;
 }
 
 input:checked+.toggle-slider {
-    background-color: var(--app-accent);
-    border-color: var(--app-accent);
+    background-color: var(--accent);
+    border-color: var(--accent);
 }
 
 input:focus+.toggle-slider {
-    box-shadow: 0 0 1px var(--app-accent);
+    box-shadow: 0 0 1px var(--accent);
 }
 
 input:checked+.toggle-slider:after {
     transform: translateX(20px);
-    border-color: var(--app-accent);
+    border-color: var(--accent);
 }
 
 .oui-container-toggle:hover .toggle-slider:after {

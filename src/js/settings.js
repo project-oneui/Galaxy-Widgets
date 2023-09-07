@@ -18,6 +18,7 @@ window.addEventListener('DOMContentLoaded', () => {
         { name: 'batteryWidget', element: document.getElementById('battery-checkbox') },
         { name: 'deviceCareWidget', element: document.getElementById('deviceCare-checkbox') },
         { name: 'weatherWidget', element: document.getElementById('weather-checkbox') },
+        { name: 'newsWidget', element: document.getElementById('news-checkbox') },
     ];
 
     checkboxes.forEach((checkbox) => {

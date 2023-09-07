@@ -7,7 +7,9 @@
     <title>Widget Settings</title>
     <link rel="stylesheet" href="./css/settings.css">
     <link rel="stylesheet" href="./css/fonts.css">
-    <link rel="stylesheet" href="./css/toggle.css">
+    <link rel="stylesheet" href="./css/components/toggle.css">
+    <link rel="stylesheet" href="./css/components/bubble.css">
+    <link rel="stylesheet" href="./css/colors.css">
     <script src="./js/settings.js"></script>
 </head>
 
@@ -47,11 +49,22 @@
 
         <seperatorhorizontal></seperatorhorizontal>
 
-        <container class="bubble-info">
+        <container class="bubble-info" onclick="window.location.href='./settings/WeatherSettings.html'">
             <span>Weather Widget</span>
             <label class="oui-label oui-container-toggle" for="weather-checkbox">
                 <seperatorvertical></seperatorvertical>
                 <input id="weather-checkbox" type="checkbox" class="toggle">
+                <span class="toggle-slider"></span>
+            </label>
+        </container>
+
+        <seperatorhorizontal></seperatorhorizontal>
+
+        <container class="bubble-info"">
+            <span>News Widget</span>
+            <label class="oui-label oui-container-toggle" for="news-checkbox">
+                <seperatorvertical></seperatorvertical>
+                <input id="news-checkbox" type="checkbox" class="toggle">
                 <span class="toggle-slider"></span>
             </label>
         </container>

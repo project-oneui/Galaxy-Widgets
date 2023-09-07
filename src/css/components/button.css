@@ -1,0 +1,13 @@
+.primary-button {
+    color: var(--text);
+    background-color: var(--accent);
+    border: none;
+    padding: 10px 20px 10px 20px;
+    border-radius: 33px;
+    cursor: pointer;
+    transition: all .2s ease-in-out;
+}
+
+.primary-button:hover {
+    background-color: var(--accent-active);
+}

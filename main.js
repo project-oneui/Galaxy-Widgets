@@ -15,6 +15,7 @@ let musicWidget = null;
 let batteryWidget = null;
 let deviceCareWidget = null;
 let weatherWidget = null;
+let newsWidget = null;
 
 const folderPath = path.join(os.homedir(), 'AppData', 'Local', 'OneUI-Widgets');
 
@@ -34,6 +35,10 @@ const positionData = {
     weatherWidget: {
         y: "525",
         x: "75"
+    },
+    newsWidget: {
+        y: "675",
+        x: "75"
     }
 };
 
@@ -49,7 +54,16 @@ const stateData = {
     },
     weatherWidget: {
         show: "true"
+    },
+    newsWidget: {
+        show: "wrong"
     }
+};
+
+const weatherData = {
+    "iplocation": true,
+    "weather_country": "",
+    "weather_name": "",
 };
 
 const positionJSON = JSON.stringify(positionData, null, 4);  // null and 4 for pretty formatting
@@ -59,6 +73,10 @@ if (!fs.existsSync(folderPath + "\\widgetPositions.json")) fs.writeFileSync(fold
 const stateJSON = JSON.stringify(stateData, null, 4);  // null and 4 for pretty formatting
 
 if (!fs.existsSync(folderPath + "\\widgetStates.json")) fs.writeFileSync(folderPath + "\\widgetStates.json", stateJSON)
+
+const weatherJSON = JSON.stringify(weatherData, null, 4);
+
+if (!fs.existsSync(folderPath + "\\weatherOptions.json")) fs.writeFileSync(folderPath + "\\weatherOptions.json", weatherJSON)
 
 app.on('ready', () => {
     tray = new Tray(iconTray)
@@ -72,23 +90,22 @@ app.on('ready', () => {
 
     function openSettings() {
         if (settingsWindow) {
-            // If the settings window already exists, focus on it
             if (settingsWindow.isMinimized()) settingsWindow.restore();
             settingsWindow.focus();
             return;
         }
 
-        // Create a new settings window
         settingsWindow = new BrowserWindow({
             width: 400,
             height: 600,
+            autoHideMenuBar: true,
             webPreferences: {
                 contextIsolation: false,
                 nodeIntegration: true,
             }
         });
 
-        settingsWindow.loadFile('./src/settings.html'); // Load your HTML file here
+        settingsWindow.loadFile('./src/settings.html');
 
         settingsWindow.on('closed', () => {
             settingsWindow = null;
@@ -120,6 +137,12 @@ app.on('ready', () => {
                 "width": 390,
                 "height": 125,
                 "html": "./src/weather.html"
+            },
+            {
+                "name": "newsWidget",
+                "width": 390,
+                "height": 200,
+                "html": "./src/news.html"
             }
         ]
     }
@@ -129,6 +152,7 @@ app.on('ready', () => {
         const widgetPositions = JSON.parse(fs.readFileSync(folderPath + "\\widgetPositions.json"))
         widgetsData.widgets.forEach(widget => {
             if (widgetStates[widget.name].show == "true" && eval(widget.name) == null) {
+                console.log(widget.height)
                 const widgetWindow = new BrowserWindow({
                     width: widget.width,
                     height: widget.height,
@@ -142,12 +166,14 @@ app.on('ready', () => {
                     }
                 });
 
+                widgetWindow.setIgnoreMouseEvents(true)
+
                 eval(`${widget.name} = widgetWindow`)
 
                 if (eval(widget.name) != null) {
                     widgetWindow.setBounds({
-                        width: 390,
-                        height: 125,
+                        width: widget.width,
+                        height: widget.height,
                         x: parseInt(widgetPositions[widget.name].x),
                         y: parseInt(widgetPositions[widget.name].y)
                     });
@@ -157,8 +183,12 @@ app.on('ready', () => {
 
                 widgetWindow.on('closed', () => {
                     eval(`${widget.name} = null`);
-                    // Handle window closed event as needed
                 });
+
+                widgetWindow.on('focus', () => {
+                    widgetWindow.setSkipTaskbar(true)
+                });
+
             } else if (widgetStates[widget.name].show != "true" && eval(widget.name) != null) {
                 eval(`${widget.name}.destroy()`);
                 eval(`${widget.name} = null`);

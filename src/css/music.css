@@ -5,16 +5,10 @@ body {
     margin: 0;
 }
 
-:root {
-    --text: #fafafa;
-    --secondary: #bcbcbc;
-}
-
 #container-main {
     width: 100%;
     height: 100%;
-    background: rgb(73, 112, 155);
-    background: linear-gradient(135deg, rgba(27, 27, 27, 0.9) 0%, rgba(12, 12, 12, 0.6) 100%);
+    background-color: var(--background);
     border-radius: 33px;
     z-index: 1;
     display: flex;
