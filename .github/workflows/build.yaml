@@ -29,27 +29,13 @@ jobs:
           tar -caf oneui-widgets.zip oneui-desktop-widgets-win32-x64
         working-directory: ${{ github.workspace }}
 
-      - name: Create Release
-        id: create_release
-        uses: actions/create-release@v1
-        with:
-          tag_name: Release
-          release_name: Release Stable
-          body: Automatic Build
-        env:
-          GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
-
-      - name: Upload ZIP Artifact
-        id: upload-artifact
-        uses: actions/upload-artifact@v2
-        with:
-          name: oneui-widgets
-          path: oneui-widgets.zip
-
-      - name: Attach Artifact to Release
+      - name: Create Release and Upload Asset
+        id: upload-release-asset
         uses: actions/upload-release-asset@v1
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: oneui-widgets.zip
+          asset_path: ./oneui-widgets.zip
           asset_name: oneui-widgets.zip
           asset_content_type: application/zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
