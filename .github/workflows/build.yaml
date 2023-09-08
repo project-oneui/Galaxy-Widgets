@@ -21,9 +21,6 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
-      # - name: Install electron-packager
-      #   run: npm install electron-packager
-
       - name: Build Electron App for Windows with --asar
         run: npm run build:windows
 
@@ -36,8 +33,8 @@ jobs:
         id: create_release
         uses: actions/create-release@v1
         with:
-          tag_name: Release # Set your desired release tag name
-          release_name: Release Stable # Set your desired release name
+          tag_name: Release
+          release_name: Release Stable
           body: Automatic Build
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
