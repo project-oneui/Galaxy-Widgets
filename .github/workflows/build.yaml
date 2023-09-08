@@ -21,21 +21,20 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
-      - name: Install electron-packager
-        run: npm install electron-packager
+      # - name: Install electron-packager
+      #   run: npm install electron-packager
 
       - name: Build Electron App for Windows with --asar
         run: npm run build:windows
 
       - name: Zip Output Folder
         run: |
-          cd oneui-desktop-widgets-win32-x64
-          zip -r oneui-widgets.zip .
+          tar -caf oneui-widgets.zip oneui-desktop-widgets-win32-x64
         working-directory: ${{ github.workspace }}
 
       - name: Upload ZIP Artifact
         uses: actions/upload-artifact@v2
         with:
           name: oneui-widgets
-          path: oneui-desktop-widgets-win32-x64/oneui-widgets.zip
+          path: oneui-widgets.zip
 
