@@ -38,6 +38,6 @@ jobs:
         with:
           files: ./oneui-widgets.zip
           name: Release auto-build
-          tag_name: Release
+          tag_name: v${{ github.run_number }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
