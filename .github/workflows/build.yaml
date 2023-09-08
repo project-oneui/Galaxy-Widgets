@@ -21,6 +21,9 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
+      - name: Install electron-packager
+        run: npm install electron-packager
+
       - name: Build Electron App for Windows with --asar
         run: npm run build:windows
 
