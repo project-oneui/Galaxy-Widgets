@@ -34,11 +34,13 @@ jobs:
 
       - name: Create Release
         id: create_release
-        uses: actions/create-release@v1
+        uses: actions/create-release@v1^
         with:
           tag_name: Release # Set your desired release tag name
           release_name: Release Stable # Set your desired release name
           body: Automatic Build
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Upload ZIP Artifact
         id: upload-artifact
