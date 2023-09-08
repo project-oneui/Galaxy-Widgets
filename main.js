@@ -152,7 +152,6 @@ app.on('ready', () => {
         const widgetPositions = JSON.parse(fs.readFileSync(folderPath + "\\widgetPositions.json"))
         widgetsData.widgets.forEach(widget => {
             if (widgetStates[widget.name].show == "true" && eval(widget.name) == null) {
-                console.log(widget.height)
                 const widgetWindow = new BrowserWindow({
                     width: widget.width,
                     height: widget.height,
