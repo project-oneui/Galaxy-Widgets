@@ -5,7 +5,8 @@
   "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "electron ."
+    "start": "electron .",
+    "build": "electron-packager . --platform=win32 --asar --electronVersion=26.1.0"
   },
   "author": "",
   "license": "ISC",
@@ -17,6 +18,7 @@
     "body-parser": "^1.20.2",
     "edge": "^7.10.1",
     "electron": "^26.1.0",
+    "electron-builder": "^24.6.4",
     "express": "^4.18.2",
     "node-fetch": "^2.7.0",
     "node-vibrant": "^3.2.1-alpha.1"

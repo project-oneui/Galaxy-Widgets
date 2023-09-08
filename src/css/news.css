@@ -58,6 +58,5 @@ strong {
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
-    height: 50px;
     font-weight: medium;
 }
