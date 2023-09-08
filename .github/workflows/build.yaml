@@ -37,7 +37,7 @@ jobs:
           release_name: Release Stable
           body: Automatic Build
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
 
       - name: Upload ZIP Artifact
         id: upload-artifact
