@@ -9,15 +9,15 @@ const folderPath = path.join(os.homedir(), 'AppData', 'Local', 'OneUI-Widgets', 
 window.addEventListener("DOMContentLoaded", () => {
     function setInfo() {
         const jsonData = JSON.parse(fs.readFileSync(folderPath + '\\songInfo.json', 'utf8'));
-        Vibrant.from(jsonData.CoverUrl).getPalette()
-            .then((palette) => {
-                const LightRGB = palette.DarkVibrant._rgb;
-                document.getElementById("container-main").style.background = `linear-gradient(180deg, rgba(${LightRGB[0]}, ${LightRGB[1]}, ${LightRGB[2]}, 1) 0%, rgba(${LightRGB[0] - 25}, ${LightRGB[1] - 25}, ${LightRGB[2] - 25}, 1) 100%)`
-            })
         
         if (jsonData.CoverUrl == "") {
             document.getElementById("music-cover").src = "../res/generic-cover.png";
         } else {
+            Vibrant.from(jsonData.CoverUrl).getPalette()
+                .then((palette) => {
+                    const LightRGB = palette.DarkVibrant._rgb;
+                    document.getElementById("container-main").style.background = `linear-gradient(180deg, rgba(${LightRGB[0]}, ${LightRGB[1]}, ${LightRGB[2]}, 1) 0%, rgba(${LightRGB[0] - 25}, ${LightRGB[1] - 25}, ${LightRGB[2] - 25}, 1) 100%)`
+                })
             document.getElementById("music-cover").src = jsonData.CoverUrl;
         }
 
