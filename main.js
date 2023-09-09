@@ -4,10 +4,6 @@ const server = require('./src/js/battery-listener');
 const os = require('os')
 const fs = require('fs')
 const path = require('path');
-const { json } = require('body-parser');
-const { exit } = require('process');
-const { open } = require('fs/promises');
-const { create } = require('domain');
 const icon = __dirname + '/src/res/Icon.png'
 const iconTray = __dirname + '/src/res/IconTray.png'
 
