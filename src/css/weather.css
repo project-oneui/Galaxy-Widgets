@@ -5,7 +5,7 @@ body {
 }
 
 #container-main {
-    background-color: black;
+    background-color: var(--background);
     height: 100%;
     width: 100%;
     border-radius: 33px;
@@ -15,7 +15,6 @@ body {
     box-sizing: border-box;
     align-items: center;
     color: var(--text);
-    font-family: 'Samsung', sans-serif;
 }
 
 #weather-icon {

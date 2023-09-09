@@ -1,6 +1,9 @@
 .primary-button {
-    color: var(--text);
     background-color: var(--accent);
+}
+
+button {
+    color: var(--text);
     border: none;
     padding: 10px 20px 10px 20px;
     border-radius: 33px;
@@ -10,4 +13,12 @@
 
 .primary-button:hover {
     background-color: var(--accent-active);
+}
+
+.secondary-button {
+    background-color: var(--secondary-darker)
+}
+
+.secondary-button:hover {
+    background-color: var(--secondary-darker-active)
 }

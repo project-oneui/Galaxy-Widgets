@@ -1,0 +1,86 @@
+body {
+    height: 100vh;
+    top: 0;
+    margin: 0;
+}
+
+#container-main {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    background-color: var(--background);
+    border-radius: 33px;
+    color: var(--text);
+    box-sizing: border-box;
+    padding: 20px 20px 20px 20px;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+}
+
+#container-head {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+#container-head>span {
+    color: var(--secondary);
+    font-weight: 900;
+    font-size: 14px;
+}
+
+#container-flight {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+}
+
+#container-flight-top {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#container-flight-top > span {
+    font-size: 25px;
+    font-weight: bold;
+} 
+
+point {
+    width: 5px;
+    height: 5px;
+    background-color: var(--secondary-lighter);
+    border-radius: 50%;
+}
+
+flexline {
+    height: 5px;
+    flex-grow: 0.4;
+    background-color: var(--secondary-darker);
+    border-radius: 3px;
+    height: 3px;
+}
+
+#airplane {
+    height: 30px;
+    rotate: 90deg;
+}
+
+#container-flight-bottom {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    color: var(--secondary-lighter);
+    font-size: 12px;
+}
+
+#container-foot {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 14px;
+}

@@ -1,13 +1,12 @@
 body {
     background-color: var(--background);
     color: var(--text);
-    font-family: 'Samsung', sans-serif;
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
 
-.bubble-info:hover {
+.bubble-info:active {
     background-color: #26262c;
-    padding: 15px 15px 15px 15px;
+    padding: 7px 7px 7px 7px;
 }

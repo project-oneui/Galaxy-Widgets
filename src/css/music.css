@@ -15,11 +15,11 @@ body {
     color: var(--text);
     justify-content: center;
     align-items: center;
-    font-family: 'Samsung', sans-serif;
     gap: 10px;
 }
 
 #music-cover {
+    background-color: var(--secondary-darker);
     height: 90px;
     border-radius: 15px;
     aspect-ratio: 1/1;
