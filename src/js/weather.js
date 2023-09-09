@@ -5,7 +5,7 @@ const path = require('path')
 const folderPath = path.join(os.homedir(), 'AppData', 'Local', 'OneUI-Widgets');
 
 const weatherOptions = JSON.parse(fs.readFileSync(folderPath + "\\weatherOptions.json"), 'utf8')
-const weatherConditions = require('./json/weather_conditions.json');
+const weatherConditions = require('../json/weather_conditions.json');
 
 async function changeWeatherInfo() {
     const responseIP = await fetch('https://api.ipify.org?format=json');
@@ -29,8 +29,6 @@ async function changeWeatherInfo() {
     const localTime = dataWeather.location.localtime;
     const localTimeSplit = localTime.split(' ')
 
-    console.log(dataWeather)
-
     document.getElementById("weather-temperature").innerHTML = dataWeather.current.temp_c.toFixed() + "°"
     document.getElementById("weather-location").innerHTML = dataWeather.location.name;
     document.getElementById("weather-time").innerHTML = localTimeSplit[1]
@@ -39,10 +37,10 @@ async function changeWeatherInfo() {
     const weatherImageData = weatherConditions.find(codeObj => codeObj.code === dataWeather.current.condition.code);
 
     if (isDay == "1") {
-        document.getElementById("weather-icon").src = `./res/weather/${weatherImageData.day}`
+        document.getElementById("weather-icon").src = `../res/weather/${weatherImageData.day}`
         document.getElementById("container-main").style.background = `linear-gradient(180deg, rgba(73, 112, 155, 1) 0%, rgba(43, 82, 125, 1) 100%)`
     } else {
-        document.getElementById("weather-icon").src = `./res/weather/${weatherImageData.night}`
+        document.getElementById("weather-icon").src = `../res/weather/${weatherImageData.night}`
         document.getElementById("container-main").style.background = `linear-gradient(180deg, rgba(65, 70, 120, 1) 0%, rgba(50,55,105, 1) 100%)`
 
     }

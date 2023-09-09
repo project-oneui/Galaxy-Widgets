@@ -16,6 +16,7 @@ let batteryWidget = null;
 let deviceCareWidget = null;
 let weatherWidget = null;
 let newsWidget = null;
+let flightWidget = null;
 
 const folderPath = path.join(os.homedir(), 'AppData', 'Local', 'OneUI-Widgets');
 
@@ -115,7 +116,7 @@ app.on('ready', () => {
             }
         });
 
-        settingsWindow.loadFile('./src/settings.html');
+        settingsWindow.loadFile('./src/widgets/settings.html');
 
         settingsWindow.on('closed', () => {
             settingsWindow = null;
@@ -128,32 +129,38 @@ app.on('ready', () => {
                 "name": "musicWidget",
                 "width": 390,
                 "height": 125,
-                "html": "./src/music.html"
+                "html": "./src/widgets/music.html"
             },
             {
                 "name": "batteryWidget",
                 "width": 390,
                 "height": 125,
-                "html": "./src/battery.html"
+                "html": "./src/widgets/battery.html"
             },
             {
                 "name": "deviceCareWidget",
                 "width": 390,
                 "height": 125,
-                "html": "./src/deviceCare.html"
+                "html": "./src/widgets/deviceCare.html"
             },
             {
                 "name": "weatherWidget",
                 "width": 390,
                 "height": 125,
-                "html": "./src/weather.html"
+                "html": "./src/widgets/weather.html"
             },
             {
                 "name": "newsWidget",
                 "width": 390,
                 "height": 200,
-                "html": "./src/news.html"
-            }
+                "html": "./src/widgets/news.html"
+            },
+            {
+                "name": "flightWidget",
+                "width": 390,
+                "height": 125,
+                "html": "./src/widgets/flight.html"
+            },
         ]
     }
 
@@ -174,6 +181,8 @@ app.on('ready', () => {
                         nodeIntegration: true,
                     }
                 });
+
+                widgetWindow.webContents.openDevTools()
 
                 widgetWindow.setIgnoreMouseEvents(true)
 

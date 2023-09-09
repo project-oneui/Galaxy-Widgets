@@ -16,7 +16,7 @@ window.addEventListener("DOMContentLoaded", () => {
             })
         
         if (jsonData.CoverUrl == "") {
-            document.getElementById("music-cover").src = "./res/generic-cover.png";
+            document.getElementById("music-cover").src = "../res/generic-cover.png";
         } else {
             document.getElementById("music-cover").src = jsonData.CoverUrl;
         }
