@@ -39,6 +39,9 @@ const positionData = {
     newsWidget: {
         y: "675",
         x: "75"
+    }, flightWidget: {
+        y: "675",
+        x: "75"
     }
 };
 
@@ -57,6 +60,9 @@ const stateData = {
     },
     newsWidget: {
         show: "false"
+    },
+    flightWidget: {
+        show: "false"
     }
 };
 
@@ -65,6 +71,10 @@ const weatherData = {
     "weather_country": "",
     "weather_name": "",
 };
+
+const flightData = {
+    "flight_number": ""
+}
 
 const positionJSON = JSON.stringify(positionData, null, 4);  // null and 4 for pretty formatting
 
