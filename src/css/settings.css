@@ -8,5 +8,5 @@ body {
 
 .bubble-info:active {
     background-color: #26262c;
-    padding: 7px 7px 7px 7px;
+    padding: 0 10px 0 10px;
 }

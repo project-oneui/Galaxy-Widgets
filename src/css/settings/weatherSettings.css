@@ -9,3 +9,12 @@ body {
 .bubble-content {
     width: 100%;
 }
+
+seperatorhorizontal {
+    border-bottom: 3px solid var(--separator-horizontal);
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
