@@ -1,8 +1,8 @@
-# oneui-desktop-widgets
-An electron app which creates OneUI Widgets on your desktop
-
 > [!IMPORTANT]  
 > If you get any error: Try to delete all files except the temp folder in: %localappdata%\oneui-widgets
+
+# oneui-desktop-widgets
+An electron app which creates OneUI Widgets on your desktop
 
 # Preview
 
