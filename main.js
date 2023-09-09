@@ -56,7 +56,7 @@ const stateData = {
         show: "true"
     },
     newsWidget: {
-        show: "wrong"
+        show: "false"
     }
 };
 

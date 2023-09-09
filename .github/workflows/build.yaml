@@ -6,7 +6,7 @@ permissions:
 on:
   push:
     branches:
-      - main # You can change this to your main branch name
+      - main
 
 jobs:
   build:
@@ -37,7 +37,7 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           files: ./oneui-widgets.zip
-          name: Release "#"${{ github.run_number }}
+          name: Release ${{ github.run_number }}
           tag_name: v${{ github.run_number }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
