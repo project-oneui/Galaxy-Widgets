@@ -14,6 +14,7 @@ let deviceCareWidget = null;
 let weatherWidget = null;
 let newsWidget = null;
 let flightWidget = null;
+let smartThingsWidget = null;
 
 const folderPath = path.join(os.homedir(), 'AppData', 'Local', 'OneUI-Widgets');
 
@@ -24,8 +25,9 @@ const positionData = {
     batteryWidget: { y: "225", x: "75" },
     deviceCareWidget: { y: "375", x: "75" },
     weatherWidget: { y: "525", x: "75" },
-    newsWidget: { y: "675", x: "75" },
+    newsWidget: { y: "75", x: "475" },
     flightWidget: { y: "675", x: "75" },
+    smartThingsWidget: { y: "300", x: "475" },
 };
 
 const stateData = {
@@ -35,6 +37,7 @@ const stateData = {
     weatherWidget: { show: "true" },
     newsWidget: { show: "false" },
     flightWidget: { show: "false" },
+    smartThingsWidget: { show: "true" },
 };
 
 const weatherData = {
@@ -68,6 +71,7 @@ const widgetsData = {
         { name: "weatherWidget", width: 390, height: 125, html: "./src/widgets/weather.html" },
         { name: "newsWidget", width: 390, height: 200, html: "./src/widgets/news.html" },
         { name: "flightWidget", width: 390, height: 175, html: "./src/widgets/flight.html" },
+        { name: "smartThingsWidget", width: 390, height: 125, html: "./src/widgets/smartThings.html" },
     ],
 };
 

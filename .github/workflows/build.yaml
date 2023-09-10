@@ -4,6 +4,7 @@ permissions:
   contents: write
 
 on:
+  workflow_dispatch: # This will make the workflow trigger manually
   push:
     branches:
       - main
@@ -39,5 +40,15 @@ jobs:
           files: ./oneui-widgets.zip
           name: OneUI Widgets ${{ github.run_number }}
           tag_name: v${{ github.run_number }}
+          body: |
+            **New Commits:**
+            - ${{ steps.get_commit_sha.outputs.new_commits }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Get New Commits
+        id: get_commit_sha
+        run: |
+          if [ "${{ github.event_name }}" == "push" ]; then
+            echo "::set-output name=new_commits::$(git log --pretty=format:'- %h %s' ${{ github.event.before }}..${{ github.sha }})"
+          fi
