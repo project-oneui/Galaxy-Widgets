@@ -46,8 +46,7 @@ jobs:
           name: OneUI Widgets ${{ github.run_number }}
           tag_name: v${{ github.run_number }}
           body: |
-            ## This release was auto generated
+            > [!NOTE] 
+            > This release was auto generated
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-
