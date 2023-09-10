@@ -25,17 +25,17 @@ jobs:
       - name: Install Dependencies
         run: |
           npm install
-          echo ✔ Dependencies Installed!
+          echo "✔ Dependencies Installed!"
 
       - name: Build for Windows
         run: | 
           npm run build:windows
-          echo 🏗 Windows Build Finished!
+          echo "🏗 Windows Build Finished!"
 
       - name: Zip Build
         run: |
           tar -caf oneui-widgets.zip oneui-desktop-widgets-win32-x64
-          🧳 Build is zipped!
+          echo "🧳 Build is zipped!"
         working-directory: ${{ github.workspace }}
 
       - name: Publish
