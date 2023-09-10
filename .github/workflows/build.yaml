@@ -49,6 +49,5 @@ jobs:
       - name: Get New Commits
         id: get_commit_sha
         run: |
-          if [ "${{ github.event_name }}" == "push" ]; then
-            echo "::set-output name=new_commits::$(git log --pretty=format:'- %h %s' ${{ github.event.before }}..${{ github.sha }})"
-          fi
+          git log $(git describe --tags --abbrev=0)..HEAD --no-merges --oneline > new-in-this-release.log
+
