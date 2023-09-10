@@ -23,17 +23,22 @@ jobs:
           node-version: 14
 
       - name: Install Dependencies
-        run: npm install
+        run: |
+          npm install
+          echo ✔ Dependencies Installed!
 
-      - name: Build Electron App for Windows with --asar
-        run: npm run build:windows
+      - name: Build for Windows
+        run: | 
+          npm run build:windows
+          echo 🏗 Windows Build Finished!
 
-      - name: Zip Output Folder
+      - name: Zip Build
         run: |
           tar -caf oneui-widgets.zip oneui-desktop-widgets-win32-x64
+          🧳 Build is zipped!
         working-directory: ${{ github.workspace }}
 
-      - name: Create Release
+      - name: Publish
         id: create_release
         uses: softprops/action-gh-release@v1
         with:
