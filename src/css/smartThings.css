@@ -9,9 +9,10 @@ body {
     height: 100%;
     width: 100%;
     display: flex;
-    background: linear-gradient(90deg, rgba(70, 74, 79, 0.95) 0%, rgba(60, 64, 69, 0.95) 100%);
+    background-color: var(--background);
     border-radius: 33px;
     padding: 20px 20px 20px 20px;
     box-sizing: border-box;
     color: var(--text);
+    transition: all .2s ease-in-out;
 }

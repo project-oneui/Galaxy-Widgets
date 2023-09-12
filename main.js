@@ -15,6 +15,7 @@ let weatherWidget = null;
 let newsWidget = null;
 let flightWidget = null;
 let smartThingsWidget = null;
+let calendarWidget = null;
 
 const folderPath = path.join(os.homedir(), 'AppData', 'Local', 'OneUI-Widgets');
 
@@ -28,6 +29,7 @@ const positionData = {
     newsWidget: { y: "75", x: "475" },
     flightWidget: { y: "675", x: "75" },
     smartThingsWidget: { y: "300", x: "475" },
+    calendarWidget: { y: "300", x: "475" },
 };
 
 const stateData = {
@@ -37,7 +39,8 @@ const stateData = {
     weatherWidget: { show: "true" },
     newsWidget: { show: "false" },
     flightWidget: { show: "false" },
-    smartThingsWidget: { show: "true" },
+    smartThingsWidget: { show: "false" },
+    calendarWidget: { show: "true" },
 };
 
 const weatherData = {
@@ -72,6 +75,7 @@ const widgetsData = {
         { name: "newsWidget", width: 390, height: 200, html: "./src/widgets/news.html" },
         { name: "flightWidget", width: 390, height: 175, html: "./src/widgets/flight.html" },
         { name: "smartThingsWidget", width: 390, height: 125, html: "./src/widgets/smartThings.html" },
+        { name: "calendarWidget", width: 390, height: 200, html: "./src/widgets/calendar.html" },
     ],
 };
 
@@ -110,8 +114,6 @@ app.on('ready', () => {
         });
     }
 
-
-
     function setStates() {
         const widgetStates = JSON.parse(fs.readFileSync(folderPath + "\\widgetStates.json"))
         const widgetPositions = JSON.parse(fs.readFileSync(folderPath + "\\widgetPositions.json"))
@@ -123,6 +125,7 @@ app.on('ready', () => {
                     frame: false,
                     transparent: true,
                     resizable: false,
+                    transparency: true,
                     skipTaskbar: true,
                     webPreferences: {
                         contextIsolation: false,
@@ -156,7 +159,10 @@ app.on('ready', () => {
             } else if (widgetStates[widget.name].show != "true" && eval(widget.name) != null) {
                 eval(`${widget.name}.destroy()`);
                 eval(`${widget.name} = null`);
+            } else if (widgetStates[widget.name].show == "true" && eval(widget.name) != null) {
+                (eval(`${widget.name}.setSkipTaskbar(true)`))
             }
+
 
         });
     }

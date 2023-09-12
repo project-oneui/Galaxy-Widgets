@@ -8,7 +8,7 @@ body {
     display: flex;
     height: 100%;
     width: 100%;
-    background-color: var(--background);
+    background-color: var(--background-secondary);
     border-radius: 33px;
     color: var(--text);
     box-sizing: border-box;

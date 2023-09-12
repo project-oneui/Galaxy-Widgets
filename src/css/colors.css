@@ -4,11 +4,11 @@
     --secondary-lighter: rgba(190, 194, 199, 1);
     --secondary-darker: rgba(70, 74, 79, 1);
     --secondary-darker-active: rgba(60, 64, 69, 1);
-    --background: rgb(14, 14, 16);
-    --background-secondary: rgb(24, 24, 26);
+    --background: rgba(8, 8, 8, 0.85);
+    --background-secondary: rgba(28, 28, 28, 0.85);
     --separator-horizontal: rgba(62, 62, 62, 0.5);
     --separator-vertical: rgba(45, 45, 45, 0.3);
-    --accent: rgb(91, 71, 220);
-    --accent-active: rgb(101, 81, 230);
+    --accent: #0381fe;
+    --accent-active: #3e91ff;
     --red: #F07A8C;
 }

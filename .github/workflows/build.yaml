@@ -1,10 +1,9 @@
-name: Electron Build and Release
+name: Windows-Build
 
 permissions:
   contents: write
 
 on:
-  workflow_dispatch: # This will make the workflow trigger manually
   push:
     branches:
       - main

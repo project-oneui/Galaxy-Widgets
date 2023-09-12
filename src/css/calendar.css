@@ -1,0 +1,70 @@
+body {
+    height: 100vh;
+    width: 100vw;
+    top: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+#container-main {
+    width: 100%;
+    height: 100%;
+    background-color: var(--background-secondary);
+    border-radius: 33px;
+    display: flex;
+    color: var(--text);
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px 20px 20px 20px;
+    box-sizing: border-box;
+}
+
+#container-calendar {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+    column-gap: 35px;
+}
+
+.day {
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    line-height: 20px;
+    color: var(--secondary-lighter);
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.filler {
+    width: 18px;
+    height: 18px;
+    background-color: transparent;
+}
+
+.current-day {
+    background-color: var(--text);
+    color: black;
+    border-radius: 4px;
+}
+
+#container-weekdays {
+    display: flex;
+    gap: 24px;
+}
+
+.weekdays {
+    text-align: center;
+}
+
+#container-month {
+    display: flex;
+    width: 100%;
+    font-weight: bold;
+}
+
+.sunday {
+    color: var(--red);
+}

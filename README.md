@@ -8,6 +8,16 @@ An electron app which creates OneUI Widgets on your desktop
 
 ![Preview Image](https://raw.githubusercontent.com/oneui-widgets/oneui-desktop-widgets/main/images/Preview.png)
 
+# Checklist
+
+- [x] Widget Positioning
+- [x] Tasker Preset (Phone)
+- [x] Tasker Preset (Tablet)
+- [x] Weather Location in Settings
+- [x] Disable Widgets in Settings
+- [x] Flight WIdget
+- [x] Calendar Widget
+
 # How to use
 
 ## Install the application itself

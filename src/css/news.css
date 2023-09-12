@@ -10,7 +10,7 @@ body {
     height: 100%;
     width: 100%;
     display: flex;
-    background-color: var(--background);
+    background-color: var(--background-secondary);
     border-radius: 33px;
     justify-content: flex-start;
     padding: 20px 20px 20px 20px;
@@ -27,7 +27,7 @@ body {
 }
 
 strong {
-    color: var(--red);
+    color: var(--accent);
     font-weight: bold;
     filter: blur(0.48px);
     font-size: 16px;

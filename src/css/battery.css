@@ -9,9 +9,9 @@ body {
     height: 100%;
     width: 100%;
     display: flex;
-    background-color: var(--background);
     border-radius: 33px;
     justify-content: flex-start;
+    background-color: var(--background-secondary);
     padding: 20px 10px 20px 10px;
     box-sizing: border-box;
     align-items: center;
