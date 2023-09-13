@@ -40,7 +40,8 @@ body {
     display: block;
     white-space: nowrap;
     overflow: hidden;
-    width: 180px;
+    width: auto;
+    max-width: 180px;
     text-overflow: ellipsis;
 }
 
