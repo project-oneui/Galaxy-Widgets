@@ -16,11 +16,8 @@ An electron app which creates OneUI Widgets on your desktop
 - [x] Weather Location in Settings
 - [x] Disable Widgets in Settings
 - [x] Flight WIdget
-<<<<<<< HEAD
 - [x] Calendar Widget
-=======
-- [ ] Calendar Widget
->>>>>>> 53d489f94d214f7862a8a4cc367aa681af49f4bf
+- [ ] Galaxy Watch on Battery Widget (I dont own one currently but im thinking about getting one)
 
 # How to use
 
