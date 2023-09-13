@@ -36,6 +36,14 @@ body {
     font-weight: bold;
 }
 
+#weather-state {
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 180px;
+    text-overflow: ellipsis;
+}
+
 #container-location {
     display: flex;
     flex-direction: column;

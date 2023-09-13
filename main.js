@@ -24,10 +24,10 @@ const folderPath = path.join(os.homedir(), 'AppData', 'Local', 'OneUI-Widgets');
 const positionData = {
     musicWidget: { y: "75", x: "75" },
     batteryWidget: { y: "225", x: "75" },
-    deviceCareWidget: { y: "375", x: "75" },
-    weatherWidget: { y: "525", x: "75" },
+    deviceCareWidget: { y: "400", x: "75" },
+    weatherWidget: { y: "550", x: "75" },
     newsWidget: { y: "75", x: "475" },
-    flightWidget: { y: "675", x: "75" },
+    flightWidget: { y: "700", x: "75" },
     smartThingsWidget: { y: "300", x: "475" },
     calendarWidget: { y: "300", x: "475" },
 };
@@ -69,7 +69,7 @@ createJSONFile(path.join(folderPath, 'flightOptions.json'), flightData);
 const widgetsData = {
     widgets: [
         { name: "musicWidget", width: 390, height: 125, html: "./src/widgets/music.html" },
-        { name: "batteryWidget", width: 390, height: 125, html: "./src/widgets/battery.html" },
+        { name: "batteryWidget", width: 390, height: 150, html: "./src/widgets/battery.html" },
         { name: "deviceCareWidget", width: 390, height: 125, html: "./src/widgets/deviceCare.html" },
         { name: "weatherWidget", width: 390, height: 125, html: "./src/widgets/weather.html" },
         { name: "newsWidget", width: 390, height: 200, html: "./src/widgets/news.html" },
