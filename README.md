@@ -18,6 +18,7 @@ An electron app which creates OneUI Widgets on your desktop
 - [x] Flight WIdget
 - [x] Calendar Widget
 - [ ] Galaxy Watch on Battery Widget (I dont own one currently but im thinking about getting one)
+- [ ] Untis Widget
 
 # How to use
 
