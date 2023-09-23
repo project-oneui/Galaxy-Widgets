@@ -1,0 +1,74 @@
+body {
+    height: 100vh;
+    top: 0;
+    margin: 0;
+}
+
+#container-main {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    background-color: var(--background-secondary);
+    border-radius: 33px;
+    color: var(--text);
+    box-sizing: border-box;
+    padding: 20px 20px 20px 20px;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+point {
+    display: flex;
+    width: 3px;
+    height: 3px;
+    background-color: var(--secondary-lighter);
+    border-radius: 50%;
+}
+
+#container-date {
+    display: flex;
+    align-items: center;
+    width: 120px;
+    justify-content: space-between;
+    gap: 5px;
+    color: var(--secondary);
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+
+#container-date > * {
+    width: 40px;
+    text-align: center;
+}
+
+#point-span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#countdown-title {
+    font-size: 24px;
+}
+
+.container-time {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#container-countdown {
+    padding: 20px 10px 10px 10px;
+    border-radius: 24px;
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+seperatorvertical {
+    border-left: 2px solid var(--secondary-darker-active); 
+    height: 30px;
+}

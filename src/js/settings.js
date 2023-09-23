@@ -21,6 +21,7 @@ window.addEventListener('DOMContentLoaded', () => {
         { name: 'newsWidget', element: document.getElementById('news-checkbox') },
         { name: 'flightWidget', element: document.getElementById('flight-checkbox') },
         { name: 'calendarWidget', element: document.getElementById('calendar-checkbox') },
+        { name: 'notesWidget', element: document.getElementById('notes-checkbox') },
     ];
 
     checkboxes.forEach((checkbox) => {

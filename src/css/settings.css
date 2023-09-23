@@ -10,3 +10,13 @@ body {
     background-color: #26262c;
     padding: 0 10px 0 10px;
 }
+
+*::-webkit-scrollbar {
+    width: 8px;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: var(--secondary-darker);
+    border-radius: 4px;
+    border: 0px solid #ffffff;
+}

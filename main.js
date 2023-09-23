@@ -16,6 +16,8 @@ let newsWidget = null;
 let flightWidget = null;
 let smartThingsWidget = null;
 let calendarWidget = null;
+let countdownWidget = null;
+let notesWidget = null
 
 const folderPath = path.join(os.homedir(), 'AppData', 'Local', 'OneUI-Widgets');
 
@@ -26,10 +28,12 @@ const positionData = {
     batteryWidget: { y: "225", x: "75" },
     deviceCareWidget: { y: "400", x: "75" },
     weatherWidget: { y: "550", x: "75" },
-    newsWidget: { y: "75", x: "475" },
     flightWidget: { y: "700", x: "75" },
     smartThingsWidget: { y: "300", x: "475" },
+    newsWidget: { y: "75", x: "475" },
     calendarWidget: { y: "300", x: "475" },
+    countdownWidget: { y: "525", x: "475" },
+    notesWidget: { y: "750", x: "475" },
 };
 
 const stateData = {
@@ -41,6 +45,8 @@ const stateData = {
     flightWidget: { show: "false" },
     smartThingsWidget: { show: "false" },
     calendarWidget: { show: "true" },
+    countdownWidget: { show: "false" },
+    notesWidget: { show: "true" },
 };
 
 const weatherData = {
@@ -68,14 +74,16 @@ createJSONFile(path.join(folderPath, 'flightOptions.json'), flightData);
 // info for widget windows
 const widgetsData = {
     widgets: [
-        { name: "musicWidget", width: 390, height: 125, html: "./src/widgets/music.html" },
-        { name: "batteryWidget", width: 390, height: 150, html: "./src/widgets/battery.html" },
-        { name: "deviceCareWidget", width: 390, height: 125, html: "./src/widgets/deviceCare.html" },
-        { name: "weatherWidget", width: 390, height: 125, html: "./src/widgets/weather.html" },
-        { name: "newsWidget", width: 390, height: 200, html: "./src/widgets/news.html" },
-        { name: "flightWidget", width: 390, height: 175, html: "./src/widgets/flight.html" },
-        { name: "smartThingsWidget", width: 390, height: 125, html: "./src/widgets/smartThings.html" },
-        { name: "calendarWidget", width: 390, height: 200, html: "./src/widgets/calendar.html" },
+        { name: "musicWidget", width: 390, height: 125, html: "./src/widgets/music.html", "clickthrough": true },
+        { name: "batteryWidget", width: 390, height: 150, html: "./src/widgets/battery.html", "clickthrough": true },
+        { name: "deviceCareWidget", width: 390, height: 125, html: "./src/widgets/deviceCare.html", "clickthrough": true },
+        { name: "weatherWidget", width: 390, height: 125, html: "./src/widgets/weather.html", "clickthrough": true },
+        { name: "newsWidget", width: 390, height: 200, html: "./src/widgets/news.html", "clickthrough": true },
+        { name: "flightWidget", width: 390, height: 175, html: "./src/widgets/flight.html", "clickthrough": true },
+        { name: "smartThingsWidget", width: 390, height: 125, html: "./src/widgets/smartThings.html", "clickthrough": true },
+        { name: "calendarWidget", width: 390, height: 200, html: "./src/widgets/calendar.html", "clickthrough": true },
+        { name: "countdownWidget", width: 390, height: 175, html: "./src/widgets/countdown.html", "clickthrough": true },
+        { name: "notesWidget", width: 390, height: 175, html: "./src/widgets/notes.html", "clickthrough": false },
     ],
 };
 
@@ -133,7 +141,7 @@ app.on('ready', () => {
                     }
                 });
 
-                widgetWindow.setIgnoreMouseEvents(true)
+                widgetWindow.setIgnoreMouseEvents(widget.clickthrough)
 
                 eval(`${widget.name} = widgetWindow`)
 
