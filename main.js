@@ -17,7 +17,8 @@ let flightWidget = null;
 let smartThingsWidget = null;
 let calendarWidget = null;
 let countdownWidget = null;
-let notesWidget = null
+let notesWidget = null;
+let untisWidget = null;
 
 const folderPath = path.join(os.homedir(), 'AppData', 'Local', 'OneUI-Widgets');
 
@@ -33,7 +34,8 @@ const positionData = {
     newsWidget: { y: "75", x: "475" },
     calendarWidget: { y: "300", x: "475" },
     countdownWidget: { y: "525", x: "475" },
-    notesWidget: { y: "750", x: "475" },
+    notesWidget: { y: "725", x: "475" },
+    untisWidget: { y: "900", x: "75" },
 };
 
 const stateData = {
@@ -47,6 +49,7 @@ const stateData = {
     calendarWidget: { show: "true" },
     countdownWidget: { show: "false" },
     notesWidget: { show: "true" },
+    untisWidget: { show: "false" },
 };
 
 const weatherData = {
@@ -84,6 +87,7 @@ const widgetsData = {
         { name: "calendarWidget", width: 390, height: 200, html: "./src/widgets/calendar.html", "clickthrough": true },
         { name: "countdownWidget", width: 390, height: 175, html: "./src/widgets/countdown.html", "clickthrough": true },
         { name: "notesWidget", width: 390, height: 175, html: "./src/widgets/notes.html", "clickthrough": false },
+        { name: "untisWidget", width: 390, height: 125, html: "./src/widgets/untis.html", "clickthrough": true },
     ],
 };
 
