@@ -41,7 +41,7 @@ body {
 }
 
 #music-artists {
-    color: var(--secondary);
+    color: var(--secondary-lighter);
     font-weight: normal;
     font-size: 14px;
 }
@@ -59,7 +59,7 @@ progressbar {
     width: 256px;
     height: 8px;
     border-radius: 3px;
-    background-color: var(--secondary);
+    background-color: var(--secondary-lighter);
 }
 
 #music-progress {
@@ -79,6 +79,6 @@ container-text {
     justify-content: space-between;
     align-items: center;
     width: 256px;
-    color: var(--secondary);
+    color: var(--secondary-lighter);
     font-size: small;
 }
