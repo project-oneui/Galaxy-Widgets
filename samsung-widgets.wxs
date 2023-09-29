@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
-  <Product Id="*" Name="Samsung Widgets" Version="1.0.0" Manufacturer="Project OneUI" UpgradeCode="{E7A2A3A4-F76C-4B1B-9BC3-35A98F481C82}">
+  <Product Id="*" Name="Samsung Widgets" Version="1.0.0" Manufacturer="Project OneUI" UpgradeCode="{E7A2A3A4-F76C-4B1B-9BC3-35A98F481C82}" Language="1033">
     <Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
 
     <Media Id="1" Cabinet="media1.cab" EmbedCab="yes" />
@@ -9,7 +9,7 @@
       <Directory Id="ProgramFilesFolder">
         <Directory Id="INSTALLFOLDER" Name="SamsungWidgets">
           <Component Id="MainExecutable" Guid="{D63E71B9-2DFC-4FE3-94E2-6C1AB6A6A859}">
-            <File Id="MainExecutableFile" Source="D:\a\oneui-desktop-widgets\samsung-widgets\samsung-widgets-win32-x64\samsung-widgets.exe" KeyPath="yes" />
+            <File Id="MainExecutableFile" Source="D:\a\oneui-desktop-widgets\oneui-desktop-widgets\samsung-widgets-win32-x64\samsung-widgets.exe" KeyPath="yes" />
             <!-- You can add more files as needed -->
           </Component>
 
