@@ -26,18 +26,19 @@ jobs:
           npm install
           echo "✔ Dependencies Installed!"
 
-      - name: Build for Windows
-        run: |
-          npm run build:windows
-          echo "🏗 Windows Build Finished!"
-
-      - name: Create MSI Installer
+      - name: Install WiX Toolset
         run: |
           choco install wixtoolset
-          candle -o build/windows/ oneui-desktop-widgets.wxs -dSourceDir=${{ github.workspace }}/oneui-desktop-widgets-win32-x64
-          light -o build/windows/ oneui-desktop-widgets.wixobj
-          candle -o build/windows/ oneui-desktop-widgets.wxs -dSourceDir=${{ github.workspace }}/src/res -dIconFile=icon.png
-          light -o build/windows/ oneui-desktop-widgets.wixobj
+          # Set environment variable for WiX Toolset binaries
+          echo "::add-path::C:\\Program Files (x86)\\WiX Toolset v3.11\\bin" >> $GITHUB_ENV
+          echo "✔ WiX Toolset Installed!"
+        
+      - name: Build for Windows
+        run: |
+          "C:\\Program Files (x86)\\WiX Toolset v3.11\\bin\\candle.exe" -o build/windows/ oneui-desktop-widgets.wxs -dSourceDir=${{ github.workspace }}/oneui-desktop-widgets-win32-x64
+          "C:\\Program Files (x86)\\WiX Toolset v3.11\\bin\\light.exe" -o build/windows/ oneui-desktop-widgets.wixobj
+          "C:\\Program Files (x86)\\WiX Toolset v3.11\\bin\\candle.exe" -o build/windows/ oneui-desktop-widgets.wxs -dSourceDir=${{ github.workspace }}/src/res -dIconFile=icon.png
+          "C:\\Program Files (x86)\\WiX Toolset v3.11\\bin\\light.exe" -o build/windows/ oneui-desktop-widgets.wixobj
           echo "📦 MSI Installer Created!"
         working-directory: ${{ github.workspace }}
 
