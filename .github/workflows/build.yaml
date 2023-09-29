@@ -26,6 +26,10 @@ jobs:
           npm install
           echo "✔ Dependencies Installed!"
 
+      - name: Build for Windows
+        run: |
+          npm run build:windows
+
       - name: Install WiX Toolset
         run: |
           choco install wixtoolset
