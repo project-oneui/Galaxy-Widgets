@@ -46,7 +46,7 @@ jobs:
         id: create_release
         uses: softprops/action-gh-release@v1
         with:
-          files: ./build/windows/oneui-desktop-widgets.msi
+          files: ./build/windows/samsung-widgets.msi
           name: OneUI Widgets Installer ${{ github.run_number }}
           tag_name: v${{ github.run_number }}
           body: |
