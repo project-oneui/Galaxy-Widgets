@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 const os = require('os')
 const fs = require('fs')
 const path = require('path')
-const folderPath = path.join(os.homedir(), 'AppData', 'Local', 'OneUI-Widgets', 'temp');
+const folderPath = path.join(os.homedir(), 'AppData', 'Local', 'Samsung-Widgets', 'temp');
 
 const app = express();
 const portPhone = 23564;  // Port for phone data

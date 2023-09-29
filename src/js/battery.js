@@ -3,7 +3,7 @@ const os = require('os')
 const fs = require('fs')
 const path = require('path');
 const { json } = require("body-parser");
-const folderPath = path.join(os.homedir(), 'AppData', 'Local', 'OneUI-Widgets', 'temp');
+const folderPath = path.join(os.homedir(), 'AppData', 'Local', 'Samsung-Widgets', 'temp');
 
 window.addEventListener("DOMContentLoaded", () => {
     document.getElementById("device-name-notebook").innerHTML = os.hostname();

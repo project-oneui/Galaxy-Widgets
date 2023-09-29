@@ -3,7 +3,7 @@ const fs = require('fs')
 const os = require('os')
 const path = require('path')
 
-const folderPath = path.join(os.homedir(), 'AppData', 'Local', 'OneUI-Widgets');
+const folderPath = path.join(os.homedir(), 'AppData', 'Local', 'Samsung-Widgets');
 
 const jsonData = JSON.parse(fs.readFileSync(folderPath + "\\weatherOptions.json"), 'utf8')
 

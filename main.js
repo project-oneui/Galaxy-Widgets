@@ -26,7 +26,7 @@ let countdownWidget = null;
 let notesWidget = null;
 let untisWidget = null;
 
-const folderPath = path.join(os.homedir(), 'AppData', 'Local', 'OneUI-Widgets');
+const folderPath = path.join(os.homedir(), 'AppData', 'Local', 'Samsung-Widgets');
 
 // All JSONs that are created for storing information/settings
 

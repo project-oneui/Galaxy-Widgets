@@ -2,7 +2,7 @@ const os = require('os');
 const fs = require('fs');
 const path = require('path');
 
-const folderPath = path.join(os.homedir(), 'AppData', 'Local', 'OneUI-Widgets');
+const folderPath = path.join(os.homedir(), 'AppData', 'Local', 'Samsung-Widgets');
 
 function daysUntilTimestamp(unixTimestamp) {
     // Get the current Unix timestamp in seconds

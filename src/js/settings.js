@@ -2,7 +2,7 @@ const fs = require('fs');
 const os = require('os');
 const path = require('path');
 
-const folderPath = path.join(os.homedir(), 'AppData', 'Local', 'OneUI-Widgets');
+const folderPath = path.join(os.homedir(), 'AppData', 'Local', 'Samsung-Widgets');
 const jsonFilePath = path.join(folderPath, 'widgetStates.json');
 
 window.addEventListener('DOMContentLoaded', () => {
