@@ -1,7 +1,7 @@
 {
   "name": "samsung-widgets",
   "version": "1.0.1",
-  "productName": "SamsungWidgets",
+  "productName": "Samsung Widgets",
   "description": "Samsung Widgets created desktop widgets for windows in OneUI Style",
   "main": "main.js",
   "scripts": {
