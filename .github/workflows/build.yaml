@@ -34,7 +34,7 @@ jobs:
 
       - name: Update package.json with GitHub Run Number
         run: |
-          node -e "const fs = require('fs'); const packageJson = JSON.parse(fs.readFileSync('package.json')); packageJson.version = process.env.PACKAGE_VERSION; fs.writeFileSync('package.json', JSON.stringify(packageJson, null, 2));"
+          node -e "const fs = require('fs'); const packageJson = JSON.parse(fs.readFileSync('package.json')); packageJson.version = '1.${{ github.run_number }}.0'; fs.writeFileSync('package.json', JSON.stringify(packageJson, null, 2));"
         shell: bash
 
       - name: Build for Windows
