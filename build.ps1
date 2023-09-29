@@ -1,0 +1,1 @@
+& "C:\Program Files (x86)\WiX Toolset v3.11\bin\candle.exe" "-o" "build/windows/" "oneui-desktop-widgets.wxs" "-dSourceDir=D:\a\oneui-desktop-widgets\oneui-desktop-widgets\oneui-desktop-widgets-win32-x64"
