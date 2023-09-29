@@ -39,6 +39,9 @@ jobs:
       - name: Run Build Script
         run: |
           .\build.ps1
+          cd build
+          ls
+          cd windows
           ls
           echo "📦 MSI Installer Created!"
         working-directory: ${{ github.workspace }}
