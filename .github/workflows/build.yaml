@@ -26,26 +26,27 @@ jobs:
           npm install
           echo "✔ Dependencies Installed!"
 
-      - name: Build for Windows
-        run: | 
-          npm run build:windows
-          echo "🏗 Windows Build Finished!"
-
-      - name: Zip Build
+      - name: Install WiX Toolset
         run: |
-          tar -caf oneui-widgets.zip oneui-desktop-widgets-win32-x64
-          echo "🧳 Build is zipped!"
+          choco install wixtoolset
+          echo "::add-path::C:\\Program Files (x86)\\WiX Toolset v3.11\\bin" >> $GITHUB_ENV
+          echo "✔ WiX Toolset Installed!"
+
+      - name: Run Build Script
+        run: |
+          .\build.ps1
+          echo "📦 MSI Installer Created!"
         working-directory: ${{ github.workspace }}
 
       - name: Publish
         id: create_release
         uses: softprops/action-gh-release@v1
         with:
-          files: ./oneui-widgets.zip
-          name: OneUI Widgets ${{ github.run_number }}
+          files: ./build/windows/oneui-desktop-widgets.msi
+          name: OneUI Widgets Installer ${{ github.run_number }}
           tag_name: v${{ github.run_number }}
           body: |
             > [!NOTE] 
-            > This release was auto generated
+            > This release was auto-generated
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
