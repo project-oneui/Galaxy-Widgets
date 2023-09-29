@@ -28,6 +28,10 @@ let untisWidget = null;
 
 const folderPath = path.join(os.homedir(), 'AppData', 'Local', 'Samsung-Widgets');
 
+if (!fs.existsSync(folderPath)) {
+    fs.mkdirSync(folderPath);
+}
+
 // All JSONs that are created for storing information/settings
 
 const positionData = {
