@@ -40,6 +40,8 @@ jobs:
       - name: Build for Windows
         run: |
           npm run build:windows
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Publish
         id: create_release
