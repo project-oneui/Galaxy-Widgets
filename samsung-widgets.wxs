@@ -8,19 +8,13 @@
     <Directory Id="TARGETDIR" Name="SourceDir">
       <Directory Id="ProgramFilesFolder">
         <Directory Id="INSTALLFOLDER" Name="SamsungWidgets">
-          <Component Id="MainExecutable" Guid="{D63E71B9-2DFC-4FE3-94E2-6C1AB6A6A859}">
-            <File Id="MainExecutableFile" Source="D:\a\oneui-desktop-widgets\oneui-desktop-widgets\samsung-widgets-win32-x64\samsung-widgets.exe" KeyPath="yes" />
-            <!-- You can add more files as needed -->
-          </Component>
-
-          <!-- Add more components and files here as necessary -->
+          <!-- The entire directory will be populated by Heat -->
         </Directory>
       </Directory>
     </Directory>
 
     <Feature Id="MainFeature" Title="Main Feature" Level="1">
-      <ComponentRef Id="MainExecutable" />
-      <!-- Add more ComponentRef elements for additional components -->
+      <!-- Components will be added dynamically by Heat -->
     </Feature>
   </Product>
 </Wix>
