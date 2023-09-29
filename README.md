@@ -24,17 +24,13 @@ An electron app which creates OneUI Widgets on your desktop
 
 # How to use
 
-## Install the application itself
-1. Install the latest zip file of the [Releases](https://github.com/oneui-widgets/oneui-desktop-widgets/releases/latest)
-2. Unpack it, the best place would be the documents folder
-3. Create a shortcut of the .exe
-4. Press Windows + R and type in shell:startup
-5. Put here the Shortcut
-6. Now install the [Background Service](https://github.com/oneui-widgets/oneui-desktop-widgets-service/releases/latest)
-7. Unpack the zip
-8. Run the bat file
+## Install the Background Service
 
-### Optional Settings
+1. Install the [latest version](https://github.com/oneui-widgets/oneui-desktop-widgets-service/releases/latest)
+2. Unpack the zip
+3. Run the bat file
+
+# Optional Settings
 
 ## Battery Widget Setup (Phone and Tablet)
 * [Phone](https://drive.google.com/file/d/107ltD-XbeErhqRqmJtPV9m9jLryLLOsk/view?usp=sharing)
@@ -51,4 +47,4 @@ An electron app which creates OneUI Widgets on your desktop
 9. To get this, open cmd and type in "ipconfig /all" without the quotes
 10. The IPv4-Adress should be your local ip. Not the one that ends with .1
 
-# If any problems occur open a issue or contact psoi on discord
+# This is not an official Samsung app!
