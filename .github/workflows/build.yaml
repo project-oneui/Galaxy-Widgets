@@ -39,6 +39,7 @@ jobs:
       - name: Run Build Script
         run: |
           .\build.ps1
+          ls
           echo "📦 MSI Installer Created!"
         working-directory: ${{ github.workspace }}
 
@@ -47,7 +48,7 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           files: ./build/windows/samsung-widgets.msi
-          name: OneUI Widgets Installer ${{ github.run_number }}
+          name: Samsung Widgets ${{ github.run_number }}
           tag_name: v${{ github.run_number }}
           body: |
             > [!NOTE] 
