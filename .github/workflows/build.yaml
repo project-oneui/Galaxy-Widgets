@@ -50,7 +50,7 @@ jobs:
         id: create_release
         uses: softprops/action-gh-release@v1
         with:
-          files: ./build/windows/samsung-widgets.msi
+          files: ./bin/samsung-widgets.msi
           name: Samsung Widgets ${{ github.run_number }}
           tag_name: v${{ github.run_number }}
           body: |
