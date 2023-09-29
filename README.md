@@ -1,5 +1,7 @@
-> [!IMPORTANT]  
-> If you get any error: Try to delete all files except the temp folder in: %localappdata%\oneui-widgets.
+> [!IMPORTANT]
+> Reinstall Background Service if errors appear
+> 
+> If you get any error: Try to delete all files except the temp folder in: %localappdata%\Samsung-Widgets.
 > 
 > If the music widget doesnt work make sure you have installed atleast the v2 of the [Background Service](https://github.com/oneui-widgets/oneui-desktop-widgets-service/releases/latest)
 
