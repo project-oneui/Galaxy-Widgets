@@ -7,6 +7,12 @@ const path = require('path');
 const icon = __dirname + 'favicon.ico'
 const iconTray = __dirname + '/src/res/IconTray.png'
 
+app.setLoginItemSettings({
+    openAtLogin: true,
+    openAsHidden: false,
+    path: path.join(app.getPath('exe').replace('samsung-widgets.exe', 'Samsung Widgets.exe'))
+});
+
 let settingsWindow = null;
 let musicWidget = null;
 let batteryWidget = null;
