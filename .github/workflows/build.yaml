@@ -1,3 +1,4 @@
+
 name: Windows-Build
 
 permissions:
@@ -25,23 +26,17 @@ jobs:
         run: |
           npm install
           echo "✔ Dependencies Installed!"
-
       - name: Build for Windows
         run: |
           npm run build:windows
-
       - name: Install WiX Toolset
         run: |
           choco install wixtoolset
           echo "::add-path::C:\\Program Files (x86)\\WiX Toolset v3.11\\bin" >> $GITHUB_ENV
           echo "✔ WiX Toolset Installed!"
-
       - name: Run Build Script
         run: |
           .\build.ps1
-          cd build
-          ls
-          cd windows
           ls
           echo "📦 MSI Installer Created!"
         working-directory: ${{ github.workspace }}
@@ -50,7 +45,7 @@ jobs:
         id: create_release
         uses: softprops/action-gh-release@v1
         with:
-          files: ./bin/samsung-widgets.msi
+          files: ./build/windows/samsung-widgets.msi
           name: Samsung Widgets ${{ github.run_number }}
           tag_name: v${{ github.run_number }}
           body: |

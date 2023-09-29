@@ -6,19 +6,20 @@
     <Media Id="1" Cabinet="media1.cab" EmbedCab="yes" />
 
     <Directory Id="TARGETDIR" Name="SourceDir">
-      <Directory Id="ProgramFilesFolder">
-        <Directory Id="INSTALLFOLDER" Name="SamsungWidgets">
-          <!-- The entire directory will be populated by Heat -->
-        </Directory>
-      </Directory>
+      <Directory Id="INSTALLFOLDER" Name="SamsungWidgets" />
     </Directory>
 
     <Feature Id="MainFeature" Title="Main Feature" Level="1">
-      <ComponentGroupRef Id="MyComponentGroup" />
+      <ComponentGroupRef Id="ComponentGroup" />
     </Feature>
   </Product>
 
   <Fragment>
-    <ComponentGroup Id="MyComponentGroup" Directory="INSTALLFOLDER" />
+    <ComponentGroup Id="ComponentGroup" Directory="INSTALLFOLDER">
+      <!-- Include all files in the source directory -->
+      <Component Id="Component" Guid="*">
+        <File Source="D:\a\oneui-desktop-widgets\oneui-desktop-widgets\samsung-widgets-win32-x64\*.*" />
+      </Component>
+    </ComponentGroup>
   </Fragment>
 </Wix>
