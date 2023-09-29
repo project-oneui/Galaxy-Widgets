@@ -4,7 +4,7 @@ const server = require('./src/js/battery-listener');
 const os = require('os')
 const fs = require('fs')
 const path = require('path');
-const icon = __dirname + '/src/res/Icon.png'
+const icon = __dirname + 'favicon.ico'
 const iconTray = __dirname + '/src/res/IconTray.png'
 
 let settingsWindow = null;
