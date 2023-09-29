@@ -14,7 +14,11 @@
     </Directory>
 
     <Feature Id="MainFeature" Title="Main Feature" Level="1">
-      <!-- Components will be added dynamically by Heat -->
+      <ComponentGroupRef Id="MyComponentGroup" />
     </Feature>
   </Product>
+
+  <Fragment>
+    <ComponentGroup Id="MyComponentGroup" Directory="INSTALLFOLDER" />
+  </Fragment>
 </Wix>
