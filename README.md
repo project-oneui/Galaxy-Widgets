@@ -3,9 +3,9 @@
 > 
 > If you get any error: Try to delete all files except the temp folder in: %localappdata%\Samsung-Widgets.
 > 
-> If the music widget doesnt work make sure you have installed atleast the v2 of the [Background Service](https://github.com/oneui-widgets/oneui-desktop-widgets-service/releases/latest)
+> If the music widget doesnt work make sure you have installed atleast the v2 of the [Background Service](https://github.com/project-oneui/oneui-desktop-widgets-service/releases/latest)
 
-# oneui-desktop-widgets
+# Samsung Widgets
 An electron app which creates OneUI Widgets on your desktop
 
 # Preview
@@ -28,7 +28,7 @@ An electron app which creates OneUI Widgets on your desktop
 
 ## Install the Background Service
 
-1. Install the [latest version](https://github.com/oneui-widgets/oneui-desktop-widgets-service/releases/latest)
+1. Install the [latest version](https://github.com/project-oneui/oneui-desktop-widgets-service/releases/latest)
 2. Unpack the zip
 3. Run the bat file
 
