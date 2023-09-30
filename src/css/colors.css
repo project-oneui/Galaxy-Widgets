@@ -4,7 +4,7 @@
     --secondary-lighter: rgba(190, 194, 199, 1);
     --secondary-darker: rgba(70, 74, 79, 1);
     --secondary-darker-active: rgba(60, 64, 69, 1);
-    --background: rgba(8, 8, 8, 0.85);
+    --background: rgba(8, 8, 8, 1);
     --background-secondary: rgba(28, 28, 28, 1);
     --separator-horizontal: rgba(62, 62, 62, 0.5);
     --separator-vertical: rgba(45, 45, 45, 0.3);
