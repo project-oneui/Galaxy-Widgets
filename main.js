@@ -9,7 +9,6 @@ const iconTray = __dirname + '/src/res/IconTray.png'
 
 app.setLoginItemSettings({
     openAtLogin: true,
-    openAsHidden: true,
     path: path.join(app.getPath('exe').replace('samsung-widgets.exe', 'Samsung Widgets.exe'))
 });
 
