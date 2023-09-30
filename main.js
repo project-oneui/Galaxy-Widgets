@@ -4,8 +4,7 @@ const server = require('./src/js/battery-listener');
 const os = require('os')
 const fs = require('fs')
 const path = require('path');
-const icon = __dirname + 'favicon.ico'
-const iconTray = __dirname + '/src/res/IconTray.png'
+const icon = __dirname + '/favicon.ico'
 
 app.setLoginItemSettings({
     openAtLogin: true,
@@ -101,13 +100,13 @@ const widgetsData = {
 };
 
 app.on('ready', () => {
-    tray = new Tray(iconTray)
+    tray = new Tray(icon)
     const contextMenu = Menu.buildFromTemplate([
         { label: 'Settings', click: () => { openSettings(); } },
         { type: 'separator' },
         { role: 'quit' },
     ])
-    tray.setToolTip('OneUI Windows')
+    tray.setToolTip('Samsung Widgets')
     tray.setContextMenu(contextMenu)
 
     function openSettings() {
