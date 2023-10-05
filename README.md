@@ -1,9 +1,8 @@
 > [!IMPORTANT]
-> Reinstall Background Service if errors appear
+> 
 > 
 > If you get any error: Try to delete all files except the temp folder in: %localappdata%\Samsung-Widgets.
-> 
-> If the music widget doesnt work make sure you have installed atleast the v2 of the [Background Service](https://github.com/project-oneui/oneui-desktop-widgets-service/releases/latest)
+
 
 # Samsung Widgets
 An electron app which creates OneUI Widgets on your desktop
@@ -25,6 +24,10 @@ An electron app which creates OneUI Widgets on your desktop
 - [ ] Untis Widget
 
 # How to use
+
+## Install the Samsung Settings App
+1. Download the [latest release](github.com/project-oneui/Samsung-Settings/releases/latest)
+2. Run the .exe
 
 ## Install the Background Service
 

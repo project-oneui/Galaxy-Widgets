@@ -102,37 +102,10 @@ const widgetsData = {
 app.on('ready', () => {
     tray = new Tray(icon)
     const contextMenu = Menu.buildFromTemplate([
-        { label: 'Settings', click: () => { openSettings(); } },
-        { type: 'separator' },
         { role: 'quit' },
     ])
     tray.setToolTip('Samsung Widgets')
     tray.setContextMenu(contextMenu)
-
-    function openSettings() {
-        if (settingsWindow) {
-            if (settingsWindow.isMinimized()) settingsWindow.restore();
-            settingsWindow.focus();
-            return;
-        }
-
-        settingsWindow = new BrowserWindow({
-            width: 400,
-            height: 600,
-            autoHideMenuBar: true,
-            icon: icon,
-            webPreferences: {
-                contextIsolation: false,
-                nodeIntegration: true,
-            }
-        });
-
-        settingsWindow.loadFile('./src/widgets/settings.html');
-
-        settingsWindow.on('closed', () => {
-            settingsWindow = null;
-        });
-    }
 
     function setStates() {
         const widgetStates = JSON.parse(fs.readFileSync(folderPath + "\\widgetStates.json"))
@@ -182,8 +155,6 @@ app.on('ready', () => {
             } else if (widgetStates[widget.name].show == "true" && eval(widget.name) != null) {
                 (eval(`${widget.name}.setSkipTaskbar(true)`))
             }
-
-
         });
     }
 
