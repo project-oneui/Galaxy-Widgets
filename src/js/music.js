@@ -21,13 +21,13 @@ window.addEventListener("DOMContentLoaded", () => {
         return (r * 299 + g * 587 + b * 114) / 1000;
     }
 
-    const backgroundLuminance = getLuminance(colorData.red, colorData.green, colorData.blue);
-    const textColor = backgroundLuminance > 128 ? 'black' : 'var(--text)';
-    const secondaryColor = backgroundLuminance > 128 ? 'var(--secondary-darker)' : 'var(--secondary-lighter)';
+    // const backgroundLuminance = getLuminance(colorData.red, colorData.green, colorData.blue);
+    // const textColor = backgroundLuminance > 128 ? 'black' : 'var(--text)';
+    // const secondaryColor = backgroundLuminance > 128 ? 'var(--secondary-darker)' : 'var(--secondary-lighter)';
 
-    document.getElementById("music-artists").style.color = secondaryColor;
-    document.getElementById("music-position").style.color = secondaryColor;
-    document.getElementById("music-duration").style.color = secondaryColor;
+    // document.getElementById("music-artists").style.color = secondaryColor;
+    // document.getElementById("music-position").style.color = secondaryColor;
+    // document.getElementById("music-duration").style.color = secondaryColor;
     var progressBar = document.querySelector('progressbar');
     progressBar.style.backgroundColor = secondaryColor;
     containerMain.style.color = textColor;
@@ -36,11 +36,7 @@ window.addEventListener("DOMContentLoaded", () => {
         const jsonData = JSON.parse(fs.readFileSync(folderPath + '\\temp\\songInfo.json', 'utf8'));
 
         if (jsonData.CoverUrl == "") {
-            if (colorData.red != 8) {
-                containerMain.style.background = `linear-gradient(135deg, rgb(${colorData.red}, ${colorData.green}, ${colorData.blue}) 0%, rgb(${colorData.red - 35}, ${colorData.green - 35}, ${colorData.blue - 35}) 100%)`;
-            } else {
-                containerMain.style.backgroundColor = '#080808'
-            }
+            containerMain.style.background = `linear-gradient(135deg, rgb(${colorData.red}, ${colorData.green}, ${colorData.blue}) 0%, rgb(${colorData.red - 35}, ${colorData.green - 35}, ${colorData.blue - 35}) 100%)`;
             document.getElementById("music-cover").src = "../res/generic-cover.png";
         } else {
             document.getElementById("music-cover").src = jsonData.CoverUrl + "?" + Date.now();

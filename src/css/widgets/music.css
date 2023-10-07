@@ -50,6 +50,7 @@ body {
     overflow: hidden;
     white-space: nowrap;
     width: 265px;
+    color: var(--secondary-darker);
 }
 
 progressbar {
@@ -77,4 +78,5 @@ container-text {
     align-items: center;
     width: 256px;
     font-size: small;
+    color: var(--secondary-darker);
 }
