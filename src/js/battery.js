@@ -10,11 +10,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
     const containerMain = document.getElementById("container-main");
     // Check its not black
-    if (colorData.red != 8) {
-        containerMain.style.background = `linear-gradient(135deg, rgb(${colorData.red}, ${colorData.green}, ${colorData.blue}) 0%, rgb(${colorData.red - 35}, ${colorData.green - 35}, ${colorData.blue - 35}) 100%)`;
-    } else {
-        containerMain.style.backgroundColor = '#080808'
-    }
+    containerMain.style.background = `linear-gradient(135deg, rgb(${colorData.red}, ${colorData.green}, ${colorData.blue}) 0%, rgb(${colorData.red - 35}, ${colorData.green - 35}, ${colorData.blue - 35}) 100%)`;
 
     // check if text should be white or black
     function getLuminance(r, g, b) {

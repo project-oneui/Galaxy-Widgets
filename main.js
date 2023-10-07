@@ -6,12 +6,15 @@ const os = require('os')
 const fs = require('fs')
 const path = require('path');
 const icon = __dirname + '/favicon.ico'
-
+const { spawn } = require('child_process');
 
 app.setLoginItemSettings({
     openAtLogin: true,
     path: path.join(app.getPath('exe').replace('samsung-widgets.exe', 'Samsung Widgets.exe'))
 });
+
+const backgroundServicePath = './backgroundService/backgroundService.exe';
+const backgroundServiceChild = spawn(backgroundServicePath);
 
 let settingsWindow = null;
 let musicWidget = null;
@@ -44,8 +47,8 @@ const positionData = {
     smartThingsWidget: { y: "300", x: "475" },
     newsWidget: { y: "75", x: "475" },
     calendarWidget: { y: "300", x: "475" },
-    countdownWidget: { y: "525", x: "475" },
-    notesWidget: { y: "725", x: "475" },
+    countdownWidget: { y: "550", x: "475" },
+    notesWidget: { y: "750", x: "475" },
     untisWidget: { y: "900", x: "75" },
     clockWidget: { y: "75", x: "875" },
 };
@@ -104,7 +107,7 @@ const widgetsData = {
         { name: "newsWidget", width: 390, height: 200, html: "./src/widgets/news.html", "clickthrough": true },
         { name: "flightWidget", width: 390, height: 175, html: "./src/widgets/flight.html", "clickthrough": true },
         { name: "smartThingsWidget", width: 390, height: 125, html: "./src/widgets/smartThings.html", "clickthrough": true },
-        { name: "calendarWidget", width: 390, height: 200, html: "./src/widgets/calendar.html", "clickthrough": true },
+        { name: "calendarWidget", width: 390, height: 225, html: "./src/widgets/calendar.html", "clickthrough": true },
         { name: "countdownWidget", width: 390, height: 175, html: "./src/widgets/countdown.html", "clickthrough": true },
         { name: "notesWidget", width: 390, height: 175, html: "./src/widgets/notes.html", "clickthrough": false },
         { name: "untisWidget", width: 390, height: 125, html: "./src/widgets/untis.html", "clickthrough": true },

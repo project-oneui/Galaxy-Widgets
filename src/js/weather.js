@@ -38,10 +38,10 @@ async function changeWeatherInfo() {
 
     if (isDay == "1") {
         document.getElementById("weather-icon").src = `../res/weather/${weatherImageData.day}`
-        document.getElementById("container-main").style.background = `linear-gradient(180deg, rgba(113, 142, 185, 1) 0%, rgba(63, 102, 145, 1) 100%)`
+        document.getElementById("container-main").style.background = `linear-gradient(180deg, rgba(${dataWeather.current.temp_c * 6}, 142, 185, 1) 0%, rgba(${dataWeather.current.temp_c * 4}, 102, 145, 1) 100%)`
     } else {
         document.getElementById("weather-icon").src = `../res/weather/${weatherImageData.night}`
-        document.getElementById("container-main").style.background = `linear-gradient(180deg, rgba(65, 70, 120, 1) 0%, rgba(50,55,105, 1) 100%)`
+        document.getElementById("container-main").style.background = `linear-gradient(180deg, rgba(${dataWeather.current.temp_c * 4}, 70, 120, 1) 0%, rgba(${dataWeather.current.temp_c * 3},55,105, 1) 100%)`
 
     }
 }

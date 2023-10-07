@@ -29,12 +29,6 @@ An electron app which creates OneUI Widgets on your desktop
 1. Download the [latest release](github.com/project-oneui/Samsung-Settings/releases/latest)
 2. Run the .exe
 
-## Install the Background Service
-
-1. Install the [latest version](https://github.com/project-oneui/oneui-desktop-widgets-service/releases/latest)
-2. Unpack the zip
-3. Run the bat file
-
 # Optional Settings
 
 ## Battery Widget Setup (Phone and Tablet)
