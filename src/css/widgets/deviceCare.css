@@ -8,9 +8,7 @@ body {
     display: flex;
     height: 100%;
     width: 100%;
-    background: linear-gradient(rgb(36, 20, 44) 0%, rgb(11, 0, 19) 100%);
     border-radius: 33px;
-    color: var(--text);
     justify-content: center;
     align-items: center;
     gap: 20px;

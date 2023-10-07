@@ -5,6 +5,7 @@ const path = require('path');
 const folderPath = path.join(os.homedir(), 'AppData', 'Local', 'Samsung-Widgets');
 
 function daysUntilTimestamp(unixTimestamp) {
+
     // Get the current Unix timestamp in seconds
     const currentTimestamp = Math.floor(Date.now() / 1000);
     // Calculate the difference in seconds
@@ -16,7 +17,7 @@ function daysUntilTimestamp(unixTimestamp) {
     } else {
         var daysRemaining = Math.floor(Math.abs(timeDifference) / (60 * 60 * 24)) * -1;
     }
-    
+
     if (daysRemaining == 1) {
         return "Tomorrow"
     } else if (daysRemaining == 0) {
@@ -96,9 +97,46 @@ function findNearestTimestampWithAirportAndAirlineData(data, type) {
 }
 
 window.addEventListener("DOMContentLoaded", () => {
+    // change color based on Setting
+    const colorData = JSON.parse(fs.readFileSync(path.join(folderPath, 'color.json'), 'utf8'));
+
+    const containerMain = document.getElementById("container-main");
+    // Check its not black
+    if (colorData.red != 8) {
+        containerMain.style.background = `linear-gradient(135deg, rgb(${colorData.red}, ${colorData.green}, ${colorData.blue}) 0%, rgb(${colorData.red - 35}, ${colorData.green - 35}, ${colorData.blue - 35}) 100%)`;
+    } else {
+        containerMain.style.backgroundColor = '#080808'
+    }
+
+    // check if text should be white or black
+    function getLuminance(r, g, b) {
+        return (r * 299 + g * 587 + b * 114) / 1000;
+    }
+
+    const backgroundLuminance = getLuminance(colorData.red, colorData.green, colorData.blue);
+    const textColor = backgroundLuminance > 128 ? 'black' : 'var(--text)';
+    const secondaryColor = backgroundLuminance > 128 ? 'var(--secondary-darker)' : 'var(--secondary-lighter)';
+
+    containerMain.style.color = textColor;
+    document.getElementById('origin-city').style.color = secondaryColor;
+    document.getElementById('destination-city').style.color = secondaryColor;
+
+    const points = document.querySelectorAll('point');
+
+    points.forEach(point => {
+        point.style.backgroundColor = secondaryColor;
+    });
+
+    const flexlines = document.querySelectorAll('flexline')
+
+    flexlines.forEach(flexline => {
+        flexline.style.backgroundColor = secondaryColor;
+    });
+
+
     async function setFlightInfo() {
         const jsonData = JSON.parse(fs.readFileSync(folderPath + "\\flightOptions.json"), 'utf8')
-        // BA8492
+
         const url = `https://flight-radar1.p.rapidapi.com/flights/get-more-info?query=${jsonData.flight_code}&fetchBy=flight&page=1&limit=100`;
         const options = {
             method: 'GET',
@@ -109,18 +147,21 @@ window.addEventListener("DOMContentLoaded", () => {
             }
         };
 
-        const response = await fetch(url, options);
-        const result = await response.json();
-        const arrival = findNearestTimestampWithAirportAndAirlineData(result.result.response.data, 'arrival');
-        const departure = findNearestTimestampWithAirportAndAirlineData(result.result.response.data, 'departure')
-        document.getElementById("arrival").innerHTML = "Arrival: " + unixTimestampToAMPM(arrival.timestamp)
-        document.getElementById("departure").innerHTML = "Departure: " + unixTimestampToAMPM(departure.timestamp)
-        document.getElementById("origin-code").innerHTML = departure.airportData.code.iata;
-        document.getElementById("destination-code").innerHTML = arrival.airportData.code.iata
-        document.getElementById("origin-city").innerHTML = departure.airportData.position.region.city
-        document.getElementById("destination-city").innerHTML = arrival.airportData.position.region.city
-        document.getElementById("length").innerHTML = daysUntilTimestamp(departure.timestamp)
-        document.getElementById("airline").innerHTML = departure.airlineData.name
+        if (jsonData.flight_code != "") {
+            const response = await fetch(url, options);
+            const result = await response.json();
+            const arrival = findNearestTimestampWithAirportAndAirlineData(result.result.response.data, 'arrival');
+            const departure = findNearestTimestampWithAirportAndAirlineData(result.result.response.data, 'departure')
+            document.getElementById("arrival").innerHTML = "Arrival: " + unixTimestampToAMPM(arrival.timestamp)
+            document.getElementById("departure").innerHTML = "Departure: " + unixTimestampToAMPM(departure.timestamp)
+            document.getElementById("origin-code").innerHTML = departure.airportData.code.iata;
+            document.getElementById("destination-code").innerHTML = arrival.airportData.code.iata
+            document.getElementById("origin-city").innerHTML = departure.airportData.position.region.city
+            document.getElementById("destination-city").innerHTML = arrival.airportData.position.region.city
+            document.getElementById("length").innerHTML = daysUntilTimestamp(departure.timestamp)
+            document.getElementById("airline").innerHTML = departure.airlineData.name
+        }
+
     }
 
     setFlightInfo()

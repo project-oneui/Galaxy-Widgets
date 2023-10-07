@@ -29,9 +29,9 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "electron": "^26.1.0",
     "electron-builder": "^24.6.4",
-    "electron-reloader": "^1.2.3",
-    "electron": "^26.1.0"
+    "electron-reloader": "^1.2.3"
   },
   "dependencies": {
     "battery": "^1.0.1",

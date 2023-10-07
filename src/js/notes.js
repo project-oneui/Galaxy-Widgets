@@ -4,7 +4,7 @@ const path = require('path');
 
 const folderPath = path.join(os.homedir(), 'AppData', 'Local', 'Samsung-Widgets');
 
-window.addEventListener('DOMContentLoaded', () => {
+window.addEventListener("DOMContentLoaded", () => {
     // change color based on Setting
     const colorData = JSON.parse(fs.readFileSync(path.join(folderPath, 'color.json'), 'utf8'));
 
@@ -25,24 +25,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
     const backgroundLuminance = getLuminance(colorData.red, colorData.green, colorData.blue);
     const textColor = backgroundLuminance > 128 ? 'black' : 'var(--text)';
-    const secondaryColor = backgroundLuminance > 128 ? 'var(--secondary-darker)' : 'var(--secondary-lighter)';
+    // const secondaryColor = backgroundLuminance > 128 ? 'var(--secondary-darker)' : 'var(--secondary-lighter)';
 
     containerMain.style.color = textColor;
-
-
-    async function setStories() {
-        const responseNews = await fetch('https://api.thenewsapi.com/v1/news/top?api_token=bAFIdJuWj1UamImTrPz8wsmSgyeEGDqotzmogoHW&locale=us&limit=2');
-        const newsData = await responseNews.json();
-
-        const newsTitles = document.getElementsByClassName("news-title");
-        const newsCovers = document.getElementsByClassName("news-cover");
-
-        newsTitles[0].innerHTML = newsData.data[0].title;
-        newsCovers[0].src = newsData.data[0].image_url
-
-        newsTitles[1].innerHTML = newsData.data[1].title;
-        newsCovers[1].src = newsData.data[1].image_url
-    }
-
-    setStories()
 })

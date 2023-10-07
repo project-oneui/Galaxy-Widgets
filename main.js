@@ -1,10 +1,12 @@
 const { app, BrowserWindow, Menu, Tray } = require('electron');
+const Vibrant = require('node-vibrant');
 const express = require('express');
 const server = require('./src/js/battery-listener');
 const os = require('os')
 const fs = require('fs')
 const path = require('path');
 const icon = __dirname + '/favicon.ico'
+
 
 app.setLoginItemSettings({
     openAtLogin: true,
@@ -23,6 +25,7 @@ let calendarWidget = null;
 let countdownWidget = null;
 let notesWidget = null;
 let untisWidget = null;
+let clockWidget = null;
 
 const folderPath = path.join(os.homedir(), 'AppData', 'Local', 'Samsung-Widgets');
 
@@ -44,6 +47,7 @@ const positionData = {
     countdownWidget: { y: "525", x: "475" },
     notesWidget: { y: "725", x: "475" },
     untisWidget: { y: "900", x: "75" },
+    clockWidget: { y: "75", x: "875" },
 };
 
 const stateData = {
@@ -58,6 +62,7 @@ const stateData = {
     countdownWidget: { show: "false" },
     notesWidget: { show: "true" },
     untisWidget: { show: "false" },
+    clockWidget: { show: "true" },
 };
 
 const weatherData = {
@@ -70,6 +75,12 @@ const flightData = {
     flight_code: "",
 };
 
+const colorData = {
+    red: 28,
+    green: 28,
+    blue: 28
+};
+
 function createJSONFile(filePath, data) {
     if (!fs.existsSync(filePath)) {
         fs.writeFileSync(filePath, JSON.stringify(data, null, 4));
@@ -80,6 +91,7 @@ createJSONFile(path.join(folderPath, 'widgetPositions.json'), positionData);
 createJSONFile(path.join(folderPath, 'widgetStates.json'), stateData);
 createJSONFile(path.join(folderPath, 'weatherOptions.json'), weatherData);
 createJSONFile(path.join(folderPath, 'flightOptions.json'), flightData);
+createJSONFile(path.join(folderPath, 'color.json'), colorData);
 
 
 // info for widget windows
@@ -96,6 +108,7 @@ const widgetsData = {
         { name: "countdownWidget", width: 390, height: 175, html: "./src/widgets/countdown.html", "clickthrough": true },
         { name: "notesWidget", width: 390, height: 175, html: "./src/widgets/notes.html", "clickthrough": false },
         { name: "untisWidget", width: 390, height: 125, html: "./src/widgets/untis.html", "clickthrough": true },
+        { name: "clockWidget", width: 390, height: 100, html: "./src/widgets/clock.html", "clickthrough": true },
     ],
 };
 
@@ -163,7 +176,7 @@ app.on('ready', () => {
         setStates();
     }, 500);
 });
-
+    
 try {
     require('electron-reloader')(module)
 } catch (_) { }

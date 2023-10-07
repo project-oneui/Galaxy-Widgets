@@ -8,14 +8,12 @@ body {
     height: 100%;
     width: 100%;
     display: flex;
-    background-color: rgba(28, 28, 28, 1);
     border-radius: 33px;
     padding: 5px 15px 5px 15px;
     box-sizing: border-box;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    color: var(--text);
     gap: 5px;
 }
 
@@ -36,12 +34,12 @@ header {
 }
 
 textarea {
-    background-color: var(--background-secondary);
+    background-color: transparent;
     box-sizing: border-box;
     width: 95%;
     height: 105px;
     border-radius: 5px;
-    color: var(--text);
+    color: black;
     border: none;
     transition: all .25s;
     resize: none;

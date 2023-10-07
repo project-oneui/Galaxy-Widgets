@@ -9,13 +9,11 @@ body {
     width: 100%;
     display: flex;
     border-radius: 33px;
-    background-color: var(--background-secondary);
     padding: 20px 20px 20px 20px;
     box-sizing: border-box;
     justify-content: flex-start;
     align-items: center;
     flex-direction: column;
-    color: var(--text);
 }
 
 .device-icon {
@@ -50,7 +48,6 @@ body {
     width: 140px;
     height: 8px;
     border-radius: 3px;
-    background-color: var(--secondary);
 }
 
 .device-progress {

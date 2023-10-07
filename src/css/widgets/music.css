@@ -7,11 +7,9 @@ body {
 #container-main {
     width: 100%;
     height: 100%;
-    background-color: var(--background-secondary);
     border-radius: 33px;
     z-index: 1;
     display: flex;
-    color: var(--text);
     justify-content: space-between;
     align-items: center;
     gap: 10px;
@@ -41,7 +39,6 @@ body {
 }
 
 #music-artists {
-    color: var(--secondary-lighter);
     font-weight: normal;
     font-size: 14px;
 }
@@ -79,6 +76,5 @@ container-text {
     justify-content: space-between;
     align-items: center;
     width: 256px;
-    color: var(--secondary-lighter);
     font-size: small;
 }

@@ -19,6 +19,13 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'Clock';
+    src: url('../fonts/New-York-Semibold.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 * {
     font-family: 'Samsung', sans-serif;
 }
