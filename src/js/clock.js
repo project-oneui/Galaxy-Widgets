@@ -4,6 +4,10 @@ const path = require('path');
 
 const folderPath = path.join(os.homedir(), 'AppData', 'Local', 'Samsung-Widgets');
 
+function pad(n) {
+    return (n < 10) ? ("0" + n) : n;
+}
+
 window.addEventListener("DOMContentLoaded", () => {
     // change color based on Setting
     const colorData = JSON.parse(fs.readFileSync(path.join(folderPath, 'color.json'), 'utf8'));
@@ -34,7 +38,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
     function setTimeDate() {
         const currentDate = new Date();
-        const time = currentDate.getHours() + ":" + currentDate.getMinutes()
+        const time = pad(currentDate.getHours()) + ":" + pad(currentDate.getMinutes())
         const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
         const dayNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat",];
         const date = dayNames[currentDate.getDay()] + ", " + getOrdinalSuffix(currentDate.getDate()) + " " + monthNames[currentDate.getMonth()]
