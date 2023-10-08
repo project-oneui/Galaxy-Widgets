@@ -8,14 +8,17 @@ const path = require('path');
 const icon = __dirname + '/favicon.ico'
 const { spawn } = require('child_process');
 
+// starts the app at login
 app.setLoginItemSettings({
     openAtLogin: true,
     path: path.join(app.getPath('exe').replace('samsung-widgets.exe', 'Samsung Widgets.exe'))
 });
 
+// starts the background Serivce which provides information for the music and device care widget
 const backgroundServicePath = './backgroundService/backgroundService.exe';
 const backgroundServiceChild = spawn(backgroundServicePath);
 
+// declares the variables so the app doesnt outputs many error 
 let settingsWindow = null;
 let musicWidget = null;
 let batteryWidget = null;
@@ -90,6 +93,7 @@ function createJSONFile(filePath, data) {
     }
 }
 
+// creates all jsons needed for the app if they dont exist
 createJSONFile(path.join(folderPath, 'widgetPositions.json'), positionData);
 createJSONFile(path.join(folderPath, 'widgetStates.json'), stateData);
 createJSONFile(path.join(folderPath, 'weatherOptions.json'), weatherData);
@@ -116,6 +120,7 @@ const widgetsData = {
 };
 
 app.on('ready', () => {
+    // creates tray for quitting the app+
     tray = new Tray(icon)
     const contextMenu = Menu.buildFromTemplate([
         { role: 'quit' },
@@ -126,7 +131,10 @@ app.on('ready', () => {
     function setStates() {
         const widgetStates = JSON.parse(fs.readFileSync(folderPath + "\\widgetStates.json"))
         const widgetPositions = JSON.parse(fs.readFileSync(folderPath + "\\widgetPositions.json"))
+
+        // goes through each widget
         widgetsData.widgets.forEach(widget => {
+            // checks if the widget is enabled and if it doesnt exist (== null)
             if (widgetStates[widget.name].show == "true" && eval(widget.name) == null) {
                 const widgetWindow = new BrowserWindow({
                     width: widget.width,
@@ -141,11 +149,14 @@ app.on('ready', () => {
                         nodeIntegration: true,
                     }
                 });
-                
-                widgetWindow.setIgnoreMouseEvents(widget.clickthrough)
 
+                // sets clickthrough based on widgetsData
+                widgetWindow.setIgnoreMouseEvents(widget.clickthrough)
+                
+                // sets the variable to something else than null so it wont get created again
                 eval(`${widget.name} = widgetWindow`)
 
+                // sets the position | uses setBounds because setPosition makes the widget bigger in anything else than 100% scaling
                 if (eval(widget.name) != null) {
                     widgetWindow.setBounds({
                         width: widget.width,
@@ -157,18 +168,25 @@ app.on('ready', () => {
 
                 widgetWindow.loadFile(path.join(__dirname, widget.html));
 
+                // sets the variable again to null when its closed
                 widgetWindow.on('closed', () => {
                     eval(`${widget.name} = null`);
                 });
 
+                // fixes widget appearing in taskbar
                 widgetWindow.on('focus', () => {
                     widgetWindow.setSkipTaskbar(true)
                 });
 
-            } else if (widgetStates[widget.name].show != "true" && eval(widget.name) != null) {
+            }
+            // destroys window if it gets deactivated
+            else if (widgetStates[widget.name].show != "true" && eval(widget.name) != null) {
                 eval(`${widget.name}.destroy()`);
                 eval(`${widget.name} = null`);
-            } else if (widgetStates[widget.name].show == "true" && eval(widget.name) != null) {
+
+            }
+            // fixes widget appearing in taskbar
+            else if (widgetStates[widget.name].show == "true" && eval(widget.name) != null) {
                 (eval(`${widget.name}.setSkipTaskbar(true)`))
             }
         });
@@ -179,7 +197,8 @@ app.on('ready', () => {
         setStates();
     }, 500);
 });
-    
+
+// hot reloader for easier development
 try {
     require('electron-reloader')(module)
 } catch (_) { }

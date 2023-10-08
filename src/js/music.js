@@ -33,11 +33,11 @@ window.addEventListener("DOMContentLoaded", () => {
             Vibrant.from(jsonData.CoverUrl).getPalette()
                 .then((palette) => {
                     const LightRGB = palette.DarkVibrant._rgb;
-                    document.getElementById("container-main").style.background = `linear-gradient(180deg, rgba(${LightRGB[0]}, ${LightRGB[1]}, ${LightRGB[2]}, 1) 0%, rgba(${LightRGB[0] - 25}, ${LightRGB[1] - 25}, ${LightRGB[2] - 25}, 1) 100%)`
+                    document.getElementById("container-main").style.background = `linear-gradient(135deg, rgba(${LightRGB[0]}, ${LightRGB[1]}, ${LightRGB[2]}, 1) 0%, rgba(${LightRGB[0] - 25}, ${LightRGB[1] - 25}, ${LightRGB[2] - 25}, 1) 100%)`
 
                     const gradientLuminance = getLuminance(LightRGB[0], LightRGB[1], LightRGB[2]);
                     const gradientTextColor = gradientLuminance > 128 ? 'black' : 'var(--text)';
-                    const gradientSecondaryColor = backgroundLuminance > 128 ? 'var(--secondary-darker)' : 'var(--secondary-lighter)';
+                    const gradientSecondaryColor = backgroundLuminance > 128 ? 'var(--secondary-lighter)' : 'var(--secondary-darker)';
 
                     const musicArtists = document.getElementById('music-artists');
                     const musicTitle = document.getElementById('music-title')
@@ -49,7 +49,8 @@ window.addEventListener("DOMContentLoaded", () => {
                     musicTitle.style.color = gradientTextColor;
                     musicPosition.style.color = gradientSecondaryColor;
                     musicDuration.style.color = gradientSecondaryColor;
-                    progressBar.style.color = gradientSecondaryColor;
+                    progressBar.style.backgroundColor = gradientSecondaryColor;
+                    console.log()
                 })
 
 
