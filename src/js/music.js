@@ -8,9 +8,18 @@ const folderPath = path.join(os.homedir(), 'AppData', 'Local', 'Samsung-Widgets'
 
 window.addEventListener("DOMContentLoaded", () => {
     const colorData = JSON.parse(fs.readFileSync(path.join(folderPath, 'color.json'), 'utf8'));
+    const containerMain = document.getElementById("container-main");
+
+
+    function getLuminance(r, g, b) {
+        return (r * 299 + g * 587 + b * 114) / 1000;
+    }
+
+    const backgroundLuminance = getLuminance(colorData.red, colorData.green, colorData.blue);
+    const textColor = backgroundLuminance > 128 ? 'black' : 'var(--text)';
+    const secondaryColor = backgroundLuminance > 128 ? 'var(--secondary-darker)' : 'var(--secondary-lighter)';
 
     var progressBar = document.querySelector('progressbar');
-    progressBar.style.backgroundColor = secondaryColor;
     containerMain.style.color = textColor;
 
     function setInfo() {
@@ -25,7 +34,26 @@ window.addEventListener("DOMContentLoaded", () => {
                 .then((palette) => {
                     const LightRGB = palette.DarkVibrant._rgb;
                     document.getElementById("container-main").style.background = `linear-gradient(180deg, rgba(${LightRGB[0]}, ${LightRGB[1]}, ${LightRGB[2]}, 1) 0%, rgba(${LightRGB[0] - 25}, ${LightRGB[1] - 25}, ${LightRGB[2] - 25}, 1) 100%)`
+
+                    const gradientLuminance = getLuminance(LightRGB[0], LightRGB[1], LightRGB[2]);
+                    const gradientTextColor = gradientLuminance > 128 ? 'black' : 'var(--text)';
+                    const gradientSecondaryColor = backgroundLuminance > 128 ? 'var(--secondary-darker)' : 'var(--secondary-lighter)';
+
+                    const musicArtists = document.getElementById('music-artists');
+                    const musicTitle = document.getElementById('music-title')
+                    const musicPosition = document.getElementById("music-position");
+                    const musicDuration = document.getElementById("music-duration")
+                    const progressbar = document.querySelector('progressbar');
+
+                    musicArtists.style.color = gradientSecondaryColor;
+                    musicTitle.style.color = gradientTextColor;
+                    musicPosition.style.color = gradientSecondaryColor;
+                    musicDuration.style.color = gradientSecondaryColor;
+                    progressBar.style.color = gradientSecondaryColor;
                 })
+
+
+
         }
 
         if (jsonData.Title == "") {

@@ -141,7 +141,7 @@ app.on('ready', () => {
                         nodeIntegration: true,
                     }
                 });
-
+                
                 widgetWindow.setIgnoreMouseEvents(widget.clickthrough)
 
                 eval(`${widget.name} = widgetWindow`)

@@ -50,7 +50,6 @@ body {
     overflow: hidden;
     white-space: nowrap;
     width: 265px;
-    color: var(--secondary-darker);
 }
 
 progressbar {

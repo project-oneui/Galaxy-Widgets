@@ -35,7 +35,7 @@ window.addEventListener("DOMContentLoaded", () => {
     containerMain.style.color = textColor;
 
     function setDeviceCareInfo() {
-        const jsonData = JSON.parse(fs.readFileSync(folderPath + '\\temp', '\\deviceCareInfo.json', 'utf8'));
+        const jsonData = JSON.parse(fs.readFileSync(path.join(folderPath, 'temp', 'deviceCareInfo.json'), 'utf8'));
         document.getElementById("info-used-memory").innerHTML = ((os.totalmem() - os.freemem()) / 1073741824).toFixed(1) + "GB";
         document.getElementById("info-existing-memory").innerHTML = "/ " + (os.totalmem() / 1073741824).toFixed() + "GB";
         document.getElementById("info-progress-memory").style.width = ((os.totalmem() - os.freemem()) / os.totalmem()) * 100 + "%";
