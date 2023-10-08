@@ -18,7 +18,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
     const backgroundLuminance = getLuminance(colorData.red, colorData.green, colorData.blue);
     const textColor = backgroundLuminance > 128 ? 'black' : 'var(--text)';
-    const secondaryColor = backgroundLuminance > 128 ? 'var(--secondary-darker)' : 'var(--secondary-lighter)';
+    const secondaryColor = backgroundLuminance > 128 ? 'var(--secondary-lighter)' : 'var(--secondary-darker)';
 
     const infoExisting = document.getElementsByClassName('info-existing')
 
