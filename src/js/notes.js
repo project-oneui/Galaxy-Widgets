@@ -10,7 +10,8 @@ window.addEventListener("DOMContentLoaded", () => {
 
     const containerMain = document.getElementById("container-main");
 
-    const day = document.getElementsByClassName('day')
+    const textarea = document.querySelector('textarea')
+
     // Check its not black
     containerMain.style.background = `linear-gradient(135deg, rgb(${colorData.red}, ${colorData.green}, ${colorData.blue}) 0%, rgb(${colorData.red - 35}, ${colorData.green - 35}, ${colorData.blue - 35}) 100%)`;
 
@@ -20,8 +21,8 @@ window.addEventListener("DOMContentLoaded", () => {
     }
 
     const backgroundLuminance = getLuminance(colorData.red, colorData.green, colorData.blue);
-    const textColor = backgroundLuminance > 128 ? 'black' : 'var(--text)';
-    // const secondaryColor = backgroundLuminance > 128 ? 'var(--secondary-darker)' : 'var(--secondary-lighter)';
+    const textColor = backgroundLuminance > 128 ? 'var(--text)' : 'black';
 
     containerMain.style.color = textColor;
+    textarea.style.color = textColor;
 })

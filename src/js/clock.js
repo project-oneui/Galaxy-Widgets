@@ -24,7 +24,7 @@ window.addEventListener("DOMContentLoaded", () => {
     }
 
     const backgroundLuminance = getLuminance(colorData.red, colorData.green, colorData.blue);
-    const textColor = backgroundLuminance > 128 ? 'black' : 'var(--text)';
+    const textColor = backgroundLuminance > 128 ? 'var(--text)' : 'black';
     const secondaryColor = backgroundLuminance > 128 ? 'var(--secondary-lighter)' : 'var(--secondary-darker)';
 
     document.getElementById('date').style.color = secondaryColor;

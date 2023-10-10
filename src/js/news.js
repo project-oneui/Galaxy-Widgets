@@ -20,8 +20,7 @@ window.addEventListener('DOMContentLoaded', () => {
     }
 
     const backgroundLuminance = getLuminance(colorData.red, colorData.green, colorData.blue);
-    const textColor = backgroundLuminance > 128 ? 'black' : 'var(--text)';
-    const secondaryColor = backgroundLuminance > 128 ? 'var(--secondary-lighter)' : 'var(--secondary-darker)';
+    const textColor = backgroundLuminance > 128 ? 'var(--text)' : 'black';
 
     containerMain.style.color = textColor;
 

@@ -110,12 +110,14 @@ window.addEventListener("DOMContentLoaded", () => {
     }
 
     const backgroundLuminance = getLuminance(colorData.red, colorData.green, colorData.blue);
-    const textColor = backgroundLuminance > 128 ? 'black' : 'var(--text)';
+    const textColor = backgroundLuminance > 128 ? 'var(--text)' : 'black';
     const secondaryColor = backgroundLuminance > 128 ? 'var(--secondary-lighter)' : 'var(--secondary-darker)';
 
     containerMain.style.color = textColor;
     document.getElementById('origin-city').style.color = secondaryColor;
     document.getElementById('destination-city').style.color = secondaryColor;
+    document.getElementById('departure').style.color = secondaryColor;
+    document.getElementById('arrival').style.color = secondaryColor;
 
     const points = document.querySelectorAll('point');
 

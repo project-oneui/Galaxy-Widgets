@@ -1,7 +1,7 @@
 :root {
     --text: #fafafa;
     --secondary: rgba(130, 134, 139, 1);
-    --secondary-lighter: rgba(190, 194, 199, 1);
+    --secondary-lighter: rgba(210, 214, 219, 1);
     --secondary-darker: rgba(70, 74, 79, 1);
     --secondary-darker-active: rgba(60, 64, 69, 1);
     --background: rgba(8, 8, 8, 1);
