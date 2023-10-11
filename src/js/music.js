@@ -17,7 +17,6 @@ window.addEventListener("DOMContentLoaded", () => {
 
     const backgroundLuminance = getLuminance(colorData.red, colorData.green, colorData.blue);
     const textColor = backgroundLuminance > 128 ? 'black' : 'var(--text)';
-    const secondaryColor = backgroundLuminance > 128 ? 'var(--secondary-lighter)' : 'var(--secondary-darker)';
 
     var progressBar = document.querySelector('progressbar');
     containerMain.style.color = textColor;
@@ -35,10 +34,10 @@ window.addEventListener("DOMContentLoaded", () => {
                     const LightRGB = palette.DarkVibrant._rgb;
                     document.getElementById("container-main").style.background = `linear-gradient(135deg, rgba(${LightRGB[0]}, ${LightRGB[1]}, ${LightRGB[2]}, 1) 0%, rgba(${LightRGB[0] - 25}, ${LightRGB[1] - 25}, ${LightRGB[2] - 25}, 1) 100%)`
 
-                    const gradientLuminance = getLuminance(LightRGB[0], LightRGB[1], LightRGB[2]);
+                    const gradientLuminance = getLuminance(LightRGB[0] , LightRGB[1], LightRGB[2]);
                     const gradientTextColor = gradientLuminance < 128 ? 'var(--text)' : 'black'
 
-                    const gradientSecondaryColor = gradientLuminance > 128 ? 'var(--secondary-lighter)' : 'var(--secondary-darker)';
+                    const gradientSecondaryColor = 'var(--secondary-lighter)';
 
                     const musicArtists = document.getElementById('music-artists');
                     const musicTitle = document.getElementById('music-title')

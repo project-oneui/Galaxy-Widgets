@@ -22,7 +22,15 @@ window.addEventListener("DOMContentLoaded", () => {
 
     const backgroundLuminance = getLuminance(colorData.red, colorData.green, colorData.blue);
     const textColor = backgroundLuminance > 128 ? 'var(--text)' : 'black';
+    const secondaryColor = backgroundLuminance > 128 ? 'var(--secondary-lighter)' : 'var(--secondary-darker)';
 
     containerMain.style.color = textColor;
     textarea.style.color = textColor;
+
+    // Create a new style rule for textarea::placeholder
+    const styleSheet = document.styleSheets[0]; // You might need to adjust the index based on your stylesheet
+    const rule = `textarea::placeholder { color: ${secondaryColor}; }`; // Change the color to your desired placeholder color
+
+    // Insert the new style rule into the stylesheet
+    styleSheet.insertRule(rule, styleSheet.cssRules.length);
 })

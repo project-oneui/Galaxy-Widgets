@@ -10,7 +10,6 @@ window.addEventListener('DOMContentLoaded', () => {
 
     const containerMain = document.getElementById("container-main");
 
-    const day = document.getElementsByClassName('day')
     // Check its not black
     containerMain.style.background = `linear-gradient(135deg, rgb(${colorData.red}, ${colorData.green}, ${colorData.blue}) 0%, rgb(${colorData.red - 35}, ${colorData.green - 35}, ${colorData.blue - 35}) 100%)`;
 
