@@ -46,7 +46,6 @@ body {
 
 .current-day {
     background-color: var(--text);
-    color: black;
     border-radius: 4px;
 }
 
