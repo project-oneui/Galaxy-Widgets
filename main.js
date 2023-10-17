@@ -16,7 +16,11 @@ app.setLoginItemSettings({
 
 // starts the background Serivce which provides information for the music and device care widget
 const backgroundServicePath = './backgroundService/backgroundService.exe';
-const backgroundServiceChild = spawn(backgroundServicePath);
+
+// Check if the file exists
+if (fs.existsSync(backgroundServicePath)) {
+    const backgroundServiceChild = spawn(backgroundServicePath);
+}
 
 // declares the variables so the app doesnt outputs many error 
 let settingsWindow = null;
