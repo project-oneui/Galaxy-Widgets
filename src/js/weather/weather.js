@@ -5,7 +5,7 @@ const path = require('path')
 const folderPath = path.join(os.homedir(), 'AppData', 'Local', 'Samsung-Widgets');
 
 const weatherOptions = JSON.parse(fs.readFileSync(folderPath + "\\weatherOptions.json"), 'utf8')
-const weatherConditions = require('../json/weather_conditions.json');
+const weatherConditions = require('../../json/weather_conditions.json');
 
 async function changeWeatherInfo() {
     const responseIP = await fetch('https://api.ipify.org?format=json');
@@ -37,10 +37,10 @@ async function changeWeatherInfo() {
     const weatherImageData = weatherConditions.find(codeObj => codeObj.code === dataWeather.current.condition.code);
 
     if (isDay == "1") {
-        document.getElementById("weather-icon").src = `../res/weather/${weatherImageData.day}`
+        document.getElementById("weather-icon").src = `../../res/weather/${weatherImageData.day}`
         document.getElementById("container-main").style.background = `linear-gradient(180deg, rgba(${dataWeather.current.temp_c * 6}, 142, 185, 1) 0%, rgba(${dataWeather.current.temp_c * 4}, 102, 145, 1) 100%)`
     } else {
-        document.getElementById("weather-icon").src = `../res/weather/${weatherImageData.night}`
+        document.getElementById("weather-icon").src = `../../res/weather/${weatherImageData.night}`
         document.getElementById("container-main").style.background = `linear-gradient(180deg, rgba(${dataWeather.current.temp_c * 4}, 70, 120, 1) 0%, rgba(${dataWeather.current.temp_c * 3},55,105, 1) 100%)`
 
     }

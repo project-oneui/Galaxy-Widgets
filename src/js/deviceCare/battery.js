@@ -3,7 +3,8 @@ const os = require('os')
 const fs = require('fs')
 const path = require('path');
 const folderPath = path.join(os.homedir(), 'AppData', 'Local', 'Samsung-Widgets');
-const contrast = require('wcag-contrast')
+const contrast = require('wcag-contrast');
+const { text } = require("body-parser");
 
 window.addEventListener("DOMContentLoaded", () => {
     // change color based on Setting
@@ -43,9 +44,11 @@ window.addEventListener("DOMContentLoaded", () => {
     containerMain.style.color = textColor;
 
     const deviceProgressbar = document.getElementsByClassName('device-progressbar')
+    const deviceProgress = document.getElementsByClassName('device-progress')
 
     for (let i = 0; i < deviceProgressbar.length; i++) {
         deviceProgressbar[i].style.backgroundColor = secondaryColor;
+        deviceProgress[i].style.backgroundColor = textColor;
     }
 
     document.getElementById("device-name-notebook").innerHTML = os.hostname();

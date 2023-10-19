@@ -1,5 +1,5 @@
 :root {
-    --text: #fafafa;
+    --text: rgb(250, 250, 250);
     --secondary: rgba(130, 134, 139, 1);
     --secondary-lighter: rgba(210, 214, 219, 1);
     --secondary-darker: rgba(70, 74, 79, 1);

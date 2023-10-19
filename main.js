@@ -28,14 +28,14 @@ let musicWidget = null;
 let batteryWidget = null;
 let deviceCareWidget = null;
 let weatherWidget = null;
-let newsWidget = null;
+let topStoriesWidget = null;
 let flightWidget = null;
 let smartThingsWidget = null;
 let calendarWidget = null;
 let countdownWidget = null;
-let notesWidget = null;
+let quickNotesWidget = null;
 let untisWidget = null;
-let clockWidget = null;
+let digitalClockWidget = null;
 
 const folderPath = path.join(os.homedir(), 'AppData', 'Local', 'Samsung-Widgets');
 
@@ -52,12 +52,12 @@ const positionData = {
     weatherWidget: { y: "550", x: "75" },
     flightWidget: { y: "700", x: "75" },
     smartThingsWidget: { y: "300", x: "475" },
-    newsWidget: { y: "75", x: "475" },
+    topStoriesWidget: { y: "75", x: "475" },
     calendarWidget: { y: "300", x: "475" },
     countdownWidget: { y: "550", x: "475" },
-    notesWidget: { y: "750", x: "475" },
+    quickNotesWidget: { y: "750", x: "475" },
     untisWidget: { y: "900", x: "75" },
-    clockWidget: { y: "75", x: "875" },
+    digitalClockWidget: { y: "75", x: "875" },
 };
 
 const stateData = {
@@ -65,14 +65,14 @@ const stateData = {
     batteryWidget: { show: "true" },
     deviceCareWidget: { show: "true" },
     weatherWidget: { show: "true" },
-    newsWidget: { show: "false" },
+    topStoriesWidget: { show: "false" },
     flightWidget: { show: "false" },
     smartThingsWidget: { show: "false" },
     calendarWidget: { show: "true" },
     countdownWidget: { show: "false" },
-    notesWidget: { show: "true" },
+    quickNotesWidget: { show: "true" },
     untisWidget: { show: "false" },
-    clockWidget: { show: "true" },
+    digitalClockWidget: { show: "true" },
 };
 
 const weatherData = {
@@ -108,18 +108,18 @@ createJSONFile(path.join(folderPath, 'color.json'), colorData);
 // info for widget windows
 const widgetsData = {
     widgets: [
-        { name: "musicWidget", width: 390, height: 125, html: "./src/widgets/music.html", "clickthrough": true },
-        { name: "batteryWidget", width: 390, height: 150, html: "./src/widgets/battery.html", "clickthrough": true },
-        { name: "deviceCareWidget", width: 390, height: 125, html: "./src/widgets/deviceCare.html", "clickthrough": true },
-        { name: "weatherWidget", width: 390, height: 125, html: "./src/widgets/weather.html", "clickthrough": true },
-        { name: "newsWidget", width: 390, height: 200, html: "./src/widgets/news.html", "clickthrough": true },
-        { name: "flightWidget", width: 390, height: 175, html: "./src/widgets/flight.html", "clickthrough": true },
-        { name: "smartThingsWidget", width: 390, height: 125, html: "./src/widgets/smartThings.html", "clickthrough": true },
-        { name: "calendarWidget", width: 390, height: 225, html: "./src/widgets/calendar.html", "clickthrough": true },
-        { name: "countdownWidget", width: 390, height: 175, html: "./src/widgets/countdown.html", "clickthrough": true },
-        { name: "notesWidget", width: 390, height: 175, html: "./src/widgets/notes.html", "clickthrough": false },
+        { name: "musicWidget", width: 390, height: 125, html: "./src/widgets/music/music.html", "clickthrough": true },
+        { name: "batteryWidget", width: 390, height: 150, html: "./src/widgets/deviceCare/battery.html", "clickthrough": true },
+        { name: "deviceCareWidget", width: 390, height: 125, html: "./src/widgets/deviceCare/deviceCare.html", "clickthrough": true },
+        { name: "weatherWidget", width: 390, height: 125, html: "./src/widgets/weather/weather.html", "clickthrough": true },
+        { name: "topStoriesWidget", width: 390, height: 200, html: "./src/widgets/news/topStories.html", "clickthrough": true },
+        { name: "flightWidget", width: 390, height: 175, html: "./src/widgets/wallet/flight.html", "clickthrough": true },
+        { name: "smartThingsWidget", width: 390, height: 125, html: "./src/widgets/smartThings/smartThings.html", "clickthrough": true },
+        { name: "calendarWidget", width: 390, height: 225, html: "./src/widgets/calendar/calendar.html", "clickthrough": true },
+        { name: "countdownWidget", width: 390, height: 175, html: "./src/widgets/calendar/countdown.html", "clickthrough": true },
+        { name: "quickNotesWidget", width: 390, height: 175, html: "./src/widgets/notes/quickNotes.html", "clickthrough": false },
         { name: "untisWidget", width: 390, height: 125, html: "./src/widgets/untis.html", "clickthrough": true },
-        { name: "clockWidget", width: 390, height: 100, html: "./src/widgets/clock.html", "clickthrough": true },
+        { name: "digitalClockWidget", width: 390, height: 100, html: "./src/widgets/clock/digitalClock.html", "clickthrough": true },
     ],
 };
 

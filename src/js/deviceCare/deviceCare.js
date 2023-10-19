@@ -44,9 +44,11 @@ window.addEventListener("DOMContentLoaded", () => {
     }
 
     const infoProgressbar = document.getElementsByClassName('info-progressbar')
+    const infoProgress = document.getElementsByClassName('info-progress')
 
     for (let i = 0; i < infoProgressbar.length; i++) {
         infoProgressbar[i].style.backgroundColor = secondaryColor;
+        infoProgress[i].style.backgroundColor = textColor;
     }
 
     containerMain.style.color = textColor;
