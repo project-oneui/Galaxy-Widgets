@@ -26,7 +26,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
         if (jsonData.CoverUrl == "") {
             containerMain.style.background = `linear-gradient(135deg, rgb(${colorData.red}, ${colorData.green}, ${colorData.blue}) 0%, rgb(${colorData.red - 35}, ${colorData.green - 35}, ${colorData.blue - 35}) 100%)`;
-            document.getElementById("music-cover").src = "../res/generic-cover.png";
+            document.getElementById("music-cover").src = "../../res/generic-cover.png";
         } else {
             document.getElementById("music-cover").src = jsonData.CoverUrl + "?" + Date.now();
             Vibrant.from(jsonData.CoverUrl).getPalette()

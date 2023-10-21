@@ -42,7 +42,6 @@ async function changeWeatherInfo() {
     } else {
         document.getElementById("weather-icon").src = `../../res/weather/${weatherImageData.night}`
         document.getElementById("container-main").style.background = `linear-gradient(180deg, rgba(${dataWeather.current.temp_c * 4}, 70, 120, 1) 0%, rgba(${dataWeather.current.temp_c * 3},55,105, 1) 100%)`
-
     }
 }
 

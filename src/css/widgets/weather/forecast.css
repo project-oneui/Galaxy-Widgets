@@ -1,0 +1,48 @@
+body {
+    height: 100vh;
+    top: 0;
+    margin: 0;
+}
+
+#container-main {
+    height: 100%;
+    width: 100%;
+    border-radius: 33px;
+    display: flex;
+    padding: 20px 40px 20px 40px;
+    box-sizing: border-box;
+    align-items: center;
+    color: var(--text);
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+}
+
+.weather-icon {
+    width: 40px;
+}
+
+.container-day {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#container-days {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+}
+
+#city {
+    font-size: 20px;
+    font-weight: 900;
+}
+
+#container-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

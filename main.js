@@ -7,11 +7,12 @@ const fs = require('fs')
 const path = require('path');
 const icon = __dirname + '/favicon.ico'
 const { spawn } = require('child_process');
+const exeName = path.basename(process.execPath)
 
 // starts the app at login
 app.setLoginItemSettings({
     openAtLogin: true,
-    path: path.join(app.getPath('exe').replace('samsung-widgets.exe', 'Samsung Widgets.exe'))
+    path: exeName
 });
 
 // starts the background Serivce which provides information for the music and device care widget
@@ -36,6 +37,7 @@ let countdownWidget = null;
 let quickNotesWidget = null;
 let untisWidget = null;
 let digitalClockWidget = null;
+let forecastWidget = null;
 
 const folderPath = path.join(os.homedir(), 'AppData', 'Local', 'Samsung-Widgets');
 
@@ -58,6 +60,7 @@ const positionData = {
     quickNotesWidget: { y: "750", x: "475" },
     untisWidget: { y: "900", x: "75" },
     digitalClockWidget: { y: "75", x: "875" },
+    forecastWidget: { y: "200", x: "875" },
 };
 
 const stateData = {
@@ -73,6 +76,7 @@ const stateData = {
     quickNotesWidget: { show: "true" },
     untisWidget: { show: "false" },
     digitalClockWidget: { show: "true" },
+    forecastWidget: { show: "false" },
 };
 
 const weatherData = {
@@ -92,12 +96,23 @@ const colorData = {
 };
 
 function createJSONFile(filePath, data) {
-    if (!fs.existsSync(filePath)) {
-        fs.writeFileSync(filePath, JSON.stringify(data, null, 4));
+    let existingData = {};
+
+    if (fs.existsSync(filePath)) {
+        const fileContent = fs.readFileSync(filePath);
+        existingData = JSON.parse(fileContent);
     }
+
+    // Merge existing data with new data, adding missing keys and setting default values
+    const updatedData = {
+        ...data,
+        ...existingData,
+    };
+
+    fs.writeFileSync(filePath, JSON.stringify(updatedData, null, 4));
 }
 
-// creates all jsons needed for the app if they dont exist
+// Creates or updates JSON files for the app
 createJSONFile(path.join(folderPath, 'widgetPositions.json'), positionData);
 createJSONFile(path.join(folderPath, 'widgetStates.json'), stateData);
 createJSONFile(path.join(folderPath, 'weatherOptions.json'), weatherData);
@@ -120,6 +135,7 @@ const widgetsData = {
         { name: "quickNotesWidget", width: 390, height: 175, html: "./src/widgets/notes/quickNotes.html", "clickthrough": false },
         { name: "untisWidget", width: 390, height: 125, html: "./src/widgets/untis.html", "clickthrough": true },
         { name: "digitalClockWidget", width: 390, height: 100, html: "./src/widgets/clock/digitalClock.html", "clickthrough": true },
+        { name: "forecastWidget", width: 390, height: 150, html: "./src/widgets/weather/forecast.html", "clickthrough": true },
     ],
 };
 
