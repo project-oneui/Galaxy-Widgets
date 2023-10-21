@@ -1,9 +1,3 @@
-> [!IMPORTANT]
-> 
-> 
-> If you get any error: Try to delete all files except the temp folder in: %localappdata%\Samsung-Widgets.
-
-
 # Samsung Widgets
 An electron app which creates OneUI Widgets on your desktop
 
@@ -22,6 +16,8 @@ An electron app which creates OneUI Widgets on your desktop
 - [x] Calendar Widget
 - [ ] Galaxy Watch on Battery Widget (I dont own one currently but im thinking about getting one)
 - [ ] Untis Widget
+- [ ] Upcoming Movies Widget
+- [ ] Hours Forecast Widget
 
 # How to use
 
