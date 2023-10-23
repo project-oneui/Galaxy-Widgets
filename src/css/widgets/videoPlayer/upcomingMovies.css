@@ -12,7 +12,7 @@ body {
     padding: 5px 15px 5px 15px;
     box-sizing: border-box;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
     flex-direction: column;
 }
 
@@ -28,6 +28,29 @@ header {
 
 #container-movies {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
+    width: 100%;
+}
+
+.movie-container {
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.poster {
+    height: 120px;
+    border-radius: 12px;
+}
+
+.name {
+    font-size: 12px;
+    width: 66px;
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
