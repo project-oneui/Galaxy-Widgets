@@ -1,0 +1,33 @@
+body {
+    top: 0;
+    margin: 0;
+    height: 100vh;
+}
+
+#container-main {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    border-radius: 33px;
+    padding: 5px 15px 5px 15px;
+    box-sizing: border-box;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+header {
+    display: flex;
+    width: 95%;
+    height: 30px;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 0 2px 0 2px;
+}
+
+#container-movies {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

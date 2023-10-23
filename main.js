@@ -7,13 +7,17 @@ const fs = require('fs')
 const path = require('path');
 const icon = __dirname + '/favicon.ico'
 const { spawn } = require('child_process');
-const exeName = path.basename(process.execPath)
 
-// starts the app at login
-app.setLoginItemSettings({
-    openAtLogin: true,
-    path: exeName
-});
+// checks if the appExe is named electron so it doesn't autostart electron.exe while autostarting
+if (!app.getPath('exe').includes('electron')) {
+    // starts the app at login
+    app.setLoginItemSettings({
+        openAtLogin: true,
+        path: app.getPath('exe')
+    });
+}
+
+
 
 // starts the background Serivce which provides information for the music and device care widget
 const backgroundServicePath = './backgroundService/backgroundService.exe';
@@ -38,6 +42,7 @@ let quickNotesWidget = null;
 let untisWidget = null;
 let digitalClockWidget = null;
 let forecastWidget = null;
+let upcomingMovies = null;
 
 const folderPath = path.join(os.homedir(), 'AppData', 'Local', 'Samsung-Widgets');
 
@@ -61,6 +66,7 @@ const positionData = {
     untisWidget: { y: "900", x: "75" },
     digitalClockWidget: { y: "75", x: "875" },
     forecastWidget: { y: "200", x: "875" },
+    forecastWidget: { y: "375", x: "875" },
 };
 
 const stateData = {
@@ -77,6 +83,7 @@ const stateData = {
     untisWidget: { show: "false" },
     digitalClockWidget: { show: "true" },
     forecastWidget: { show: "false" },
+    upcomingMovies: { show: "false" },
 };
 
 const weatherData = {
@@ -135,7 +142,7 @@ const widgetsData = {
         { name: "quickNotesWidget", width: 390, height: 175, html: "./src/widgets/notes/quickNotes.html", "clickthrough": false },
         { name: "untisWidget", width: 390, height: 125, html: "./src/widgets/untis.html", "clickthrough": true },
         { name: "digitalClockWidget", width: 390, height: 100, html: "./src/widgets/clock/digitalClock.html", "clickthrough": true },
-        { name: "forecastWidget", width: 390, height: 150, html: "./src/widgets/weather/forecast.html", "clickthrough": true },
+        { name: "forecastWidget", width: 390, height: 175, html: "./src/widgets/videoPlayer/upcomingMovies.html", "clickthrough": true },
     ],
 };
 
