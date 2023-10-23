@@ -188,8 +188,6 @@ app.on('ready', () => {
 
                 widgetWindow.loadFile(path.join(__dirname, widget.html));
 
-                widgetWindow.webContents.openDevTools()
-
                 // sets the variable again to null when its closed
                 widgetWindow.on('closed', () => {
                     eval(`${widget.name} = null`);

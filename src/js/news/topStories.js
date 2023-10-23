@@ -47,7 +47,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
         const newsTitles = document.getElementsByClassName("news-title");
         const newsCovers = document.getElementsByClassName("news-cover");
-
+        
         newsTitles[0].innerHTML = newsData.data[0].title;
         newsCovers[0].src = newsData.data[0].image_url
 
