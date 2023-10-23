@@ -20,9 +20,12 @@ An electron app which creates OneUI Widgets on your desktop
 - [ ] Hours Forecast Widget
 
 # How to use
+## Install the Samsung Widgets App
+1. Download the [latest release](https://github.com/project-oneui/Samsung-Widgets/releases/latest)
+2. Run the .exe
 
 ## Install the Samsung Settings App
-1. Download the [latest release](github.com/project-oneui/Samsung-Settings/releases/latest)
+1. Download the [latest release](https://github.com/project-oneui/Samsung-Settings/releases/latest)
 2. Run the .exe
 
 # Optional Settings
