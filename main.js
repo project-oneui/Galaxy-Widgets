@@ -8,7 +8,7 @@ const path = require('path');
 const icon = __dirname + '/favicon.ico'
 const { spawn } = require('child_process');
 
-// checks if the appExe is named electron so it doesn't autostart electron.exe while autostarting
+// checks if the appExe is named electron so it doesn't autostart electron.exe while developing
 if (!app.getPath('exe').includes('electron')) {
     // starts the app at login
     app.setLoginItemSettings({
@@ -20,7 +20,8 @@ if (!app.getPath('exe').includes('electron')) {
 
 
 // starts the background Serivce which provides information for the music and device care widget
-const backgroundServicePath = './backgroundService/backgroundService.exe';
+// const backgroundServicePath = './backgroundService/backgroundService.exe';
+const backgroundServicePath = path.join(path.dirname(app.getPath('exe')), 'backgroundService', 'backgroundService.exe')
 
 // Check if the file exists
 if (fs.existsSync(backgroundServicePath)) {
