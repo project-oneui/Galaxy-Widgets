@@ -4,11 +4,9 @@ permissions:
   contents: write
 
 on:
-  workflow_dispatch: # This triggers the workflow manually
-    inputs:
-      link_commits:
-        description: 'Links to all commits since the last release'
-        required: true
+  push:
+    branches:
+      - main
 
 jobs:
   build:
@@ -23,13 +21,27 @@ jobs:
         with:
           node-version: 14
 
-      # ... rest of your steps ...
-
-      - name: Get Commit Links
-        id: get_commit_links
+      - name: Install Dependencies
         run: |
-          echo "::set-output name=COMMIT_LINKS::$(git log --format='%s (%h)' $(git describe --tags --abbrev=0 HEAD^)..HEAD | sed 's/ /%20/g' | awk '{print "* [%s](https://github.com/$GITHUB_REPOSITORY/commit/"$2")"}')"
+          npm install
+          echo "✔ Dependencies Installed!"
+
+      - name: Set Package Version
+        id: set_version
+        run: |
+          echo "::set-output name=PACKAGE_VERSION::$(echo ${{ github.run_number }})"
         shell: bash
+
+      - name: Update package.json with GitHub Run Number
+        run: |
+          node -e "const fs = require('fs'); const packageJson = JSON.parse(fs.readFileSync('package.json')); packageJson.version = '1.${{ github.run_number }}.0'; fs.writeFileSync('package.json', JSON.stringify(packageJson, null, 2));"
+        shell: bash
+
+      - name: Build for Windows
+        run: |
+          npm run build:windows
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Publish
         id: create_release
@@ -38,11 +50,6 @@ jobs:
           files: ./dist/*.exe
           name: Galaxy Widgets v${{ github.run_number }}
           tag_name: v${{ github.run_number }}
-          body: |
-            > [!NOTE]
-            > This release was manually triggered.
-            >
-            > **Commits since the last release:**
-            > ${{ steps.get_commit_links.outputs.COMMIT_LINKS }}
+          body: After every commit this action automatically runs
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
