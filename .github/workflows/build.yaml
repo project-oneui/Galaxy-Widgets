@@ -51,5 +51,6 @@ jobs:
           name: Galaxy Widgets v${{ github.run_number }}
           tag_name: v${{ github.run_number }}
           body: After every commit this action automatically runs
+
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
