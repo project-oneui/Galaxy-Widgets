@@ -20,6 +20,10 @@ An electron app which creates OneUI Widgets on your desktop
 - [ ] Hours Forecast Widget
 
 # How to use
+## Install the Galaxy Widgets App
+1. Download the [latest release](https://github.com/project-oneui/Galaxy-Widgets/releases/latest)
+2. Run the .exe
+
 
 ## Install the Galaxy Settings App
 1. Download the [latest release](github.com/project-oneui/Galaxy-Settings/releases/latest)
