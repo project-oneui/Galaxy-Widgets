@@ -39,10 +39,7 @@ jobs:
           name: Galaxy Widgets v${{ github.run_number }}
           tag_name: v${{ github.run_number }}
           body: |
-            > [!NOTE]
-            > This release was manually triggered.
-            >
-            > **Commits since the last release:**
-            > ${{ steps.get_commit_links.outputs.COMMIT_LINKS }}
+            **Commits since the last release:**
+            ${{ steps.get_commit_links.outputs.COMMIT_LINKS }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
