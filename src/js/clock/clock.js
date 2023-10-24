@@ -3,7 +3,7 @@ const fs = require('fs')
 const path = require('path');
 const contrast = require('wcag-contrast')
 
-const folderPath = path.join(os.homedir(), 'AppData', 'Local', 'Samsung-Widgets');
+const folderPath = path.join(os.homedir(), 'AppData', 'Local', 'Galaxy-Widgets');
 
 function pad(n) {
     return (n < 10) ? ("0" + n) : n;

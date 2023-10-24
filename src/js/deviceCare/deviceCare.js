@@ -1,7 +1,7 @@
 const os = require('os')
 const fs = require('fs')
 const path = require('path')
-const folderPath = path.join(os.homedir(), 'AppData', 'Local', 'Samsung-Widgets');
+const folderPath = path.join(os.homedir(), 'AppData', 'Local', 'Galaxy-Widgets');
 const contrast = require('wcag-contrast')
 
 window.addEventListener("DOMContentLoaded", () => {

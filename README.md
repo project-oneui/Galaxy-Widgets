@@ -1,4 +1,4 @@
-# Samsung Widgets
+# Galaxy Widgets
 An electron app which creates OneUI Widgets on your desktop
 
 # Preview
@@ -21,8 +21,8 @@ An electron app which creates OneUI Widgets on your desktop
 
 # How to use
 
-## Install the Samsung Settings App
-1. Download the [latest release](github.com/project-oneui/Samsung-Settings/releases/latest)
+## Install the Galaxy Settings App
+1. Download the [latest release](github.com/project-oneui/Galaxy-Settings/releases/latest)
 2. Run the .exe
 
 # Optional Settings

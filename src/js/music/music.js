@@ -4,7 +4,7 @@ const fs = require('fs');
 const path = require('path');
 const { json } = require('body-parser');
 
-const folderPath = path.join(os.homedir(), 'AppData', 'Local', 'Samsung-Widgets');
+const folderPath = path.join(os.homedir(), 'AppData', 'Local', 'Galaxy-Widgets');
 
 window.addEventListener("DOMContentLoaded", () => {
     const colorData = JSON.parse(fs.readFileSync(path.join(folderPath, 'color.json'), 'utf8'));

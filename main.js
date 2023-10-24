@@ -42,7 +42,7 @@ let digitalClockWidget = null;
 let forecastWidget = null;
 let upcomingMoviesWidget = null;
 
-const folderPath = path.join(os.homedir(), 'AppData', 'Local', 'Samsung-Widgets');
+const folderPath = path.join(os.homedir(), 'AppData', 'Local', 'Galaxy-Widgets');
 
 if (!fs.existsSync(folderPath)) {
     fs.mkdirSync(folderPath);
@@ -145,7 +145,7 @@ app.on('ready', () => {
     const contextMenu = Menu.buildFromTemplate([
         { role: 'quit' },
     ])
-    tray.setToolTip('Samsung Widgets')
+    tray.setToolTip('Galaxy Widgets')
     tray.setContextMenu(contextMenu)
 
     function setStates() {

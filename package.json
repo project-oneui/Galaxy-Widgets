@@ -1,8 +1,8 @@
 {
-  "name": "samsung-widgets",
+  "name": "galaxy-widgets",
   "version": "1.0.1",
-  "productName": "Samsung Widgets",
-  "description": "Samsung Widgets created desktop widgets for windows in OneUI Style",
+  "productName": "Galaxy Widgets",
+  "description": "Galaxy Widgets created desktop widgets for windows in OneUI Style",
   "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -19,7 +19,7 @@
         ]
       }
     ],
-    "appId": "Samsung Widgets",
+    "appId": "Galaxy Widgets",
     "asar": true,
     "win": {
       "target": [
@@ -30,7 +30,7 @@
       "oneClick": true,
       "installerIcon": "favicon.ico",
       "uninstallerIcon": "favicon.ico",
-      "uninstallDisplayName": "Uninstall Samsung Widgets",
+      "uninstallDisplayName": "Uninstall Galaxy Widgets",
       "license": "LICENSE",
       "allowToChangeInstallationDirectory": false
     }
