@@ -31,10 +31,10 @@ window.addEventListener("DOMContentLoaded", () => {
             document.getElementById("music-cover").src = jsonData.CoverUrl + "?" + Date.now();
             Vibrant.from(jsonData.CoverUrl).getPalette()
                 .then((palette) => {
-                    const LightRGB = palette.DarkVibrant._rgb;
-                    document.getElementById("container-main").style.background = `linear-gradient(135deg, rgba(${LightRGB[0]}, ${LightRGB[1]}, ${LightRGB[2]}, 1) 0%, rgba(${LightRGB[0] - 25}, ${LightRGB[1] - 25}, ${LightRGB[2] - 25}, 1) 100%)`
+                    const darkVibrantRGB = palette.DarkVibrant._rgb;
+                    document.getElementById("container-main").style.background = `linear-gradient(135deg, rgba(${darkVibrantRGB[0]}, ${darkVibrantRGB[1]}, ${darkVibrantRGB[2]}, 1) 0%, rgba(${darkVibrantRGB[0] - 25}, ${darkVibrantRGB[1] - 25}, ${darkVibrantRGB[2] - 25}, 1) 100%)`
 
-                    const gradientLuminance = getLuminance(LightRGB[0] , LightRGB[1], LightRGB[2]);
+                    const gradientLuminance = getLuminance(darkVibrantRGB[0] , darkVibrantRGB[1], darkVibrantRGB[2]);
                     const gradientTextColor = gradientLuminance < 128 ? 'var(--text)' : 'black'
 
                     const gradientSecondaryColor = 'var(--secondary-lighter)';
@@ -44,6 +44,7 @@ window.addEventListener("DOMContentLoaded", () => {
                     const musicPosition = document.getElementById("music-position");
                     const musicDuration = document.getElementById("music-duration")
                     const title = document.getElementById("music-title")
+                    const progress = document.getElementById('music-progress');
 
                     musicArtists.style.color = gradientSecondaryColor;
                     musicTitle.style.color = gradientTextColor;
@@ -51,7 +52,7 @@ window.addEventListener("DOMContentLoaded", () => {
                     musicDuration.style.color = gradientSecondaryColor;
                     progressBar.style.backgroundColor = gradientSecondaryColor;
                     title.style.color = gradientTextColor;
-                    console.log()
+                    progress.style.backgroundColor = palette.LightVibrant.hex
                 })
 
 
