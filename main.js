@@ -17,10 +17,7 @@ if (!app.getPath('exe').includes('electron')) {
     });
 }
 
-
-
 // starts the background Serivce which provides information for the music and device care widget
-// const backgroundServicePath = './backgroundService/backgroundService.exe';
 const backgroundServicePath = path.join(path.dirname(app.getPath('exe')), 'backgroundService', 'backgroundService.exe')
 
 // Check if the file exists
@@ -41,6 +38,7 @@ let untisWidget = null;
 let digitalClockWidget = null;
 let forecastWidget = null;
 let upcomingMoviesWidget = null;
+let hoursForecastWidget = null;
 
 const folderPath = path.join(os.homedir(), 'AppData', 'Local', 'Galaxy-Widgets');
 
@@ -63,6 +61,7 @@ const positionData = {
     digitalClockWidget: { y: "75", x: "875" },
     forecastWidget: { y: "750", x: "475" },
     upcomingMoviesWidget: { y: "200", x: "875" },
+    hoursForecastWidget: { y: "425", x: "875" },
 };
 
 const stateData = {
@@ -78,6 +77,7 @@ const stateData = {
     digitalClockWidget: { show: "true" },
     forecastWidget: { show: "false" },
     upcomingMoviesWidget: { show: "false" },
+    hoursForecastWidget: { show: "false" },
 };
 
 const weatherData = {
@@ -91,9 +91,26 @@ const flightData = {
 };
 
 const colorData = {
-    red: 28,
-    green: 28,
-    blue: 28
+    background: {
+        red: 28,
+        green: 28,
+        blue: 28
+    },
+    text: {
+        red: 250,
+        green: 250,
+        blue: 250
+    },
+    secondary: {
+        red: 120,
+        green: 120,
+        blue: 120
+    },
+    primary: {
+        red: 170,
+        green: 167,
+        blue: 195
+    }
 };
 
 function createJSONFile(filePath, data) {
@@ -136,6 +153,7 @@ const widgetsData = {
         { name: "digitalClockWidget", width: 390, height: 100, html: "./src/widgets/clock/digitalClock.html", "clickthrough": true },
         { name: "forecastWidget", width: 390, height: 175, html: "./src/widgets/weather/forecast.html", "clickthrough": true },
         { name: "upcomingMoviesWidget", width: 390, height: 200, html: "./src/widgets/videoPlayer/upcomingMovies.html", "clickthrough": true },
+        { name: "hoursForecastWidget", width: 390, height: 175, html: "./src/widgets/weather/hoursForecast.html", "clickthrough": true },
     ],
 };
 
@@ -172,7 +190,7 @@ app.on('ready', () => {
 
                 // sets clickthrough based on widgetsData
                 widgetWindow.setIgnoreMouseEvents(widget.clickthrough)
-                
+
                 // sets the variable to something else than null so it wont get created again
                 eval(`${widget.name} = widgetWindow`)
 
@@ -207,7 +225,12 @@ app.on('ready', () => {
             }
             // fixes widget appearing in taskbar
             else if (widgetStates[widget.name].show == "true" && eval(widget.name) != null) {
-                (eval(`${widget.name}.setSkipTaskbar(true)`))
+                eval(`${widget.name}.setBounds({
+                    width: ${widget.width},  
+                     height: ${widget.height},  
+                     x: parseInt(widgetPositions[widget.name].x),
+                     y: parseInt(widgetPositions[widget.name].y), 
+                })`)
             }
         });
     }
@@ -215,7 +238,7 @@ app.on('ready', () => {
     setStates()
     setInterval(function () {
         setStates();
-    }, 500);
+    }, 200);
 });
 
 // hot reloader for easier development

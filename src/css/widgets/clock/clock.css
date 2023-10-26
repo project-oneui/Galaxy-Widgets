@@ -9,7 +9,6 @@ body {
 #container-main {
     width: 100%;
     height: 100%;
-    background-color: var(--background-secondary);
     border-radius: 33px;
     display: flex;
     color: var(--text);

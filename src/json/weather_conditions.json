@@ -26,8 +26,8 @@
 	},
 	{
 		"code" : 1063,
-		"day" : "patchy_rain_day.webp",
-		"night" : "patchy_rain_night.webp"
+		"day" : "cloudy.webp",
+		"night" : "cloudy.webp"
 	},
 	{
 		"code" : 1066,

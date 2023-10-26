@@ -16,10 +16,11 @@ body {
     padding: 15px 15px 15px 15px;
     box-sizing: border-box;
     backdrop-filter: invert(50%);
+    color: var(--text);
 }
 
 #music-cover {
-    background-color: var(--secondary-darker);
+    background-color: var(--secondary);
     height: 95px;
     border-radius: 19px;
     aspect-ratio: 1/1;
@@ -41,6 +42,7 @@ body {
 #music-artists {
     font-weight: normal;
     font-size: 14px;
+    color: var(--secondary);
 }
 
 #music-title,
@@ -56,7 +58,7 @@ progressbar {
     width: 256px;
     height: 8px;
     border-radius: 3px;
-    background-color: var(--secondary-lighter);
+    background-color: var(--secondary);
 }
 
 #music-progress {
@@ -77,5 +79,5 @@ container-text {
     align-items: center;
     width: 256px;
     font-size: small;
-    color: var(--secondary-darker);
+    color: var(--secondary);
 }

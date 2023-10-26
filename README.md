@@ -14,10 +14,9 @@ An electron app which creates OneUI Widgets on your desktop
 - [x] Disable Widgets in Settings
 - [x] Flight WIdget
 - [x] Calendar Widget
-- [ ] Galaxy Watch on Battery Widget (I dont own one currently but im thinking about getting one)
-- [ ] Untis Widget
-- [ ] Upcoming Movies Widget
+- [x] Upcoming Movies Widget
 - [ ] Hours Forecast Widget
+- [ ] Galaxy Watch on Battery Widget (Person with Galaxy Watch needed)
 
 # How to use
 ## Install the Galaxy Widgets App

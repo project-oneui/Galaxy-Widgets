@@ -2,6 +2,7 @@ body {
     top: 0;
     margin: 0;
     height: 100vh;
+    color: var(--text);
 }
 
 #container-main {
@@ -48,13 +49,14 @@ body {
     width: 140px;
     height: 8px;
     border-radius: 3px;
+    background-color: var(--secondary);
 }
 
 .device-progress {
     width: 56%;
     height: 8px;
     border-radius: 3px;
-    background-color: var(--text);
+    background-color: var(--primary);
 }
 
 .device-percentage {

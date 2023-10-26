@@ -1,9 +1,3 @@
-const fs = require('fs')
-const os = require('os')
-const path = require('path')
-
-const folderPath = path.join(os.homedir(), 'AppData', 'Local', 'Galaxy-Widgets');
-
 const weatherOptions = JSON.parse(fs.readFileSync(folderPath + "\\weatherOptions.json"), 'utf8')
 const weatherConditions = require('../../json/weather_conditions.json');
 

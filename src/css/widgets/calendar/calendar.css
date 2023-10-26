@@ -33,7 +33,7 @@ body {
     height: 20px;
     text-align: center;
     line-height: 20px;
-    color: var(--secondary-lighter);
+    color: var(--secondary);
     font-weight: bold;
     font-size: 14px;
 }
@@ -45,7 +45,7 @@ body {
 }
 
 .current-day {
-    background-color: var(--text);
+    background-color: var(--secondary);
     border-radius: 4px;
 }
 
@@ -65,5 +65,5 @@ body {
 }
 
 .sunday {
-    color: var(--red);
+    color: var(--primary);
 }

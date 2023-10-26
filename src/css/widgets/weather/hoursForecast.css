@@ -22,17 +22,17 @@ body {
     width: 40px;
 }
 
-.container-day {
+.container-hour {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 }
 
-#container-days {
+#container-hours {
     display: flex;
     justify-content: center;
-    gap: 10px;
+    gap: 25px;
     width: 100%;
 }
 
