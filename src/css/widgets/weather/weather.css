@@ -51,6 +51,6 @@ body {
 }
 
 #weather-time {
-    color: var(--secondary-lighter);
+    color: var(--secondary);
     font-size: 12px;
 }

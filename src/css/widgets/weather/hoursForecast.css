@@ -31,8 +31,7 @@ body {
 
 #container-hours {
     display: flex;
-    justify-content: center;
-    gap: 25px;
+    justify-content: space-between;
     width: 100%;
 }
 

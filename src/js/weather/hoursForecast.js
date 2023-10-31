@@ -2,15 +2,13 @@ const weatherOptions = JSON.parse(fs.readFileSync(folderPath + "\\weatherOptions
 const weatherConditions = require('../../json/weather_conditions.json');
 
 window.addEventListener("DOMContentLoaded", () => {
-    function formatAMPM(date) {
+    function convertHoursToAMPM(date) {
         var hours = date.getHours();
-        var minutes = date.getMinutes();
         var ampm = hours >= 12 ? 'PM' : 'AM';
         hours = hours % 12;
-        hours = hours ? hours : 12; // the hour '0' should be '12'
-        minutes = minutes < 10 ? '0' + minutes : minutes;
-        var strTime = hours + " " + ampm;
-        return strTime;
+        hours = hours ? hours : 12; // Handle midnight (12:00 AM)
+        var timeString = hours + ' ' + ampm;
+        return timeString;
     }
 
     async function setWeatherInfo() {
@@ -39,7 +37,6 @@ window.addEventListener("DOMContentLoaded", () => {
 
         for (let i = 0; i < 5; i++) {
             const currentDate = new Date()
-            currentDate.setHours(15)
             const weatherIcons = document.getElementsByClassName('weather-icon');
             const hours = document.getElementsByClassName('hour');
 
@@ -52,7 +49,7 @@ window.addEventListener("DOMContentLoaded", () => {
             }
 
             weatherIcons[i].src = `../../res/weather/${weatherImageData.day}`;
-            hours[i].innerHTML = formatAMPM(new Date(time_epoch))
+            hours[i].innerHTML = convertHoursToAMPM(new Date(time_epoch))
         }
     }
     setWeatherInfo()
