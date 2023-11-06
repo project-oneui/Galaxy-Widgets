@@ -8,6 +8,8 @@ const path = require('path');
 const icon = __dirname + '/favicon.ico'
 const { spawn } = require('child_process');
 
+var moveable = false;
+
 // checks if the appExe is named electron so it doesn't autostart electron.exe while developing
 if (!app.getPath('exe').includes('electron')) {
     // starts the app at login
@@ -34,7 +36,6 @@ let topStoriesWidget = null;
 let flightWidget = null;
 let calendarWidget = null;
 let quickNotesWidget = null;
-let untisWidget = null;
 let digitalClockWidget = null;
 let forecastWidget = null;
 let upcomingMoviesWidget = null;
@@ -57,7 +58,6 @@ const positionData = {
     topStoriesWidget: { y: "75", x: "475" },
     calendarWidget: { y: "300", x: "475" },
     quickNotesWidget: { y: "550", x: "475" },
-    untisWidget: { y: "900", x: "75" },
     digitalClockWidget: { y: "75", x: "875" },
     forecastWidget: { y: "750", x: "475" },
     upcomingMoviesWidget: { y: "200", x: "875" },
@@ -73,7 +73,6 @@ const stateData = {
     flightWidget: { show: "false" },
     calendarWidget: { show: "true" },
     quickNotesWidget: { show: "true" },
-    untisWidget: { show: "false" },
     digitalClockWidget: { show: "true" },
     forecastWidget: { show: "false" },
     upcomingMoviesWidget: { show: "false" },
@@ -149,7 +148,6 @@ const widgetsData = {
         { name: "flightWidget", width: 390, height: 175, html: "./src/widgets/wallet/flight.html", "clickthrough": true },
         { name: "calendarWidget", width: 390, height: 225, html: "./src/widgets/calendar/calendar.html", "clickthrough": true },
         { name: "quickNotesWidget", width: 390, height: 175, html: "./src/widgets/notes/quickNotes.html", "clickthrough": false },
-        { name: "untisWidget", width: 390, height: 125, html: "./src/widgets/untis.html", "clickthrough": true },
         { name: "digitalClockWidget", width: 390, height: 100, html: "./src/widgets/clock/digitalClock.html", "clickthrough": true },
         { name: "forecastWidget", width: 390, height: 175, html: "./src/widgets/weather/forecast.html", "clickthrough": true },
         { name: "upcomingMoviesWidget", width: 390, height: 200, html: "./src/widgets/videoPlayer/upcomingMovies.html", "clickthrough": true },
@@ -161,8 +159,10 @@ app.on('ready', () => {
     // creates tray for quitting the app+
     tray = new Tray(icon)
     const contextMenu = Menu.buildFromTemplate([
-        { role: 'quit' },
-    ])
+        { label: 'Toggle Moveable', click: () => { moveable = !moveable; } },
+        { type: 'separator' },
+        { label: 'Quit', click: () => { app.quit(); } } // Quit the app completely when clicked
+    ]);
     tray.setToolTip('Galaxy Widgets')
     tray.setContextMenu(contextMenu)
 
@@ -191,6 +191,7 @@ app.on('ready', () => {
                 // sets clickthrough based on widgetsData
                 widgetWindow.setIgnoreMouseEvents(widget.clickthrough)
 
+
                 // sets the variable to something else than null so it wont get created again
                 eval(`${widget.name} = widgetWindow`)
 
@@ -206,6 +207,7 @@ app.on('ready', () => {
 
                 widgetWindow.loadFile(path.join(__dirname, widget.html));
 
+
                 // sets the variable again to null when its closed
                 widgetWindow.on('closed', () => {
                     eval(`${widget.name} = null`);
@@ -216,6 +218,30 @@ app.on('ready', () => {
                     widgetWindow.setSkipTaskbar(true)
                 });
 
+
+                widgetWindow.on('moved', () => {
+                    let roundedX, roundedY;
+
+                    const currentPosition = widgetWindow.getPosition()
+                    const currentX = currentPosition[0];
+                    const currentY = currentPosition[1];
+
+                    roundedX = Math.round(currentX / 25) * 25;
+                    roundedY = Math.round(currentY / 25) * 25;
+
+                    widgetPositions[widget.name].x = roundedX.toString();
+                    widgetPositions[widget.name].y = roundedY.toString();
+                    fs.writeFileSync(path.join(folderPath, 'widgetPositions.json'), JSON.stringify(widgetPositions, null, 4));
+
+                    widgetWindow.setBounds({
+                        width: widget.width,
+                        height: widget.height,
+                        x: roundedX,
+                        y: roundedY
+                    });
+                });
+
+
             }
             // destroys window if it gets deactivated
             else if (widgetStates[widget.name].show != "true" && eval(widget.name) != null) {
@@ -225,12 +251,15 @@ app.on('ready', () => {
             }
             // fixes widget appearing in taskbar
             else if (widgetStates[widget.name].show == "true" && eval(widget.name) != null) {
-                eval(`${widget.name}.setBounds({
-                    width: ${widget.width},  
-                     height: ${widget.height},  
-                     x: parseInt(widgetPositions[widget.name].x),
-                     y: parseInt(widgetPositions[widget.name].y), 
-                })`)
+                // eval(`${widget.name}.setBounds({
+                //     width: ${widget.width},  
+                //      height: ${widget.height},  
+                //      x: parseInt(widgetPositions[widget.name].x),
+                //      y: parseInt(widgetPositions[widget.name].y), 
+                // })`)
+
+                eval(`${widget.name}.setIgnoreMouseEvents(${!moveable})`)
+                eval(`${widget.name}.setMovable(${moveable})`)
             }
         });
     }
@@ -238,7 +267,7 @@ app.on('ready', () => {
     setStates()
     setInterval(function () {
         setStates();
-    }, 200);
+    }, 400);
 });
 
 // hot reloader for easier development

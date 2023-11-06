@@ -15,7 +15,7 @@ An electron app which creates OneUI Widgets on your desktop
 - [x] Flight WIdget
 - [x] Calendar Widget
 - [x] Upcoming Movies Widget
-- [ ] Hours Forecast Widget
+- [x] Hours Forecast Widget
 - [ ] Galaxy Watch on Battery Widget (Person with Galaxy Watch needed)
 
 # How to use

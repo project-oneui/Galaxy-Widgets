@@ -1,9 +1,8 @@
-const os = require('os')
-const fs = require('fs')
-const path = require('path')
+const os = require('os');
+const fs = require('fs');
+const path = require('path');
 const folderPath = path.join(os.homedir(), 'AppData', 'Local', 'Galaxy-Widgets');
 const colorData = JSON.parse(fs.readFileSync(path.join(folderPath, 'color.json'), 'utf8'));
-
 
 window.addEventListener("DOMContentLoaded", () => {
     const containerMain = document.getElementById("container-main");
@@ -24,9 +23,17 @@ window.addEventListener("DOMContentLoaded", () => {
 
         // Check if the stylesheet is accessible
         if (styleSheet) {
-            // Define the CSS rules for variables with RGB values
+            // Calculate the inverse of the text color
+            const inverseTextColor = {
+                red: 255 - colorData.text.red,
+                green: 255 - colorData.text.green,
+                blue: 255 - colorData.text.blue
+            };
+
+            // Define the CSS rules for variables with RGB values, including the inverse text color
             var cssRules = [
                 `--text: rgb(${colorData.text.red}, ${colorData.text.green}, ${colorData.text.blue})`,
+                `--inverse-text: rgb(${inverseTextColor.red}, ${inverseTextColor.green}, ${inverseTextColor.blue})`,
                 `--secondary: rgb(${colorData.secondary.red}, ${colorData.secondary.green}, ${colorData.secondary.blue})`,
                 `--primary: rgb(${colorData.primary.red}, ${colorData.primary.green}, ${colorData.primary.blue})`
             ];
@@ -36,7 +43,7 @@ window.addEventListener("DOMContentLoaded", () => {
                 styleSheet.insertRule(':root {' + rule + ';}', styleSheet.cssRules.length);
             });
 
-            // Now, the variables '--text' and '--secondary-text' with the RGB value '250 250 250' are added to the CSS
+            // Now, the variables '--text', '--inverse-text', '--secondary', and '--primary' with the RGB values are added to the CSS
         }
     };
-})
+});

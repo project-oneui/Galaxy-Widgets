@@ -16,7 +16,6 @@ window.addEventListener("DOMContentLoaded", () => {
     // adds the current-day class to the div which is the number in order of current day
     days[dayOfMonth - 1].classList.add('current-day')
     const currentDay = document.getElementsByClassName('current-day')
-    currentDay[0].style.color = 'black';
 
     // Get the current month (0 - 11)
     const currentMonth = currentDate.getMonth();

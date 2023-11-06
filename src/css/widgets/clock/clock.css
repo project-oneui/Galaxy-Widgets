@@ -9,7 +9,7 @@ body {
 #container-main {
     width: 100%;
     height: 100%;
-    border-radius: 33px;
+    border-radius: 36px;
     display: flex;
     color: var(--text);
     justify-content: center;

@@ -10,7 +10,7 @@ body {
     width: 100%;
     display: flex;
     background-color: var(--background-secondary);
-    border-radius: 33px;
+    border-radius: 36px;
     justify-content: flex-start;
     padding: 20px 20px 20px 20px;
     box-sizing: border-box;
