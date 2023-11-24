@@ -13,8 +13,10 @@ body {
     padding: 20px 20px 20px 20px;
     box-sizing: border-box;
     align-items: center;
+    justify-content: center;
     flex-direction: column;
     border-radius: 36px;
+    gap: 10px;
 }
 
 #container-head {
@@ -55,4 +57,8 @@ strong {
     overflow: hidden;
     text-overflow: ellipsis;
     font-weight: medium;
+}
+
+#icon {
+    height: 20px;
 }

@@ -6,11 +6,10 @@ window.addEventListener('DOMContentLoaded', () => {
         const newsTitles = document.getElementsByClassName("news-title");
         const newsCovers = document.getElementsByClassName("news-cover");
         
-        newsTitles[0].innerHTML = newsData.data[0].title;
-        newsCovers[0].src = newsData.data[0].image_url
-
-        newsTitles[1].innerHTML = newsData.data[1].title;
-        newsCovers[1].src = newsData.data[1].image_url
+        for (let i = 0; i < 2; i++) {
+            newsTitles[i].innerHTML = newsData.data[i].title;
+            newsCovers[i].src = newsData.data[i].image_url
+        }
     }
 
     setStories()

@@ -1,0 +1,74 @@
+body {
+    top: 0;
+    margin: 0;
+    height: 100vh;
+    color: var(--text);
+}
+
+#container-main {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    border-radius: 36px;
+    padding: 20px 20px 20px 20px;
+    box-sizing: border-box;
+    justify-content: space-between;
+    align-content: space-between;
+    flex-direction: row;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --progress-bar-width: 64px;
+    --progress-bar-height: 64px;
+}
+
+.circular-progress {
+    width: var(--progress-bar-width);
+    height: var(--progress-bar-height);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.inner-circle {
+    position: absolute;
+    width: calc(var(--progress-bar-width) - 10px);
+    height: calc(var(--progress-bar-height) - 10px);
+    border-radius: 50%;
+    background-color: lightgrey;
+}
+
+.percentage {
+    position: relative;
+    font-size: var(--font-size);
+}
+
+.icon {
+    width: 40px;
+    z-index: 1;
+}
+
+.container-battery {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.name {
+    width: 75px;
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    width: auto;
+    max-width: 75px;
+    text-overflow: ellipsis;
+}

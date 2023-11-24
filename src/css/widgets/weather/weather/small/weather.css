@@ -12,12 +12,13 @@ body {
     justify-content: space-between;
     padding: 20px 20px 20px 20px;
     box-sizing: border-box;
-    align-items: center;
+    align-items: flex-start;
+    flex-direction: column;
     color: var(--text);
 }
 
 #weather-icon {
-    height: 55px;
+    height: 25px;
 }
 
 #container-info {
@@ -30,8 +31,7 @@ body {
     font-size: 45px;
 }
 
-#weather-location,
-#weather-state {
+#weather-location {
     font-weight: bold;
 }
 
@@ -40,16 +40,6 @@ body {
     white-space: nowrap;
     overflow: hidden;
     width: auto;
-    max-width: 180px;
+    max-width: 140px;
     text-overflow: ellipsis;
-}
-
-#container-location {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-}
-
-#weather-time {
-    font-size: 12px;
 }

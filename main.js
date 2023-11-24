@@ -1,14 +1,15 @@
-const { app, BrowserWindow, Menu, Tray } = require('electron');
+const { app, BrowserWindow, Menu, Tray, ipcMain, webContents } = require('electron');
 const Vibrant = require('node-vibrant');
 const express = require('express');
 const server = require('./src/js/battery-listener');
+const jsonHandler = require('./jsonHandler');
 const os = require('os')
 const fs = require('fs')
 const path = require('path');
 const icon = __dirname + '/favicon.ico'
 const { spawn } = require('child_process');
 
-var moveable = false;
+var movable = false;
 
 // checks if the appExe is named electron so it doesn't autostart electron.exe while developing
 if (!app.getPath('exe').includes('electron')) {
@@ -37,9 +38,7 @@ let flightWidget = null;
 let calendarWidget = null;
 let quickNotesWidget = null;
 let digitalClockWidget = null;
-let forecastWidget = null;
 let upcomingMoviesWidget = null;
-let hoursForecastWidget = null;
 
 const folderPath = path.join(os.homedir(), 'AppData', 'Local', 'Galaxy-Widgets');
 
@@ -47,119 +46,80 @@ if (!fs.existsSync(folderPath)) {
     fs.mkdirSync(folderPath);
 }
 
-// All JSONs that are created for storing information/settings
-
-const positionData = {
-    musicWidget: { y: "75", x: "75" },
-    batteryWidget: { y: "225", x: "75" },
-    deviceCareWidget: { y: "400", x: "75" },
-    weatherWidget: { y: "550", x: "75" },
-    flightWidget: { y: "700", x: "75" },
-    topStoriesWidget: { y: "75", x: "475" },
-    calendarWidget: { y: "300", x: "475" },
-    quickNotesWidget: { y: "550", x: "475" },
-    digitalClockWidget: { y: "75", x: "875" },
-    forecastWidget: { y: "750", x: "475" },
-    upcomingMoviesWidget: { y: "200", x: "875" },
-    hoursForecastWidget: { y: "425", x: "875" },
-};
-
-const stateData = {
-    musicWidget: { show: "true" },
-    batteryWidget: { show: "true" },
-    deviceCareWidget: { show: "true" },
-    weatherWidget: { show: "true" },
-    topStoriesWidget: { show: "false" },
-    flightWidget: { show: "false" },
-    calendarWidget: { show: "true" },
-    quickNotesWidget: { show: "true" },
-    digitalClockWidget: { show: "true" },
-    forecastWidget: { show: "false" },
-    upcomingMoviesWidget: { show: "false" },
-    hoursForecastWidget: { show: "false" },
-};
-
-const weatherData = {
-    iplocation: true,
-    weather_country: "",
-    weather_name: "",
-};
-
-const flightData = {
-    flight_code: "",
-};
-
-const colorData = {
-    background: {
-        red: 28,
-        green: 28,
-        blue: 28
-    },
-    text: {
-        red: 250,
-        green: 250,
-        blue: 250
-    },
-    secondary: {
-        red: 120,
-        green: 120,
-        blue: 120
-    },
-    primary: {
-        red: 170,
-        green: 167,
-        blue: 195
-    }
-};
-
-function createJSONFile(filePath, data) {
-    let existingData = {};
-
-    if (fs.existsSync(filePath)) {
-        const fileContent = fs.readFileSync(filePath);
-        existingData = JSON.parse(fileContent);
-    }
-
-    // Merge existing data with new data, adding missing keys and setting default values
-    const updatedData = {
-        ...data,
-        ...existingData,
-    };
-
-    fs.writeFileSync(filePath, JSON.stringify(updatedData, null, 4));
-}
-
-// Creates or updates JSON files for the app
-createJSONFile(path.join(folderPath, 'widgetPositions.json'), positionData);
-createJSONFile(path.join(folderPath, 'widgetStates.json'), stateData);
-createJSONFile(path.join(folderPath, 'weatherOptions.json'), weatherData);
-createJSONFile(path.join(folderPath, 'flightOptions.json'), flightData);
-createJSONFile(path.join(folderPath, 'color.json'), colorData);
-
 
 // info for widget windows
 const widgetsData = {
     widgets: [
-        { name: "musicWidget", width: 390, height: 125, html: "./src/widgets/music/music.html", "clickthrough": true },
-        { name: "batteryWidget", width: 390, height: 150, html: "./src/widgets/deviceCare/battery.html", "clickthrough": true },
-        { name: "deviceCareWidget", width: 390, height: 125, html: "./src/widgets/deviceCare/deviceCare.html", "clickthrough": true },
-        { name: "weatherWidget", width: 390, height: 125, html: "./src/widgets/weather/weather.html", "clickthrough": true },
-        { name: "topStoriesWidget", width: 390, height: 200, html: "./src/widgets/news/topStories.html", "clickthrough": true },
-        { name: "flightWidget", width: 390, height: 175, html: "./src/widgets/wallet/flight.html", "clickthrough": true },
-        { name: "calendarWidget", width: 390, height: 225, html: "./src/widgets/calendar/calendar.html", "clickthrough": true },
-        { name: "quickNotesWidget", width: 390, height: 175, html: "./src/widgets/notes/quickNotes.html", "clickthrough": false },
-        { name: "digitalClockWidget", width: 390, height: 100, html: "./src/widgets/clock/digitalClock.html", "clickthrough": true },
-        { name: "forecastWidget", width: 390, height: 175, html: "./src/widgets/weather/forecast.html", "clickthrough": true },
-        { name: "upcomingMoviesWidget", width: 390, height: 200, html: "./src/widgets/videoPlayer/upcomingMovies.html", "clickthrough": true },
-        { name: "hoursForecastWidget", width: 390, height: 175, html: "./src/widgets/weather/hoursForecast.html", "clickthrough": true },
+        // { name: "deviceCareWidget", width: 390, height: 125, html: "./src/widgets/deviceCare/deviceCare.html" },
+        {
+            name: "batteryWidget",
+            clickthrough: true,
+            sizes: {
+                small: {
+                    width: 175, height: 175, html: "./src/widgets/deviceCare/battery/small/battery.html"
+                },
+                medium: {
+                    width: 390, height: 175, html: "./src/widgets/deviceCare/battery/medium/battery.html"
+                }
+            },
+        },
+        {
+            name: "weatherWidget",
+            clickthrough: true,
+            sizes: {
+                small: {
+                    width: 175, height: 175, html: "./src/widgets/weather/weather/small/weather.html"
+                },
+                medium: {
+                    width: 390, height: 175, html: "./src/widgets/weather/weather/medium/weather.html"
+                }
+            },
+        },
+        {
+            name: "topStoriesWidget",
+            clickthrough: true,
+            sizes: {
+                small: {
+                    width: 175, height: 175, html: "./src/widgets/news/topStories/small/topStories.html"
+                },
+                medium: {
+                    width: 390, height: 175, html: "./src/widgets/news/topStories/medium/topStories.html"
+                },
+                large: {
+                    width: 390, height: 250, html: "./src/widgets/news/topStories/large/topStories.html"
+                }
+            }
+        },
+        {
+            name: "musicWidget",
+            clickthrough: true,
+            sizes: {
+                small: {
+                    width: 175, height: 175, html: "./src/widgets/music/music/small/music.html"
+                },
+                medium: {
+                    width: 390, height: 175, html: "./src/widgets/music/music/medium/music.html"
+                }
+            }
+        }
+        // { name: "flightWidget", width: 390, height: 175, html: "./src/widgets/wallet/flight.html" },
+        // { name: "calendarWidget", width: 390, height: 225, html: "./src/widgets/calendar/calendar.html" },
+        // { name: "quickNotesWidget", width: 390, height: 175, html: "./src/widgets/notes/quickNotes.html", },
+        // { name: "digitalClockWidget", width: 390, height: 100, html: "./src/widgets/clock/digitalClock.html" },
+        // { name: "upcomingMoviesWidget", width: 390, height: 200, html: "./src/widgets/videoPlayer/upcomingMovies.html" },
     ],
 };
 
 app.on('ready', () => {
-    // creates tray for quitting the app+
+    hiddenWindow = new BrowserWindow({ show: false });
+    // creates tray for quitting the app
     tray = new Tray(icon)
     const contextMenu = Menu.buildFromTemplate([
-        { label: 'Toggle Moveable', click: () => { moveable = !moveable; } },
+        {
+            label: 'Toggle movable', click: () => {
+                movable = !movable; hiddenWindow.webContents.send('update-movable', movable); console.log(movable)
+            }
+        },
         { type: 'separator' },
         { label: 'Quit', click: () => { app.quit(); } } // Quit the app completely when clicked
     ]);
@@ -175,10 +135,10 @@ app.on('ready', () => {
             // checks if the widget is enabled and if it doesnt exist (== null)
             if (widgetStates[widget.name].show == "true" && eval(widget.name) == null) {
                 const widgetWindow = new BrowserWindow({
-                    width: widget.width,
-                    height: widget.height,
-                    frame: false,
+                    width: widget.sizes[widgetStates[widget.name].size].width,
+                    height: widget.sizes[widgetStates[widget.name].size].height,
                     transparent: true,
+                    frame: false,
                     resizable: false,
                     transparency: true,
                     skipTaskbar: true,
@@ -198,15 +158,14 @@ app.on('ready', () => {
                 // sets the position | uses setBounds because setPosition makes the widget bigger in anything else than 100% scaling
                 if (eval(widget.name) != null) {
                     widgetWindow.setBounds({
-                        width: widget.width,
-                        height: widget.height,
+                        width: widget.sizes[widgetStates[widget.name].size].width,
+                        height: widget.sizes[widgetStates[widget.name].size].height,
                         x: parseInt(widgetPositions[widget.name].x),
                         y: parseInt(widgetPositions[widget.name].y)
                     });
                 }
 
-                widgetWindow.loadFile(path.join(__dirname, widget.html));
-
+                widgetWindow.loadFile(path.join(__dirname, widget.sizes[widgetStates[widget.name].size].html));
 
                 // sets the variable again to null when its closed
                 widgetWindow.on('closed', () => {
@@ -217,7 +176,6 @@ app.on('ready', () => {
                 widgetWindow.on('focus', () => {
                     widgetWindow.setSkipTaskbar(true)
                 });
-
 
                 widgetWindow.on('moved', () => {
                     let roundedX, roundedY;
@@ -234,8 +192,8 @@ app.on('ready', () => {
                     fs.writeFileSync(path.join(folderPath, 'widgetPositions.json'), JSON.stringify(widgetPositions, null, 4));
 
                     widgetWindow.setBounds({
-                        width: widget.width,
-                        height: widget.height,
+                        width: widget.sizes[widgetStates[widget.name].size].width,
+                        height: widget.sizes[widgetStates[widget.name].size].height,
                         x: roundedX,
                         y: roundedY
                     });
@@ -251,15 +209,27 @@ app.on('ready', () => {
             }
             // fixes widget appearing in taskbar
             else if (widgetStates[widget.name].show == "true" && eval(widget.name) != null) {
-                // eval(`${widget.name}.setBounds({
-                //     width: ${widget.width},  
-                //      height: ${widget.height},  
-                //      x: parseInt(widgetPositions[widget.name].x),
-                //      y: parseInt(widgetPositions[widget.name].y), 
-                // })`)
 
-                eval(`${widget.name}.setIgnoreMouseEvents(${!moveable})`)
-                eval(`${widget.name}.setMovable(${moveable})`)
+                // check if current loaded html is the wanted size of widget
+                if (!eval(`${widget.name}.webContents.getURL()`).includes(widgetStates[widget.name].size)) {
+                    // change size
+                    eval(`${widget.name}.setBounds({
+                        width: ${widget.sizes[widgetStates[widget.name].size].width},  
+                        height: ${widget.sizes[widgetStates[widget.name].size].height},  
+                        x: parseInt(widgetPositions[widget.name].x),
+                        y: parseInt(widgetPositions[widget.name].y), 
+                    })`)
+
+                    // change html
+                    eval(`${widget.name}.loadFile(path.join(__dirname, widget.sizes[widgetStates[widget.name].size].html))`)
+                }
+
+
+                // widgetWindow.loadFile(path.join(__dirname, widget.sizes[widgetStates[widget.name].size].html));
+
+
+                // eval(`${widget.name}.setIgnoreMouseEvents(${!movable})`)
+                eval(`${widget.name}.setMovable(${movable})`)
             }
         });
     }

@@ -1,0 +1,81 @@
+body {
+    height: 100vh;
+    top: 0;
+    margin: 0;
+}
+
+#container-main {
+    height: 100%;
+    width: 100%;
+    border-radius: 36px;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 20px 20px 20px;
+    box-sizing: border-box;
+    align-items: center;
+    flex-direction: column;
+    color: var(--text);
+}
+
+#weather-icon {
+    height: 55px;
+}
+
+#container-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#weather-temperature {
+    font-size: 45px;
+}
+
+#weather-location,
+#weather-state {
+    font-weight: bold;
+}
+
+#weather-state {
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    width: auto;
+    max-width: 180px;
+    text-overflow: ellipsis;
+}
+
+#container-location {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+#weather-time {
+    font-size: 12px;
+}
+
+.forecast-icon {
+    height: 30px;
+}
+
+#container-top {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#container-hours {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.container-hour {
+    display: flex;
+    flex-direction: column;
+    width: 50px;
+    align-items: center;
+    gap: 5px;
+}

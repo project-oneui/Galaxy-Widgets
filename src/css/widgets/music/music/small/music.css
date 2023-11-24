@@ -1,0 +1,46 @@
+body {
+    height: 100vh;
+    top: 0;
+    margin: 0;
+}
+
+#container-main {
+    width: 100%;
+    height: 100%;
+    border-radius: 36px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 15px 15px 15px 15px;
+    box-sizing: border-box;
+    color: var(--text);
+    gap: 5px;
+}
+
+#music-cover {
+    background-color: var(--secondary);
+    height: 90px;
+    border-radius: 16px;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+}
+
+#music-title {
+    font-weight: medium;
+}
+
+#music-artists {
+    font-weight: normal;
+    color: var(--secondary);
+}
+
+#music-title,
+#music-artists {
+    font-size: 14px;
+    display: block;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 145px;
+}

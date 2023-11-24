@@ -11,7 +11,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
     var linkElement = document.createElement('link');
     linkElement.rel = 'stylesheet';
-    linkElement.href = '../../css/colors.css';
+    linkElement.href = '../../../../css/colors.css';
 
     // Append the link element to the head of the document
     document.head.appendChild(linkElement);
@@ -33,6 +33,7 @@ window.addEventListener("DOMContentLoaded", () => {
             // Define the CSS rules for variables with RGB values, including the inverse text color
             var cssRules = [
                 `--text: rgb(${colorData.text.red}, ${colorData.text.green}, ${colorData.text.blue})`,
+                `--background: rgb(${colorData.background.red}, ${colorData.background.green}, ${colorData.background.blue})`,
                 `--inverse-text: rgb(${inverseTextColor.red}, ${inverseTextColor.green}, ${inverseTextColor.blue})`,
                 `--secondary: rgb(${colorData.secondary.red}, ${colorData.secondary.green}, ${colorData.secondary.blue})`,
                 `--primary: rgb(${colorData.primary.red}, ${colorData.primary.green}, ${colorData.primary.blue})`
