@@ -5,28 +5,18 @@ An electron app which creates OneUI Widgets on your desktop
 
 ![Preview Image](https://raw.githubusercontent.com/oneui-widgets/oneui-desktop-widgets/main/images/Preview.png)
 
-# Checklist
+# Possible Changes
 
-- [x] Widget Positioning
-- [x] Tasker Preset (Phone)
-- [x] Tasker Preset (Tablet)
-- [x] Weather Location in Settings
-- [x] Disable Widgets in Settings
-- [x] Flight WIdget
-- [x] Calendar Widget
-- [x] Upcoming Movies Widget
-- [x] Hours Forecast Widget
-- [ ] Galaxy Watch on Battery Widget (Person with Galaxy Watch needed)
+- [ ] Widget Reworks | Currently working on it
+- [ ] Adding more devices to the battery widgets
+- [ ] Docs
 
-# How to use
-## Install the Galaxy Widgets App
-1. Download the [latest release](https://github.com/project-oneui/Galaxy-Widgets/releases/latest)
-2. Run the .exe
+# Usage
 
-
-## Install the Galaxy Settings App
-1. Download the [latest release](github.com/project-oneui/Galaxy-Settings/releases/latest)
-2. Run the .exe
+1. Download these files:
+    - [latest release of Galaxy Widgets](https://github.com/project-oneui/Galaxy-Widgets/releases/latest)
+    - [latest release of Galaxy Settings](https://github.com/project-oneui/Galaxy-Settings/releases/latest)
+2. Run the setup files
 
 # Optional Settings
 
@@ -45,4 +35,11 @@ An electron app which creates OneUI Widgets on your desktop
 9. To get this, open cmd and type in "ipconfig /all" without the quotes
 10. The IPv4-Adress should be your local ip. Not the one that ends with .1
 
-# This is not an official Samsung app!
+# Credits
+[@Keifufu](https://github.com/keifufu) Helping with retrieving the data for the music widget
+
+# Disclaimer
+This is not an official Samsung app!
+
+# License
+This script is provided under the [MIT License](https://github.com/project-oneui/Galaxy-Widgets/blob/main/LICENSE).
