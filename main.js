@@ -103,7 +103,6 @@ const widgetsData = {
             }
         }
         // { name: "flightWidget", width: 390, height: 175, html: "./src/widgets/wallet/flight.html" },
-        // { name: "calendarWidget", width: 390, height: 225, html: "./src/widgets/calendar/calendar.html" },
         // { name: "quickNotesWidget", width: 390, height: 175, html: "./src/widgets/notes/quickNotes.html", },
         // { name: "digitalClockWidget", width: 390, height: 100, html: "./src/widgets/clock/digitalClock.html" },
         // { name: "upcomingMoviesWidget", width: 390, height: 200, html: "./src/widgets/videoPlayer/upcomingMovies.html" },
