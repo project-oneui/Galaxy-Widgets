@@ -1,5 +1,5 @@
 # Galaxy Widgets
-An electron app which creates OneUI Widgets on your desktop
+Information relating to usage and other things can be found in the [Wiki](https://github.com/project-oneui/Galaxy-Widgets/wiki)
 
 # Preview
 
