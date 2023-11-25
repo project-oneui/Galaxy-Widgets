@@ -3,9 +3,7 @@ An electron app which creates OneUI Widgets on your desktop
 
 # Preview
 
-<div style="border-radius: 8px; overflow: hidden;">
-  <img src="https://raw.githubusercontent.com/oneui-widgets/oneui-desktop-widgets/main/images/Preview.png" alt="Preview Image" style="width: 100%; height: auto; display: block;">
-</div>
+![Preview Image](https://raw.githubusercontent.com/oneui-widgets/oneui-desktop-widgets/main/images/Preview.png)
 
 # Possible Changes
 
