@@ -19,6 +19,7 @@ async function getLocation() {
 
     if (weatherOptions.iplocation == true) {
         return IPLocation;
+        // if false check if any location even exists | if not use ip location
     } else if (weatherOptions.iplocation == false && weatherOptions.country != "" && weatherOptions.name != "") {
         const Location = weatherOptions.weather_name + ", " + weatherOptions.weather_country
         return Location;
@@ -45,13 +46,15 @@ window.addEventListener("DOMContentLoaded", () => {
 
         const weatherImageData = weatherConditions.find(codeObj => codeObj.code === dataWeather.current.condition.code);
 
-        if (isDay == "1") {
-            document.getElementById("weather-icon").src = `../../../../res/weather/${weatherImageData.day}`
-            document.getElementById("container-main").style.background = `linear-gradient(180deg, rgba(${dataWeather.current.temp_c * 6}, 142, 185, 1) 0%, rgba(${dataWeather.current.temp_c * 4}, 102, 145, 1) 100%)`
-        } else {
-            document.getElementById("weather-icon").src = `../../../../res/weather/${weatherImageData.night}`
-            document.getElementById("container-main").style.background = `linear-gradient(180deg, rgba(${dataWeather.current.temp_c * 4}, 60, 120, 1) 0%, rgba(${dataWeather.current.temp_c * 3}, 55, 115, 1) 100%)`
-        }
+        // set image and gradient based on if its day or not | 0 = night | 1 = day
+        const weatherImageSrc = (isDay == 0) ? `../../../../res/weather/${weatherImageData.night}` : `../../../../res/weather/${weatherImageData.day}`
+        const linearGradient = (isDay == 0) ?
+            `linear-gradient(180deg, rgba(${dataWeather.current.temp_c * 4}, 60, 120, 1) 0%, rgba(${dataWeather.current.temp_c * 3}, 55, 115, 1) 100%)`
+            :
+            `linear-gradient(180deg, rgba(${dataWeather.current.temp_c * 6}, 142, 185, 1) 0%, rgba(${dataWeather.current.temp_c * 4}, 102, 145, 1) 100%)`;
+
+        document.getElementById("weather-icon").src = weatherImageSrc;
+        document.getElementById("container-main").style.background = linearGradient
     }
 
     async function setForecastInfo() {
@@ -59,12 +62,14 @@ window.addEventListener("DOMContentLoaded", () => {
 
         const responseForecast = await fetch(weatherURL);
         const forecastData = await responseForecast.json();
+        const isDay = forecastData.current.is_day;
 
         for (let i = 0; i < 5; i++) {
             const currentDate = new Date()
             const weatherIcons = document.getElementsByClassName('forecast-icon');
             const hours = document.getElementsByClassName('hour');
 
+            // i dont even know how to works but it does work | checks if some of the forecast hours will be in the next day so no errors appear
             if (currentDate.getHours() + i > 23) {
                 var weatherImageData = weatherConditions.find(codeObj => codeObj.code === forecastData.forecast.forecastday[1].hour[(currentDate.getHours() + i) - 24].condition.code);
                 var time_epoch = forecastData.forecast.forecastday[1].hour[(currentDate.getHours() + i) - 24].time_epoch * 1000
@@ -73,7 +78,9 @@ window.addEventListener("DOMContentLoaded", () => {
                 var time_epoch = forecastData.forecast.forecastday[0].hour[currentDate.getHours() + i].time_epoch * 1000
             }
 
-            weatherIcons[i].src = `../../../../res/weather/${weatherImageData.day}`;
+            const weatherIconSrc = (isDay == 0) ? `../../../../res/weather/${weatherImageData.night}` : `../../../../res/weather/${weatherImageData.day}`
+
+            weatherIcons[i].src = weatherIconSrc;
             hours[i].innerHTML = convertHoursToAMPM(new Date(time_epoch))
         }
     }

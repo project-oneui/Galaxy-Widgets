@@ -26,14 +26,16 @@ async function changeWeatherInfo() {
     document.getElementById("weather-state").innerHTML = dataWeather.current.condition.text
 
     const weatherImageData = weatherConditions.find(codeObj => codeObj.code === dataWeather.current.condition.code);
+    
+    // set image and gradient based on if its day or not | 0 = night | 1 = day
+    const weatherImageSrc = (isDay == 0) ? `../../../../res/weather/${weatherImageData.night}` : `../../../../res/weather/${weatherImageData.day}`
+    const linearGradient = (isDay == 0) ?
+        `linear-gradient(180deg, rgba(${dataWeather.current.temp_c * 4}, 60, 120, 1) 0%, rgba(${dataWeather.current.temp_c * 3}, 55, 115, 1) 100%)`
+        :
+        `linear-gradient(180deg, rgba(${dataWeather.current.temp_c * 6}, 142, 185, 1) 0%, rgba(${dataWeather.current.temp_c * 4}, 102, 145, 1) 100%)`;
 
-    if (isDay == "1") {
-        document.getElementById("weather-icon").src = `../../../../res/weather/${weatherImageData.day}`
-        document.getElementById("container-main").style.background = `linear-gradient(180deg, rgba(${dataWeather.current.temp_c * 6}, 142, 185, 1) 0%, rgba(${dataWeather.current.temp_c * 4}, 102, 145, 1) 100%)`
-    } else {
-        document.getElementById("weather-icon").src = `../../../../res/weather/${weatherImageData.night}`
-        document.getElementById("container-main").style.background = `linear-gradient(180deg, rgba(${dataWeather.current.temp_c * 4}, 60, 120, 1) 0%, rgba(${dataWeather.current.temp_c * 3}, 55, 115, 1) 100%)`
-    }
+    document.getElementById("weather-icon").src = weatherImageSrc;
+    document.getElementById("container-main").style.background = linearGradient
 }
 
 changeWeatherInfo()

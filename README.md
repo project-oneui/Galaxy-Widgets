@@ -1,5 +1,5 @@
 # Galaxy Widgets
-Information relating to usage and other things can be found in the [Wiki](https://github.com/project-oneui/Galaxy-Widgets/wiki)
+Information relating to usage and other things can be found in the [Docs](https://galaxy-widgets-docs.vercel.app)
 
 # Preview
 

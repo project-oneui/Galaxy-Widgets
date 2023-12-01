@@ -150,7 +150,6 @@ app.on('ready', () => {
                 // sets clickthrough based on widgetsData
                 widgetWindow.setIgnoreMouseEvents(widget.clickthrough)
 
-
                 // sets the variable to something else than null so it wont get created again
                 eval(`${widget.name} = widgetWindow`)
 
