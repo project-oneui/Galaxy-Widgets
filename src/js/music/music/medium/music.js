@@ -21,12 +21,13 @@ window.addEventListener("DOMContentLoaded", () => {
             document.getElementById("music-cover").src = jsonData.CoverUrl + "?" + Date.now();
             Vibrant.from(jsonData.CoverUrl).getPalette()
                 .then((palette) => {
-                    const darkVibrantRGB = palette.DarkVibrant._rgb;
                     musicArtists.style.color = palette.Muted.hex;
                     musicTitle.style.color = palette.LightVibrant.hex;
                     musicPosition.style.color = palette.Muted.hex;
                     musicDuration.style.color = palette.Muted.hex;
-                    progress.style.backgroundColor = palette.LightVibrant.hex
+                    // progress.style.backgroundColor = palette.LightVibrant.hex
+                    progress.style.background = `linear-gradient(180deg, rgba(${palette.LightVibrant.r}, ${palette.LightVibrant.g}, ${palette.LightVibrant.b}, 1) 0%, rgba(${palette.LightVibrant.r - 32}, ${palette.LightVibrant.g - 32}, ${palette.LightVibrant.b - 32}, 1) 100%)`
+
                 })
         }
 

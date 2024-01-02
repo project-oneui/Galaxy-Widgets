@@ -53,6 +53,7 @@ const widgetsData = {
         // { name: "deviceCareWidget", width: 390, height: 125, html: "./src/widgets/deviceCare/deviceCare.html" },
         {
             name: "batteryWidget",
+            displayName: "Battery",
             clickthrough: true,
             sizes: {
                 small: {
@@ -65,6 +66,7 @@ const widgetsData = {
         },
         {
             name: "weatherWidget",
+            displayName: "Weather",
             clickthrough: true,
             sizes: {
                 small: {
@@ -77,6 +79,7 @@ const widgetsData = {
         },
         {
             name: "topStoriesWidget",
+            displayName: "Top Stories",
             clickthrough: true,
             sizes: {
                 small: {
@@ -92,6 +95,7 @@ const widgetsData = {
         },
         {
             name: "musicWidget",
+            displayName: "Music Player",
             clickthrough: true,
             sizes: {
                 small: {
@@ -99,6 +103,19 @@ const widgetsData = {
                 },
                 medium: {
                     width: 390, height: 175, html: "./src/widgets/music/music/medium/music.html"
+                }
+            }
+        },
+        {
+            name: "calendarWidget",
+            displayName: "Music Player",
+            clickthrough: true,
+            sizes: {
+                small: {
+                    width: 175, height: 175, html: "./src/widgets/calendar/calendar/small/calendar.html"
+                },
+                large: {
+                    width: 390, height: 225, html: "./src/widgets/calendar/calendar/large/calendar.html"
                 }
             }
         }
@@ -110,20 +127,48 @@ const widgetsData = {
 };
 
 app.on('ready', () => {
-    hiddenWindow = new BrowserWindow({ show: false });
     // creates tray for quitting the app
     tray = new Tray(icon)
+    const sizeMenuItems = [];
+
+    // Create a sub-menu for widget sizes
+    for (const widget of widgetsData.widgets) {
+        const widgetSubMenu = [];
+
+        for (const sizeKey in widget.sizes) {
+            widgetSubMenu.push({
+                label: sizeKey[0].toUpperCase() + sizeKey.slice(1),
+                click: () => {
+                    console.log(`Widget: ${widget.name}, Size: ${sizeKey}`);
+                    const widgetStates = JSON.parse(fs.readFileSync(folderPath + "\\widgetStates.json"))
+                    widgetStates[widget.name].size = sizeKey
+                    fs.writeFileSync(folderPath + "\\widgetStates.json", JSON.stringify(widgetStates, null, 4))
+
+                }
+            });
+        }
+
+        sizeMenuItems.push({
+            label: widget.displayName,
+            submenu: widgetSubMenu
+        });
+    }
+
+    // Build the context menu
     const contextMenu = Menu.buildFromTemplate([
         {
             label: 'Toggle movable', click: () => {
-                movable = !movable; hiddenWindow.webContents.send('update-movable', movable); console.log(movable)
+                movable = !movable;
             }
         },
         { type: 'separator' },
-        { label: 'Quit', click: () => { app.quit(); } } // Quit the app completely when clicked
+        ...sizeMenuItems, // Add the widget size sub-menu
+        { type: 'separator' },
+        { label: 'Quit', click: () => { app.quit(); } }
     ]);
-    tray.setToolTip('Galaxy Widgets')
-    tray.setContextMenu(contextMenu)
+
+    tray.setToolTip('Galaxy Widgets');
+    tray.setContextMenu(contextMenu);
 
     function setStates() {
         const widgetStates = JSON.parse(fs.readFileSync(folderPath + "\\widgetStates.json"))
@@ -189,9 +234,11 @@ app.on('ready', () => {
                     widgetPositions[widget.name].y = roundedY.toString();
                     fs.writeFileSync(path.join(folderPath, 'widgetPositions.json'), JSON.stringify(widgetPositions, null, 4));
 
+                    const widgetStatesUpdated = JSON.parse(fs.readFileSync(folderPath + "\\widgetStates.json"))
+
                     widgetWindow.setBounds({
-                        width: widget.sizes[widgetStates[widget.name].size].width,
-                        height: widget.sizes[widgetStates[widget.name].size].height,
+                        width: widget.sizes[widgetStatesUpdated[widget.name].size].width,
+                        height: widget.sizes[widgetStatesUpdated[widget.name].size].height,
                         x: roundedX,
                         y: roundedY
                     });
@@ -222,11 +269,7 @@ app.on('ready', () => {
                     eval(`${widget.name}.loadFile(path.join(__dirname, widget.sizes[widgetStates[widget.name].size].html))`)
                 }
 
-
-                // widgetWindow.loadFile(path.join(__dirname, widget.sizes[widgetStates[widget.name].size].html));
-
-
-                // eval(`${widget.name}.setIgnoreMouseEvents(${!movable})`)
+                eval(`${widget.name}.setIgnoreMouseEvents(${!movable})`)
                 eval(`${widget.name}.setMovable(${movable})`)
             }
         });

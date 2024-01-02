@@ -13,27 +13,17 @@ if (!fs.existsSync(folderPath)) {
 const positionData = {
     musicWidget: { y: "75", x: "75" },
     batteryWidget: { y: "225", x: "75" },
-    deviceCareWidget: { y: "400", x: "75" },
     weatherWidget: { y: "550", x: "75" },
-    flightWidget: { y: "700", x: "75" },
     topStoriesWidget: { y: "75", x: "475" },
     calendarWidget: { y: "300", x: "475" },
-    quickNotesWidget: { y: "550", x: "475" },
-    digitalClockWidget: { y: "75", x: "875" },
-    upcomingMoviesWidget: { y: "200", x: "875" },
 };
 
 const stateData = {
     musicWidget: { show: "true", size: "medium" },
     batteryWidget: { show: "true", size: "medium" },
-    deviceCareWidget: { show: "true" },
     weatherWidget: { show: "true", size: "small" },
     topStoriesWidget: { show: "true", size: "medium" },
-    flightWidget: { show: "false" },
-    calendarWidget: { show: "true" },
-    quickNotesWidget: { show: "true" },
-    digitalClockWidget: { show: "true" },
-    upcomingMoviesWidget: { show: "false" },
+    calendarWidget: { show: "true", size: "small" },
 };
 
 const weatherData = {
